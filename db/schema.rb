@@ -10,12 +10,81 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_24_110142) do
+ActiveRecord::Schema.define(version: 2020_02_24_135215) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "events", force: :cascade do |t|
+    t.date "date"
+    t.string "location"
+    t.integer "capacity"
+    t.string "title"
+    t.string "event_type"
+    t.integer "duration"
+    t.string "genre"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
+  create_table "instruments", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "request_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["request_id"], name: "index_messages_on_request_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.string "status", default: "open"
+    t.bigint "instrument_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "event_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_id"], name: "index_requests_on_event_id"
+    t.index ["instrument_id"], name: "index_requests_on_instrument_id"
+    t.index ["user_id"], name: "index_requests_on_user_id"
+  end
+
+  create_table "user_instruments", force: :cascade do |t|
+    t.string "proficiency"
+    t.bigint "user_id", null: false
+    t.bigint "instrument_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["instrument_id"], name: "index_user_instruments_on_instrument_id"
+    t.index ["user_id"], name: "index_user_instruments_on_user_id"
+  end
+
+  create_table "user_media", force: :cascade do |t|
+    t.string "title"
+    t.string "music_genre"
+    t.string "medium_type"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_user_media_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
+    t.string "last_name"
+    t.string "first_name"
+    t.string "nick_name"
+    t.integer "age"
+    t.string "address"
+    t.string "profile_picture"
+    t.string "genre_preferences"
+    t.text "description"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -27,4 +96,13 @@ ActiveRecord::Schema.define(version: 2020_02_24_110142) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "events", "users"
+  add_foreign_key "messages", "requests"
+  add_foreign_key "messages", "users"
+  add_foreign_key "requests", "events"
+  add_foreign_key "requests", "instruments"
+  add_foreign_key "requests", "users"
+  add_foreign_key "user_instruments", "instruments"
+  add_foreign_key "user_instruments", "users"
+  add_foreign_key "user_media", "users"
 end
