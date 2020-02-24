@@ -1,0 +1,19 @@
+<div class="banner" style="background: linear-gradient(0deg, rgba(0,0,0,4) 0%, rgba(0,0,0,0.4) 20%, rgba(0,0,0,0.4) 100%),url(https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80); background-size: cover; min-height: 100vh;">
+  <div class="container">
+    <br>
+    <a class="btn btn-flat" href="/animals">See our pets</a>
+    <div class="container_log my-2">
+      <div class="col-4 offset-8">
+        <%= simple_form_for :user, :url => session_path(:user) do |f| %>
+          <%= f.text_field :email, input_html: { id: "inputEmail" }, class: "form-control mt-1", placeholder: "Enter your email" %>
+          <%= f.password_field :password, input_html: { id: "inputPassword" }, class: "form-control", placeholder: "Password" %>
+          <%= f.submit 'Login', class:"btn btn-flat rounded btn-block" %>
+          <div class="d-flex flex-column mx-auto">
+            <%= link_to "Forgot your password?", new_password_path(:user), class: "m-auto text-decoration-none" %>
+            <%= link_to "Sign up", new_password_path(:user), class: "m-auto text-decoration-none" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
