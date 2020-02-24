@@ -1,0 +1,2 @@
+class UserMedium < ApplicationRecord
+end
