@@ -11,10 +11,7 @@
           <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
         <% end %>
 
-        <div class="full-name">
-          <%= f.input :first_name %>
-          <%= f.input :last_name %>
-        </div>
+
 
         <%= f.input :password,
                     hint: "leave it blank if you don't want to change it",
