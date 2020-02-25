@@ -1,40 +1,108 @@
 <body style="background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 20%, rgba(0,0,0,0.4) 100%),url('https://images.unsplash.com/photo-1512733596533-7b00ccf8ebaf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1489&q=80'); background-size: cover; min-height: 100vh; opacity: 0.88;">
-  <div class="container my-4"><h2>Edit <%= resource_name.to_s.humanize %></h2>
-
+  <!-- <div class="container my-4"><h2>Edit <%= resource_name.to_s.humanize %></h2> -->
+  <div class="container-profile">
+    <h2 class="title-profile">Edit my profile</h2>
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-      <%= f.error_notification %>
+    <%= f.error_notification %>
+    <div class="profile-content">
+      <div class="first-profile">
+        <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "edit-picture-profile", id: "editProfile" %>
+        <div class="upload-avatar">
+          <%= f.input :photo, as: :file, input_html: { class: 'd-none' }, label_html: { class: 'upload-photo'}, label: 'Change photo' %>
+        </div>
+        <div class="first-row">
+          <%= f.input :nick_name, required: false %>
+          <%= f.input :age, required: false %>
+        </div>
+      </div>
+      <div class="second-profile">
+        <%= f.input :first_name, required: false %>
+        <%= f.input :last_name, required: false %>
+        <%= f.input :email, required: false %>
+        <%= f.input :address, required: false %>
+        <%= f.input :genre_preferences, required: false %>
+  <!--       <#%= f.input :instrument, required: false %>
+        <#%= f.input :repertory, required: false %>
+        <#%= f.input :instrument_proficiency, required: false %>
+        <#%= f.input :title, required: false %> -->
+      </div>
+    </div>
+</div>
 
-      <div class="form-inputs">
-        <%= f.input :email, required: true, autofocus: true %>
 
-        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-          <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <div class="row-profile"> -->
+<!--  t.string "last_name"
+      t.string "first_name"
+      t.string "nick_name"
+      t.integer "age"
+      t.string "address"
+      t.string "profile_picture"
+      t.string "genre_preferences"
+      t.text "description"
+      t.string "email", default: "", null: false -->
+      <!-- <div class="user-data"> -->
+        <!-- <div class="picture-profile"> -->
+<!--           <#% if @user.profile_picture.attached? %>
+            <#%= image_tag(@user.profile_picture, class: "edit-picture-profile", id: "editProfile") %>
+          <#% else %> -->
+            <!-- <#%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "edit-picture-profile", id: "editProfile" %> -->
+<!--           <#% end %> -->
+        <!-- </div> -->
+
+  <!--     </div>
+
+      <div class="user-details">
+          <div class="form-inputs">
+            <%= f.input :email, required: true, autofocus: true %>
+
+            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+              <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+            <% end %>
+
+
+
+            <%= f.input :password,
+                        hint: "leave it blank if you don't want to change it",
+                        required: false,
+                        input_html: { autocomplete: "new-password" } %>
+            <%= f.input :password_confirmation,
+                        required: false,
+                        input_html: { autocomplete: "new-password" } %>
+            <%= f.input :current_password,
+                        hint: "we need your current password to confirm your changes",
+                        required: true,
+                        input_html: { autocomplete: "current-password" } %>
+          </div>
+
+          <div class="form-actions">
+            <%= f.button :submit, "Update" %>
+          </div>
         <% end %>
-
-
-
-        <%= f.input :password,
-                    hint: "leave it blank if you don't want to change it",
-                    required: false,
-                    input_html: { autocomplete: "new-password" } %>
-        <%= f.input :password_confirmation,
-                    required: false,
-                    input_html: { autocomplete: "new-password" } %>
-        <%= f.input :current_password,
-                    hint: "we need your current password to confirm your changes",
-                    required: true,
-                    input_html: { autocomplete: "current-password" } %>
       </div>
 
-      <div class="form-actions">
-        <%= f.button :submit, "Update" %>
+<!--       t.string "title"
+      t.string "music_genre"
+      t.string "medium_type"
+      t.bigint "user_id", null: false -->
+
+<!--       <div class="user-media">
+        <p>Unhappy? <%= link_to "Delete my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %> / <%= link_to "Back", :back %></p>
       </div>
-    <% end %>
-
-    <h3>Cancel my account</h3>
-
-    <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-    <%= link_to "Back", :back %>
-  </div>
+    </div>
+  </div> -->
 </body>
