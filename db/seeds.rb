@@ -167,76 +167,6 @@ pseudo_array =
     Faker::Music.band.tr(" ", "_")
     ]
 
-genre_array =
-  [
-  "Disco",
-  "Blues",
-  "Funk",
-  "Jazz",
-  "Metal",
-  "Pop",
-  "Punk",
-  "Rap",
-  "Rock",
-  "Country",
-  "Reggae",
-  "Gospel",
-  "Soul",
-  "Kompa",
-  "Classic"
-  ]
-
-instruments_array =
-  [
-  "Accordion",
-  "Bagpipes",
-  "Banjo",
-  "Bass guitar",
-  "Bassoon",
-  "Cello",
-  "Clarinet",
-  "Clavichord",
-  "Cornet",
-  "Cymbal",
-  "Dhime",
-  "Didgeridoo",
-  "Double bass",
-  "Drum",
-  "Flute",
-  "French horn",
-  "Glass harmonica",
-  "Glockenspiel",
-  "Gong",
-  "Guitar",
-  "Harmonica",
-  "Harp",
-  "Mandolin",
-  "Marimba",
-  "Melodica",
-  "Oboe",
-  "Octobass",
-  "Organ",
-  "Pan Pipes",
-  "Panduri",
-  "Piano",
-  "Recorder",
-  "Saxophone",
-  "Sitar",
-  "Steelpan",
-  "Synthesizer",
-  "Tambourine",
-  "Triangle",
-  "Trombone",
-  "Trumpet",
-  "Tuba",
-  "Ukulele",
-  "Viola",
-  "Violin",
-  "Vocal cords",
-  "Xylophone",
-  "Zither"
-  ]
-
 song_array = [
   "7 Things",
   "50 Ways to Leave Your Lover",
@@ -314,7 +244,7 @@ puts 'Creating a user faker...'
   number_rand = rand(0..99)
   pseudo = "#{pseudo_one}#{number_rand}"
   address = addresses.sample
-  genre_pref = genre_array.sample
+  genre_pref = Event::GENRE_ARRAY.sample
   user_age =rand(18..60)
 
   user = User.new(
@@ -333,7 +263,7 @@ end
 
 # Creating Instruments
 puts "Creating Instruments..."
-instruments_array.each do |instrument|
+UserInstrument::INSTRUMENTS_ARRAY.each do |instrument|
   instrument = Instrument.new(
   name: instrument
   )
@@ -355,7 +285,7 @@ end
 # # Creating Events
 puts "Creating Events..."
 number_of_users.times do
-  genre_pref = genre_array.sample
+  genre_pref = Event::GENRE_ARRAY.sample
   address = addresses.sample
   song = song_array.sample
   event = Event.new(
@@ -374,7 +304,7 @@ end
 # User Media
 puts "Creating User Media..."
 number_of_users.times do
-  genre_pref = genre_array.sample
+  genre_pref = Event::GENRE_ARRAY.sample
   user_media = UserMedium.new(
     user: User.all.sample(1).first,
     title: "Baby Sharky Song",
