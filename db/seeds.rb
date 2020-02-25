@@ -23,11 +23,11 @@ User.destroy_all
 puts "Users : destroyed"
 
 puts "Destroying all user_instruments"
-User_instrument.destroy_all
+UserInstrument.destroy_all
 puts "User Instruments : destroyed"
 
 puts "Destroying all user_medias"
-User_media.destroy_all
+UserMedium.destroy_all
 puts "User medias : destroyed"
 
 puts "Destroying all Instruments"
@@ -80,7 +80,6 @@ addresses = [
   "Place Kossuth, 75009 Paris",
   "Place Lachambeaudie, 75012 Paris",
   "Place Le Corbusier, 75006 Paris",
-  "Place Léon-Blum, 75011 Paris",
   "Place Léon-Paul-Fargue, 75006 Paris",
   "Place Léonard-Bernstein, 75012 Paris",
   "Place Lili-Boulanger, 75009 Paris",
@@ -159,15 +158,13 @@ addresses = [
 
 pseudo_array =
     [
-    Faker::Name.first_name,
-    Faker::TvShows::Stargate.planet,
-    Faker::Games::Myst.creatur,
-    Faker::TvShows::StarTrek.character,
-    Faker::TvShows::StarTrek.specie,
-    Faker::TvShows::Simpsons.character,
-    Faker::Music::RockBand.name,
-    Faker::Music.band,
-    Faker::Music.chord
+    Faker::Name.first_name.tr(" ", "_"),
+    Faker::TvShows::Stargate.planet.tr(" ", "_"),
+    Faker::TvShows::StarTrek.character.tr(" ", "_"),
+    Faker::TvShows::StarTrek.specie.tr(" ", "_"),
+    Faker::TvShows::Simpsons.character.tr(" ", "_"),
+    Faker::Music::RockBand.name.tr(" ", "_"),
+    Faker::Music.band.tr(" ", "_")
     ]
 
 genre_array =
@@ -240,30 +237,103 @@ instruments_array =
   "Zither"
   ]
 
+song_array = [
+  "7 Things",
+  "50 Ways to Leave Your Lover",
+  "88 Lines About 44 Women",
+  "1985 (song)",
+  "'A' You're Adorable",
+  "All I Really Want to Do",
+  "Amerikan Music",
+  "At the Hop",
+  "Back to the 80s (song)",
+  "The Bad Touch",
+  "Billionaire (song)",
+  "Calendar Girl (song)",
+  "Can U Dig It?",
+  "Catalogue Aria",
+  "Dayenu",
+  "Destroy Rock & Roll (song)",
+  "Dig It (Beatles song)",
+  "Do You Remember These",
+  "¿Dónde Estás Corazón?",
+  "The Elements (song)",
+  "Endless Art",
+  "Gin Soaked Boy",
+  "God (John Lennon song)",
+  "Gotta Serve Somebody",
+  "Green Grow the Rushes, O",
+  "A Hard Rain's a-Gonna Fall",
+  "The Heart of Rock & Roll",
+  "Hello (The Beloved song)",
+  "Hit Me with Your Rhythm Stick",
+  "Hot Topic (song)",
+  "Hush, Little Baby",
+  "I've Been Everywhere",
+  "If I Had $1000000",
+  "It's Grim Up North",
+  "It's the End of the World as We Know It (And I Feel Fine)",
+  "Jung Talent Time",
+  "Life Is a Rock (But the Radio Rolled Me)",
+  "Lime Jello Marshmallow Cottage Cheese Surprise",
+  "Losing My Edge",
+  "Madamina, il catalogo è questo",
+  "Mediate (song)",
+  "Miracles (Insane Clown Posse song)",
+  "Moments to Remember",
+  "My Favorite Things (song)",
+  "Numb (U2 song)",
+  "One Night in Bangkok",
+  "The Pride (Five Finger Death Punch song)",
+  "The Pros and Cons of Hitch Hiking",
+  "Reasons to Be Cheerful, Part 3",
+  "Rocket (Def Leppard song)",
+  "(Get Your Kicks on) Route 66",
+  "Scarborough Fair (ballad)",
+  "Seasons of Love",
+  "Sixteen Reasons",
+  "Slow Train",
+  "Song for Whoever",
+  "Space Truckin'",
+  "Subterranean Homesick Blues",
+  "Summer Girls",
+  "Tchaikovsky (song)",
+  "Twelve Days of Christmas",
+  "La Vie Bohème",
+  "Vogue (Madonna song)",
+  "We Care a Lot (song)",
+  "We Didn't Start the Fire",
+  "You Can't Get a Man with a Gun",
+  "You're the Top"
+  ]
+
 # Creating Nick_name
 puts 'Creating a user faker...'
 100.times do
-  pseudo = pseudo_array.sample
+  pseudo_one = pseudo_array.sample
   number_rand = rand(0..99)
-  pseudo = "#{pseudo}#{number_rand}"
+  pseudo = "#{pseudo_one}#{number_rand}"
+  address = addresses.sample
+  genre_pref = genre_array.sample
+  user_age =rand(18..60)
 
   user = User.new(
       last_name: Faker::Name.unique.name,
       first_name: Faker::Name.first_name,
-      age: rand(18..60),
-      nick_name: pseudo.strip,
-      address: addresses.sample,
-      profile_picture: "",
-      email_address: Faker::Internet.email,
-      genre_preferences: genre_array.sample
+      age: user_age,
+      nick_name: pseudo,
+      address: address,
+      password: 'solutsolut',
+      profile_picture: '',
+      email: Faker::Internet.email,
+      genre_preferences: genre_pref
       )
-  end
-  user.save
+  user.save!
 end
 
 # Creating Instruments
 puts "Creating Instruments..."
-instruments.each do |instrument|
+instruments_array.each do |instrument|
   instrument = Instrument.new(
   name: instrument
   )
@@ -274,30 +344,47 @@ end
 number_of_users = User.count
 puts "Creating User Instruments..."
 number_of_users.times do
-  user_instrument = User_instrument.new(
+  user_instrument = UserInstrument.new(
     user: User.all.sample(1).first,
     proficiency: ['beginner', 'advanced', 'professional'].sample,
     instrument: Instrument.all.sample(1).first
     )
-  animal.save!
+  user_instrument.save!
 end
 
 # # Creating Events
+puts "Creating Events..."
+number_of_users.times do
+  genre_pref = genre_array.sample
+  address = addresses.sample
+  song = song_array.sample
+  event = Event.new(
+    date: Faker::Date.forward(days: 30),
+    location: address,
+    capacity: rand(1..5),
+    title: song,
+    event_type: "Event type",
+    duration: rand(1..15),
+    genre: genre_pref,
+    user: User.all.sample(1).first
+    )
+  event.save!
+end
 
-# puts "Creating Events..."
-# number_of_users.times do
-#   event = Event.new(
-#     date: Faker::Date.forward(days: 30),
-#     location:
-#     capacity: rand(1..5),
-#     title:
-#     event_type:
-#     duration:
-#     genre:
-#     user: User.all.sample(1).first
-#     )
-#   event.save
-# end
+# User Media
+puts "Creating User Media..."
+number_of_users.times do
+  genre_pref = genre_array.sample
+  user_media = UserMedium.new(
+    user: User.all.sample(1).first,
+    title: "Baby Sharky Song",
+    music_genre: genre_pref,
+    medium_type: ['video', 'song'].sample
+    )
+  user_media.save!
+end
 
+# Requests
 
+# Messages
 
