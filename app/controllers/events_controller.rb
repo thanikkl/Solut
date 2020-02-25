@@ -6,6 +6,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    authorize @event
   end
 
   # add authorize before entry is actually committed in DB
