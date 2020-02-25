@@ -1,2 +1,7 @@
 // Import page-specific CSS files here.
 @import "home";
+
+#card-event .event-image {
+  max-width: 30px;
+  max-height: 25px;
+}
