@@ -1,0 +1,150 @@
+.container-profile {
+  //background-color: #509BF4;
+  padding: 20px 20px;
+  margin: 0px auto;
+  //text-align: center;
+}
+
+.container-profile .simple_form {
+  width: 100%;
+  max-width: 800px;
+  padding: 15px;
+  margin: 0 auto;
+  border-radius: 4px;
+}
+
+.title-profile {
+  width: 300px;
+  text-align: center;
+  border: 2px solid white;
+  padding: 30px 10px;
+  color: white;
+  margin-bottom: 50px;
+}
+
+.profile-content {
+  display: flex;
+  width: 800px;
+  //background-color: blue;
+  justify-content: center;
+}
+
+.first-profile {
+  display: block;
+  justify-content: center;
+  text-align: center;
+  width: 200px;
+  //background-color: green;
+  margin: 0px 20px;
+}
+
+.edit-picture-profile {
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+  text-align: center;
+  //padding: 10px 10px;
+}
+
+.upload-photo {
+  position: relative;
+  top: 10px;
+  right: 0px;
+  border: 1px solid #d3d3d3;
+  padding: 2px 18px;
+  margin: 10px 0px;
+  cursor: pointer;
+  font-weight: 400;
+  background: white;
+  border-radius: 8px;
+  color: black;
+}
+
+.first-row {
+  margin-top: 40px;
+}
+
+.second-profile {
+  display: block;
+  justify-content: center;
+  text-align: center;
+  width: 400px;
+  //background-color: red;
+  margin: 0px 20px;
+}
+
+
+ .form-control.is-valid:focus {
+  background-color: #ffffff00;
+ }
+
+.form-control:valid.form-control.is-valid {
+    border-color: grey;
+    }
+
+
+
+
+
+
+
+
+.user-data {
+  display: block;
+  background-color: green;
+  height: 100px;
+  width: 100px;
+}
+
+.user-details {
+  display: block;
+  background-color: blue;
+  height: 100px;
+  width: 100px;
+}
+
+.user-media {
+  display: block;
+  background-color: red;
+  height: 100px;
+  width: 100px;
+}
+
+form {
+  width: 50%;
+}
+
+label {
+  background: none;
+  color: white; //#6c63ff;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+input:not(.btn-submit) {
+  background: none;
+  border: none;
+  border-bottom: grey solid 2px;
+  margin-bottom: 24px;
+  padding-bottom: 8px;
+}
+input:not(.btn-submit):hover {
+  background: none;
+  border: none;
+  border-bottom: grey solid 2px;
+  margin-bottom: 24px;
+  padding-bottom: 8px;
+}
+
+input:focus {
+  background: none;
+  border-bottom: grey solid 2px; //#6c63ff solid 2px;
+  outline: none;
+  transition: all 0.6s ease;
+}
+
+#name .form-group {
+  width: 45%;
+}
