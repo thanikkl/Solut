@@ -1,0 +1,16 @@
+
+<div class="new-event-container">
+  <%= simple_form_for(@event) do |f| %>
+    <%= f.input :title %>
+    <%= f.input :location %>
+    <%= f.input :capacity %>
+    <%= f.input :event_type, collection: Event::TYPE_EVENT_ARRAY %>
+    <%= f.input :genre, collection: Event::GENRE_ARRAY %>
+  <% end %>
+</div>
+
+
+
+
+
+

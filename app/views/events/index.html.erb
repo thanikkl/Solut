@@ -7,11 +7,24 @@
 
   <div class="cards my-4">
     <% @events.each do |event| %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80')">
-        <p><%= link_to event.title, event_path(event) %></p>
-        <div>
-          <i class="fas fa-trash"></i>
+      <div id="card-event">
+        <div class="event-image">
+          <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="">
+        </div>
 
+        <div class="event-info">
+          <div class="event-content">
+            <div class="row">
+              <h3><%= event.title %></h3>
+            </div>
+            <div class="row d-flex justify-content-between">
+              <p><%= event.location %></p>
+              <p><%= event.date %></p>
+            </div>
+          </div>
+          <div class="event-footer">
+            <p><%= event.user.nick_name %></p>
+          </div>
         </div>
       </div>
     <% end %>
