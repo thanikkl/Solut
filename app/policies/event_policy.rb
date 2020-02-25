@@ -8,4 +8,6 @@ class EventPolicy < ApplicationPolicy
   def create?
     return true
   end
+
+
 end
