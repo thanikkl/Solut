@@ -9,6 +9,6 @@ class User < ApplicationRecord
   has_many :instruments, through: :user_instruments
   has_many :events, dependent: :destroy
   has_many :messages, dependent: :destroy
-  has_many :requests, dependent: :destroy
+  has_many :contact_requests, dependent: :destroy
   has_one_attached :profile_picture
 end

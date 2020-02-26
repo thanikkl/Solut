@@ -1,4 +1,4 @@
-class Request < ApplicationRecord
+class ContactRequest < ApplicationRecord
   belongs_to :instrument
   belongs_to :user
   belongs_to :event
