@@ -6,6 +6,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:user_id])
     authorize @event
   end
 
@@ -26,6 +27,17 @@ class EventsController < ApplicationController
     end
   end
 
+  def edit
+    @event = Event.find(params[:id])
+    authorize @event
+  end
+
+  def update
+    @event = Event.find(params[:id])
+    @event.update(event_params)
+    redirect_to events_path(@event)
+    authorize @event
+  end
 
   private
 
