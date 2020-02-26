@@ -6,8 +6,8 @@ class EventsController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:user_id])
     authorize @event
+    @user = @event.user
   end
 
   # add authorize before entry is actually committed in DB
@@ -28,15 +28,15 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @event = Event.find(params[:id])
     authorize @event
+    @event = Event.find(params[:id])
   end
 
   def update
+    authorize @event
     @event = Event.find(params[:id])
     @event.update(event_params)
     redirect_to events_path(@event)
-    authorize @event
   end
 
   private
