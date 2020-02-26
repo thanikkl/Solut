@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :events do
-    resources :requests
+    resources :contact_requests
   end
 
-  resources :requests do
+  resources :contact_requests do
     resources :messages, only: [:new, :create]
   end
   resources :messages, except: [:new, :create]
