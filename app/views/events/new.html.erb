@@ -1,4 +1,5 @@
-<body>
+<body style="background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 20%, rgba(0,0,0,0.4) 100%),url('https://images.unsplash.com/photo-1520242739010-44e95bde329e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80'); background-size: cover; min-height: 100vh; opacity: 0.88;">
+<!-- <body> -->
   <div class="new-event-container">
       <h2 class="title-event">Add an event</h2>
       <div class="new-form">
@@ -8,7 +9,8 @@
           <%= f.input :capacity %>
           <%= f.input :event_type, collection: Event::TYPE_EVENT_ARRAY %>
           <%= f.input :genre, collection: Event::GENRE_ARRAY %>
-          <%= f.submit "Create", class: "btn btn-secondary" %>
+          <!-- <#%= f.submit "Create", class: "btn btn-secondary" %> -->
+          <%= f.submit "Create", id: "events-new-btn" %>
         <% end %>
       </div>
   </div>
