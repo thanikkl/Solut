@@ -1,13 +1,18 @@
-
-<div class="new-event-container">
-  <%= simple_form_for(@event) do |f| %>
-    <%= f.input :title %>
-    <%= f.input :location %>
-    <%= f.input :capacity %>
-    <%= f.input :event_type, collection: Event::TYPE_EVENT_ARRAY %>
-    <%= f.input :genre, collection: Event::GENRE_ARRAY %>
-  <% end %>
-</div>
+<body>
+  <div class="new-event-container">
+      <h2 class="title-event">Add an event</h2>
+      <div class="new-form">
+        <%= simple_form_for(@event) do |f| %>
+          <%= f.input :title %>
+          <%= f.input :location %>
+          <%= f.input :capacity %>
+          <%= f.input :event_type, collection: Event::TYPE_EVENT_ARRAY %>
+          <%= f.input :genre, collection: Event::GENRE_ARRAY %>
+          <%= f.submit "Create", class: "btn btn-secondary" %>
+        <% end %>
+      </div>
+  </div>
+</body>
 
 
 

@@ -37,15 +37,3 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 end
-
-# t.date "date"
-# t.string "location"
-# t.integer "capacity"
-# t.string "title"
-# t.string "event_type"
-# t.integer "duration"
-# t.string "genre"
-# t.bigint "user_id", null: false
-# t.datetime "created_at", precision: 6, null: false
-# t.datetime "updated_at", precision: 6, null: false
-# t.index ["user_id"], name: "index_events_on_user_id"
