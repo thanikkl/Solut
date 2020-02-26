@@ -2,12 +2,11 @@
   //background-color: #509BF4;
   padding: 20px 20px;
   margin: 0px auto;
-  //text-align: center;
 }
 
 .container-profile .simple_form {
   width: 100%;
-  max-width: 800px;
+  // max-width: 1000px;
   padding: 15px;
   margin: 0 auto;
   border-radius: 4px;
@@ -24,9 +23,10 @@
 
 .profile-content {
   display: flex;
-  width: 800px;
+  width: 100%;
   //background-color: blue;
   justify-content: center;
+  align-items: flex-end;
 }
 
 .first-profile {
@@ -35,7 +35,7 @@
   text-align: center;
   width: 200px;
   //background-color: green;
-  margin: 0px 20px;
+  margin: 0px 40px;
 }
 
 .edit-picture-profile {
@@ -73,48 +73,75 @@
   margin: 0px 20px;
 }
 
+.third-profile {
+  position: relative;
+  top: -350px;
+  left: 0px;
+  margin-left: 40px;
+  //height: 100px;
+  width: 250px;
+  //background-color: red;
+}
 
- .form-control.is-valid:focus {
+.my-song {
+  width: 250px;
+  padding: 15px 35px;
+  border: 2px solid white;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.my-media {
+  width: 250px;
+  padding: 15px 35px;
+  border: 2px solid white;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.container-profile .form-control.is-valid:focus {
   background-color: #ffffff00;
+  color: #f2f2f2;
  }
 
-.form-control:valid.form-control.is-valid {
+.container-profile .form-control:valid.form-control.is-valid {
     border-color: grey;
+    color: #f2f2f2;
     }
 
-
-
-
-
-
-
-
-.user-data {
-  display: block;
-  background-color: green;
-  height: 100px;
-  width: 100px;
+.container-profile .form-control {
+  color: white;
 }
+// .user-data {
+//   display: block;
+//   background-color: green;
+//   height: 100px;
+//   width: 100px;
+// }
 
-.user-details {
-  display: block;
-  background-color: blue;
-  height: 100px;
-  width: 100px;
-}
+// .user-details {
+//   display: block;
+//   background-color: blue;
+//   height: 100px;
+//   width: 100px;
+// }
 
-.user-media {
-  display: block;
-  background-color: red;
-  height: 100px;
-  width: 100px;
-}
+// .user-media {
+//   display: block;
+//   background-color: red;
+//   height: 100px;
+//   width: 100px;
+// }
 
-form {
-  width: 50%;
-}
+// .container-profile form {
+//   width: 50%;
+// }
 
-label {
+.container-profile label {
   background: none;
   color: white; //#6c63ff;
   font-size: 14px;
@@ -123,14 +150,14 @@ label {
   margin-bottom: 15px;
 }
 
-input:not(.btn-submit) {
+.container-profile input:not(.btn-submit) {
   background: none;
   border: none;
   border-bottom: grey solid 2px;
   margin-bottom: 24px;
   padding-bottom: 8px;
 }
-input:not(.btn-submit):hover {
+.container-profile input:not(.btn-submit):hover {
   background: none;
   border: none;
   border-bottom: grey solid 2px;
@@ -138,13 +165,41 @@ input:not(.btn-submit):hover {
   padding-bottom: 8px;
 }
 
-input:focus {
+.container-profile input:focus {
   background: none;
   border-bottom: grey solid 2px; //#6c63ff solid 2px;
   outline: none;
   transition: all 0.6s ease;
 }
 
-#name .form-group {
+.container-profile #name .form-group {
   width: 45%;
+}
+
+#profile-btn {
+  background: linear-gradient(to right, #1d2365, #6c63ff, #1d2365);
+  background-size: 200%;
+  padding: 16px;
+  border-radius: 25px;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  width: 200px;
+  margin: auto;
+  transition: background-position 0.6s ease;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+#profile-btn:hover {
+  transition: background-position 0.6s ease;
+  background-position: right;
+  color: white;
+}
+
+
+.btn-position-profile {
+  position: relative;
+  top: 0px;
+  text-align: center;
 }

@@ -288,6 +288,7 @@ number_of_users.times do
   genre_pref = Event::GENRE_ARRAY.sample
   address = addresses.sample
   song = song_array.sample
+  instruments = Event::EVENT_INSTRUMENTS_ARRAY.sample(rand(1..3))
   event = Event.new(
     date: Faker::Date.forward(days: 30),
     location: address,
@@ -296,7 +297,8 @@ number_of_users.times do
     event_type: "Event type",
     duration: rand(1..15),
     genre: genre_pref,
-    user: User.all.sample(1).first
+    user: User.all.sample(1).first,
+    instruments_array: instruments
     )
   event.save!
 end

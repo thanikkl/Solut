@@ -1,7 +1,71 @@
 // Import page-specific CSS files here.
 @import "home";
 
-#card-event .event-image {
-  max-width: 30px;
-  max-height: 25px;
+
+.event-container {
+  margin-right: 150px;
+  margin-left: 150px;
+  margin-top: 20px;
+}
+
+.event {
+  display: flex;
+  align-items: left;
+  margin-bottom: 8px;
+  background: white;
+  padding: 8px 16px;
+  border: 1px solid rgb(235,235,235);
+}
+
+.event .event-content {
+  flex-grow: 1;
+  padding: 0 24px;
+}
+.event-middle {
+  background-color: #f5f5dc;
+  margin: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: 50px;
+  padding-left: 50px;
+}
+
+.event .event-header {
+  flex-grow: 1;
+  padding: 0 24px;
+  margin-bottom: 30px;
+  margin-top: 5px;
+}
+
+.event-content img {
+  margin-right: 12px;
+}
+
+.event p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.event small {
+  color: #999999;
+  font-weight: bold;
+}
+.event .event-action {
+  opacity: 0;
+  display: flex;
+  transition: ease .3s;
+}
+
+.event:hover .event-action {
+  opacity: 1;
+}
+
+.event .event-action a {
+  color: #999999;
+  margin-left: 16px;
+  font-size: 14px;
+}
+
+.event .event-action a:hover {
+  color: #555555;
 }

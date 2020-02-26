@@ -1,32 +1,39 @@
 <%= render 'shared/banner' %>
 
-<div class="container my-4">
-  <div class="cards my-3">
-    <h3>List of events taking place</h3>
-  </div>
+<div class="event-container">
+  <h3>List of events taking place</h3>
 
-  <div class="cards my-4">
+  <div class="events">
     <% @events.each do |event| %>
-      <div id="card-event">
-        <div class="event-image">
-          <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="">
-        </div>
+      <div class="event d-flex flex-row justify-content-between">
+        <div class="event-left">
+          <div class="event-header">
+            <h3><%= event.title %></h3>
+            <p><em>Date: <%= event.date %></em></p>
+          </div>
 
-        <div class="event-info">
-          <div class="event-content">
-            <div class="row">
-              <h3><%= event.title %></h3>
-            </div>
-            <div class="row d-flex justify-content-between">
+          <div class="event-content d-flex">
+            <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large" />
+            <div>
+              <p><small><%= event.user.nick_name %></small></p>
               <p><%= event.location %></p>
-              <p><%= event.date %></p>
             </div>
           </div>
-          <div class="event-footer">
-            <p><%= event.user.nick_name %></p>
+        </div>
+
+        <div class="event-right d-flex flex-column justify-content-between">
+          <p><small>Open availabilities: <%= event.capacity %></small></p>
+          <div></div>
+          <div class="event-action">
+             <button id="contact-btn-small">Details</button>
           </div>
         </div>
       </div>
     <% end %>
   </div>
 </div>
+
+
+
+
+
