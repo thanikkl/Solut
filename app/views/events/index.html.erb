@@ -1,4 +1,4 @@
-<%= render 'shared/banner' %>
+<%= render 'shared/banner-events' %>
 
 <div class="event-container">
   <h3>List of events taking place</h3>
@@ -8,8 +8,8 @@
       <div class="event d-flex flex-row justify-content-between">
         <div class="event-left">
           <div class="event-header">
-            <h3><%= event.title %></h3>
-            <p><em>Date: <%= event.date %></em></p>
+            <h3><%= event.title %> - <%= event.genre %></h3>
+            <p><em>Last updated: <%= event.updated_at %></em></p>
           </div>
 
           <div class="event-content d-flex">
@@ -21,12 +21,10 @@
           </div>
         </div>
 
-        <div class="event-right d-flex flex-column justify-content-between">
+        <div class="event-right">
           <p><small>Open availabilities: <%= event.capacity %></small></p>
-          <div></div>
-          <div class="event-action">
-             <button id="contact-btn-small">Details</button>
-          </div>
+          <p><small><%= event.event_type %></small></p>
+          <button class="event-action" id="contact-btn-small">Details</button>
         </div>
       </div>
     <% end %>
