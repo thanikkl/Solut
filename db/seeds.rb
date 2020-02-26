@@ -254,7 +254,7 @@ puts 'Creating a user faker...'
       nick_name: pseudo,
       address: address,
       password: 'solutsolut',
-      profile_picture: '',
+      # profile_picture: '',
       email: Faker::Internet.email,
       genre_preferences: genre_pref
       )
