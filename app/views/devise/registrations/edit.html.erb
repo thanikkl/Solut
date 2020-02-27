@@ -1,11 +1,9 @@
 <!-- <body style="background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 20%, rgba(0,0,0,0.4) 100%),url('https://images.unsplash.com/photo-1512733596533-7b00ccf8ebaf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1489&q=80'); background-size: cover; min-height: 100vh; opacity: 0.88;"> -->
 <body style="background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 20%, rgba(0,0,0,0.4) 100%),url('https://images.unsplash.com/photo-1505190849153-43410d3c18f8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80'); background-size: cover; min-height: 100vh; opacity: 0.88;">
-  <!-- <div class="container my-4"><h2>Edit <%= resource_name.to_s.humanize %></h2> -->
   <div class="container-profile">
     <h2 class="title-profile">EDIT MY PROFILE</h2>
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= f.error_notification %>
-    <!-- TODO : Add a table to the simple form (@user_instruments, @user_media) -->
     <div class="profile-content">
       <div class="first-profile">
         <% if @user.profile_picture.attached? %>
@@ -27,19 +25,11 @@
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
         <% end %>
-        <!-- DONE -->
         <%= f.input :email, required: false %>
         <%= f.input :address, required: false %>
         <%= f.input :genre_preferences, label: 'Repertory', collection: Event::GENRE_ARRAY  %>
-        <!-- DESCRIPTION -->
         <div class="description-center">My Description</div>
         <%= f.text_area :description, required: false, rows: 3, cols: 47, label: 'Description', required: false  %>
-        <!-- <#%= f.input :description, required: false %> -->
-        <!-- <#%= f.input :user_instruments.proficiency, required: false %> -->
-        <!-- <#%= f.input :instrument, required: false %>
-        <#%= f.input :repertory, required: false %>
-        <#%= f.input :instrument_proficiency, required: false %>
-        <#%= f.input :title, required: false %> -->
         <%= f.input :current_password,
           # hint: "we need your current password to confirm your changes",
           required: true,
@@ -52,13 +42,14 @@
         <div class="instrument-profile">
           <!-- <#%= f.text_area :description, required: false, rows:5, cols: 28, label: 'Description', required: false  %> -->
           <!-- TODO - Access to "user-instrument" to get the instrument and the proficiency / système de tag ou select 2 plugin -->
-          <!-- <#%= f.association :instrument, label: 'instrument' %> <!-- user_instruments.instrument_id -->
-          <%= f.association :user_instruments, label_method: :proficiency, value_method: :id %> <!-- , collection: user_instrument.active.order(:proficiency) %> -->
+          <!-- <#%= f.input :genre_preferences, label: 'Repertory', collection: ['Beginner', 'Moderate', 'Professional']  %> -->
+          <!-- <#%= f.association :instruments, label: 'Instrument', selected: 37 %> -->
+          <%= f.association :instruments, label_method: :name %>
+          <%= f.association :user_instruments, label_method: :proficiency %>
         </div>
         <div class="instrument-center">My instruments</div>
         <div class="instrument-profile">
           <div class="instrument-text">
-            <=  %>
           Guitar (beginner) - delete
           </div>
         </div>
