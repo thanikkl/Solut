@@ -32,12 +32,31 @@
   margin: auto;
   transition: background-position 0.6s ease;
   cursor: pointer;
-  margin-top: 20px;
   width: 160px;
-  margin-top: 50px;
+  margin-top: 80px;
 }
 
 #contact-btn-small:hover {
+  transition: background-position 0.6s ease;
+  background-position: right;
+  color: white;
+}
+
+#submit-btn-small {
+  background: grey;
+  background-size: 200%;
+  padding: 10px 24px;
+  border-radius: 25px;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  max-height: 40px;
+  transition: background-position 0.6s ease;
+  cursor: pointer;
+  width: 100px;
+}
+
+#submit-btn-small:hover {
   transition: background-position 0.6s ease;
   background-position: right;
   color: white;

@@ -1,6 +1,9 @@
 // Import page-specific CSS files here.
 @import "home";
 
+.sticky-offset {
+  margin-top: 56px;
+}
 
 .event-container {
   width: 900px;
@@ -9,12 +12,13 @@
 
 .event-background {
   background-color: #100c18;
+  min-height: 50vh;
 }
 
 .form-control {
   background-color: black;
   margin: 10px;
-  width: 200px;
+  width: 180px;
 }
 
 .event-container h3 {
@@ -25,7 +29,7 @@
 .event {
   display: flex;
   align-items: left;
-  margin-bottom: 16px;
+  margin-top: 16px;
   background: white;
   padding: 8px 16px;
   border: 1px solid rgb(235,235,235);
@@ -41,13 +45,9 @@
   flex-grow: 1;
   padding: 0 24px;
 }
-.event-middle {
-  background-color: #f5f5dc;
-  margin: 10px;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  padding-right: 50px;
-  padding-left: 50px;
+
+.event-right {
+  margin-top: 20px;
 }
 
 .event .event-header {
