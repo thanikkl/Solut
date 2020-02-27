@@ -3,33 +3,4 @@
   <div class="container text-center h-50 d-flex justify-content-around align-items-end">
     <h1>Music is all you need</h1>
   </div>
-
-  <div class="event-container search-bar h-50 d-flex align-items-end">
-    <%= form_tag events_path, class: "d-flex flew-row", method: :get do %>
-      <%= select_tag :genre,
-        params[:genre],
-        # options_for_select(@genres),
-        class: "form-control",
-        placeholder: "Genre"
-      %>
-      <%= select_tag :instrument,
-        params[:instrument],
-        # collection: Event::EVENT_INSTRUMENTS_ARRAY),
-        class: "form-control",
-        placeholder: "Instruments"
-      %>
-      <%= select_tag :event_type,
-        params[:event_type],
-        # options_for_select(Event::TYPE_EVENT_ARRAY),
-        class: "form-control",
-        placeholder: "Event type"
-      %>
-      <%= select_tag :arrondissement,
-        params[:arrondissement],
-        # options_for_select(0..20),
-        class: "form-control",
-        placeholder: "Arrondissement"
-      %>
-    <% end %>
-  </div>
 </div>
