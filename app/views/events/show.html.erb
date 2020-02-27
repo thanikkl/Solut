@@ -18,13 +18,16 @@
         <!-- <i id="people" class="fas fa-users"></i> -->
       </div>
       <div class="instruments-required">
-        <li>Guitar</li>
-        <li>Bass</li>
-        <li>Drum</li>
+        <p>Instruments needed:</p>
+        <ul>
+        <% @event.instruments_array.each do |instrument|  %>
+          <li> <%= instrument %> </li>
+        <% end %>
+        </ul>
       </div>
-      <div class="contact-form"> <%= simple_form_for([@event, ContactRequest.new]) do |f| %>
-        <%= f.input :instrument, collection: Event::EVENT_INSTRUMENTS_ARRAY, placeholder: "Instrument", required: false %>
-        <%= f.button :submit, "✉️ Send Inquiry to join", id: "profile-btn" %>
+      <div class="contact-form"> <%= simple_form_for([@event, @contact_request]) do |f| %>
+        <%= f.association :instrument, label: Instrument, required: false %>
+        <%= f.button :submit, "✉️ ASK TO JOIN", id: "profile-btn" %>
         <% end %>
       </div>
         <!-- <button id="contact-btn"><i class="far fa-paper-plane"></i> Contact</button> -->
