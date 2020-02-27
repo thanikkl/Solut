@@ -1,44 +1,73 @@
 <!-- <body style="background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 20%, rgba(0,0,0,0.4) 100%),url('https://images.unsplash.com/photo-1512733596533-7b00ccf8ebaf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1489&q=80'); background-size: cover; min-height: 100vh; opacity: 0.88;"> -->
 <body style="background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 20%, rgba(0,0,0,0.4) 100%),url('https://images.unsplash.com/photo-1505190849153-43410d3c18f8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80'); background-size: cover; min-height: 100vh; opacity: 0.88;">
-  <!-- <div class="container my-4"><h2>Edit <%= resource_name.to_s.humanize %></h2> -->
   <div class="container-profile">
-    <h2 class="title-profile">Edit my profile</h2>
+    <h2 class="title-profile">EDIT MY PROFILE</h2>
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= f.error_notification %>
     <div class="profile-content">
       <div class="first-profile">
-        <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "edit-picture-profile", id: "editProfile" %>
+        <% if @user.profile_picture.attached? %>
+          <%= image_tag(@user.profile_picture, class: "edit-picture-profile", id: "editProfile") %>
+        <% else %>
+          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "edit-picture-profile", id: "editProfile" %>
+        <% end %>
         <div class="upload-avatar">
-          <%= f.input :photo, as: :file, input_html: { class: 'd-none' }, label_html: { class: 'upload-photo'}, label: 'Change photo' %>
+          <%= f.input :profile_picture, as: :file, input_html: { class: 'd-none' }, label_html: { class: 'upload-photo'}, label: 'Change photo' %>
+          <%= link_to "Delete my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'upload-photo delete_btn' %>
         </div>
         <div class="first-row">
           <%= f.input :nick_name, required: false %>
+          <%= f.input :first_name, required: false %>
           <%= f.input :age, required: false %>
-          <%= f.input :email, required: false %>
         </div>
       </div>
       <div class="second-profile">
-        <%= f.input :first_name, required: false %>
-        <!-- <#%= f.input :last_name, required: false %> -->
-        <%= f.input :first_name, label: 'instrument', required: false %> <!-- user_instruments.instrument_id -->
-        <%= f.input :first_name, label: 'repertory', required: false %> <!-- genre_preferences -->
-        <%= f.input :first_name, label: 'Instrument proficiency', required: false %> <!-- user_instruments.proficiency -->
-        <!-- <#%= f.input :address, required: false %> -->
-        <%= f.input :genre_preferences, required: false %>
-        <!-- <#%= f.input :user_instruments.proficiency, required: false %> -->
-  <!--       <#%= f.input :instrument, required: false %>
-        <#%= f.input :repertory, required: false %>
-        <#%= f.input :instrument_proficiency, required: false %>
-        <#%= f.input :title, required: false %> -->
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+        <% end %>
+        <%= f.input :email, required: false %>
+        <%= f.input :address, required: false %>
+        <%= f.input :genre_preferences, label: 'Repertory', collection: Event::GENRE_ARRAY  %>
+        <div class="description-center">My Description</div>
+        <%= f.text_area :description, required: false, rows: 3, cols: 47, label: 'Description', required: false  %>
+        <%= f.input :current_password,
+          # hint: "we need your current password to confirm your changes",
+          required: true,
+          input_html: { autocomplete: "current-password" } %>
       </div>
       <div class="third-profile">
-        <div class="my-song">MY SONGS</div>
-        <div class="my-media">MY VIDEOS</div>
+        <!-- <div class="my-song">MY SONGS</div>
+        <div class="my-media">MY VIDEOS</div> -->
+        <div class="instrument-center">Add an instrument</div>
+        <div class="instrument-profile">
+          <%#= f.association :instruments, label_method: :name %>
+          <div class="instrument-add">
+            <%= label_tag :instruments %>
+            <%= select_tag :instruments, options_from_collection_for_select(Instrument.all, "id", "name"), class: 'input-select-tag-profile' %>
+          </div>
+          <div class="instrument-user-add">
+          <%= label_tag :user_instruments %>
+          <%= select_tag :user_instruments, options_from_collection_for_select(UserInstrument.all, "id", "proficiency"), class: 'input-select-tag-profile' %>
+          <!-- <#%= f.association :user_instruments, label_method: :proficiency %> -->
+          </div>
+        </div>
+        <div class="instrument-center">My instruments</div>
+        <div class="instrument-profile">
+          <div class="instrument-text">
+<!--             <#% @user_instruments.each do |instrument| %>
+              <#%= instrument %>
+            <#% end %> -->
+          Guitar (beginner) - delete
+          </div>
+        </div>
+        <div class="bottom-container">
+          <%= link_to "Delete my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'delete_btn' %> - <%= link_to "Back", :back, class: 'return_btn' %>
+        </div>
       </div>
     </div>
     <div class="btn-position-profile">
       <%= f.button :submit, "Update", id: "profile-btn" %>
-      <% end %>
     </div>
+    <% end %>
   </div>
 </body>

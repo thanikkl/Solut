@@ -1,5 +1,12 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
+  def configure_permitted_parameters
+    # For additional fields in app/views/devise/registrations/new.html.erb
+    devise_parameter_sanitizer.permit(:account_update, keys: [ :last_name, :first_name, :nick_name, :age, :address, :profile_picture, :genre_preferences, :description, :email ])
+  end
+
   include Pundit
 
   # # Pundit: white-list approach.
@@ -12,6 +19,8 @@ class ApplicationController < ActionController::Base
   #   flash[:alert] = "You are not authorized to perform this action."
   #   redirect_to(root_path)
   # end
+
+
 
   private
 
