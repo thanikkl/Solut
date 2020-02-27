@@ -11,7 +11,7 @@ Event.destroy_all
 puts "Events : destroyed"
 
 puts "Destroying all requests"
-Request.destroy_all
+ContactRequest.destroy_all
 puts "Requests : destroyed"
 
 puts "Destroying all messages"
