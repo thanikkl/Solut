@@ -21,8 +21,10 @@ class EventsController < ApplicationController
     if params[:arrondissement].present?
       @events = policy_scope(Event).where("location ILIKE ?", "%#{params[:arrondissement]}%")
     end
-    return @events
+    return @events.order(created_at: 'DESC')
   end
+
+  # @events = @events.order(created_at: 'DESC')
 
   # @artciles.where(name: params[:filter][:name])
 
@@ -41,6 +43,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     authorize @event
     @event.user = current_user
+    # @event.instruments_array = params[:event][:instruments_array].reject(&:empty?)
     if @event.save
       redirect_to events_path(@event)
     else
@@ -63,7 +66,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:name)
+    params.require(:event).permit(:title, :location, :capacity, :event_type, :genre, instruments_array: [])
   end
 
   def find_event
