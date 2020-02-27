@@ -1,36 +1,71 @@
-<%= render 'shared/banner' %>
+<%= render 'shared/banner-events' %>
 
-<div class="event-container">
-  <h3>List of events taking place</h3>
+<div class="event-background">
+  <div class="event-container">
+    <h3>List of events taking place</h3>
 
-  <div class="events">
-    <% @events.each do |event| %>
-      <div class="event d-flex flex-row justify-content-between">
-        <div class="event-left">
-          <div class="event-header">
-            <h3><%= event.title %></h3>
-            <p><em>Date: <%= event.date %></em></p>
-          </div>
+    <div class="search-bar h-50 d-flex align-items-end">
+    <%= form_tag events_path, class: "d-flex flew-row", method: :get do %>
+      <select class="form-control" name="genre">
+        <option value="">Select genre</option>
+        <% @genres.each do |genre| %>
+          <option value="<%= genre %>"><%= genre %></option>
+        <% end %>
+      </select>
 
-          <div class="event-content d-flex">
-            <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large" />
-            <div>
-              <p><small><%= event.user.nick_name %></small></p>
-              <p><%= event.location %></p>
-            </div>
-          </div>
-        </div>
+      <select class="form-control" name="instrument">
+        <option value="">Select instrument</option>
+        <% @instruments.each do |instrument| %>
+          <option value="<%= instrument %>"><%= instrument %></option>
+        <% end %>
+      </select>
 
-        <div class="event-right d-flex flex-column justify-content-between">
-          <p><small>Open availabilities: <%= event.capacity %></small></p>
-          <div></div>
-          <div class="event-action">
-             <button id="contact-btn-small">Details</button>
-          </div>
-        </div>
-      </div>
+      <select class="form-control" name="event_type">
+        <option value="">Select event type</option>
+        <% @event_types.each do |event_type| %>
+          <option value="<%= event_type %>"><%= event_type %></option>
+        <% end %>
+      </select>
+
+      <select class="form-control" name="arrondissement">
+        <option value="">Select arrondissement</option>
+        <% @arrondissements.each do |arrondissement| %>
+          <option value="<%= arrondissement %>"><%= arrondissement %></option>
+        <% end %>
+      </select>
+
+      <%= submit_tag 'valider' %>
     <% end %>
   </div>
+
+    <div class="events">
+      <% @events.each do |event| %>
+        <div class="event d-flex flex-row justify-content-between">
+          <div class="event-left">
+            <div class="event-header">
+              <h3><%= event.title %> - <%= event.genre %></h3>
+              <p><em>Last updated: <%= event.updated_at %></em></p>
+            </div>
+
+            <div class="event-content d-flex">
+              <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large" />
+              <div>
+                <p><small><%= event.user.nick_name %></small></p>
+                <p><%= event.location %></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="event-right">
+            <p><small>Open availabilities: <%= event.capacity %></small></p>
+            <p><small><%= event.event_type %></small></p>
+            <button class="event-action" id="contact-btn-small">Details</button>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
 </div>
 
 

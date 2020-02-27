@@ -2,20 +2,39 @@
 @import "home";
 
 
-
 .event-container {
-  margin-right: 150px;
-  margin-left: 150px;
-  margin-top: 20px;
+  width: 900px;
+  margin: auto;
+}
+
+.event-background {
+  background-color: #100c18;
+}
+
+.form-control {
+  background-color: black;
+  margin: 10px;
+  width: 200px;
+}
+
+.event-container h3 {
+  color: grey;
+  padding-top: 15px;
 }
 
 .event {
   display: flex;
   align-items: left;
-  margin-bottom: 8px;
+  margin-bottom: 16px;
   background: white;
   padding: 8px 16px;
   border: 1px solid rgb(235,235,235);
+  padding-bottom: 15px;
+  border-radius: 15px;
+}
+
+.events {
+  margin-top: 20px;
 }
 
 .event .event-content {
