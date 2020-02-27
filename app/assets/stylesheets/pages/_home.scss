@@ -1,29 +1,70 @@
-// // Specific CSS for your home-page
+.div-diag {
+  transform: rotate(10deg);
+  overflow: hidden;
+  background-size: cover;
+  height: 400px;
+  width: 900px;
+  position: relative;
+  left: 200px;
+  top: 150px;
+  opacity: 0.3;
+  position: relative;
+  background: linear-gradient(90deg, black 5%, transparent 90%);
+}
 
-// .simple_form {
-//   // background-color: rgba(0, 0, 0, 0.3);
-//   width: 100%;
-//   max-width: 500px;
-//   padding: 15px;
-//   margin: 0 auto;
-//   border-radius: 4px;
-// }
+p {
+  margin: 0;
+}
 
 
-// .simple_form.user {
-//   input {
-//     width: 95%;
-//     justify: center;
-//     padding: 8px;
-//     margin: auto;
-//     margin-bottom: 12px;
-//     opacity: 1;
-//   }
-// }
+.home-header {
+  position: relative;
+  height: 600px;
+  width: 90%;
+  margin: -25% auto;
 
-// .container h1, p {
-//   color: white;
-// }
+}
+
+.home-header > h1 {
+  // background-color: white;
+  color: white;
+  position: absolute;
+  top: 50px; left: 150px;
+  font-size: 220px;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.home-header > h2 {
+  // background-color: red;
+  position: absolute;
+  top: 240px; left: 400px;
+  width: 600px;
+  color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.home-header > p {
+  // background-color: grey;
+  position: absolute;
+  top: 400px; left: 150px;
+  color: white;
+}
+
+.login-btn {
+  position: absolute;
+  bottom: 30px; right: 200px;
+}
+
+.bg2-text {
+  height: 80px;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
 
 #home-parallax{
   .parallax {
@@ -88,11 +129,15 @@
     letter-spacing: 10px;
   }
 
+  .btn-login {
+    text-decoration: none;
+    color: white;
+  }
+
   h3 {
     letter-spacing: 5px;
     text-transform: uppercase;
     font: 20px "Lato", sans-serif;
-    color: #111;
   }
   .container_cards {
     margin: auto;
