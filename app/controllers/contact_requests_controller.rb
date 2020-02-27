@@ -11,8 +11,8 @@ class ContactRequestsController < ApplicationController
   end
 
   def new
-    @contact_request = ContactRequest.new
-    authorize @contact_request
+    @event = Event.find params[:event_id]
+    authorize @event
   end
 
   def create
