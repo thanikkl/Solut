@@ -2,31 +2,29 @@ class EventsController < ApplicationController
   before_action :find_event, only: [ :show, :destroy]
 
   def index
-    @genres = Event::GENRE_ARRAY
-    @instruments = Event::EVENT_INSTRUMENTS_ARRAY
-    @event_types = Event::TYPE_EVENT_ARRAY
-    @arrondissements = (75001..75020)
-
+    @genres = ["All"] + Event::GENRE_ARRAY
+    @instruments = ["All"] + Event::EVENT_INSTRUMENTS_ARRAY
+    @event_types = ["All"] + Event::TYPE_EVENT_ARRAY
+    @arrondissements = ["All"] + (75001..75020).map { |i| i.to_s }
 
     @events = policy_scope(Event)
-    if params[:genre].present?
-      @events = policy_scope(Event).where("genre ILIKE ?", "%#{params[:genre]}%")
+    if params[:genre].present? && params[:genre] != "All"
+      @events = @events.where("genre ILIKE ?", "%#{params[:genre]}%")
     end
-    if params[:instrument].present?
-      @events = policy_scope(Event).where("instrument_array ILIKE ?", "%#{params[:instrument]}%")
+    if params[:event_type].present? && params[:event_type] != "All"
+      @events = @events.where("event_type ILIKE ?", "%#{params[:event_type]}%")
     end
-    if params[:event_type].present?
-      @events = policy_scope(Event).where("event_type ILIKE ?", "%#{params[:event_type]}%")
+    if params[:arrondissement].present? && params[:arrondissement] != "All"
+      @events = @events.where("location ILIKE ?", "%#{params[:arrondissement]}%")
     end
-    if params[:arrondissement].present?
-      @events = policy_scope(Event).where("location ILIKE ?", "%#{params[:arrondissement]}%")
+    if params[:instrument].present? && params[:instrument] != "All"
+      @events = @events.select do |event|
+        event.instruments_array.include?(params[:instrument])
+      end
     end
+
     return @events.order(created_at: 'DESC')
   end
-
-  # @events = @events.order(created_at: 'DESC')
-
-  # @artciles.where(name: params[:filter][:name])
 
   def show
     authorize @event

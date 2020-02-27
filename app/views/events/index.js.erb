@@ -1,0 +1,8 @@
+
+
+function replaceList() {
+  const eventDiv = document.querySelector(".events")
+  eventDiv.innerHTML = "<%= j render 'events/events' %>"
+}
+
+replaceList()
