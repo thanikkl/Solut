@@ -58,19 +58,6 @@
 
             <button type="submit" value="Submit" id="submit-btn-small">Submit</button>
 
-            <div class="event-content d-flex">
-              <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large" />
-              <div>
-                <p><small><%= event.user.nick_name %></small></p>
-                <p><%= event.location %></p>
-              </div>
-            </div>
-          </div>
-
-          <div class="event-right">
-            <p><small>Open availabilities: <%= event.capacity %></small></p>
-            <p><small><%= event.event_type %></small></p>
-            <button class="event-action" id="contact-btn-small"><%= link_to "DETAILS", event_path(event)%></button>
 
           </div>
         </div>
@@ -82,8 +69,3 @@
     </div>
   </div>
 </div>
-
-
-
-
-
