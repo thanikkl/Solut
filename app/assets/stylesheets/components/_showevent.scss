@@ -10,15 +10,15 @@
 }
 
 #my-event-name {
-  background-color: red;
   width: 400px;
-  padding: 15px 35px;
+  padding: 15px 15px;
   border: 2px solid white;
   color: white;
   font-size: 16px;
   text-align: center;
   margin-bottom: 20px;
   position: absolute;
+  top: 70px;
 }
 
 .main-content {
@@ -61,7 +61,6 @@
 }
 
 .content .contact-form {
-  background-color: blue;
   flex-basis: 200px;
 }
 
@@ -70,6 +69,9 @@
 }
 
 .list {
-  background-color: purple;
   flex-grow: 1;
+}
+
+#contact_request_instrument {
+  background-color: white;
 }
