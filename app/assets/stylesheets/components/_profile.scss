@@ -15,10 +15,11 @@
 .title-profile {
   width: 300px;
   text-align: center;
-  border: 2px solid white;
-  padding: 30px 10px;
+  //border: 2px solid white;
+  //padding: 30px 10px;
   color: white;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
+  //margin-bottom: 50px;
 }
 
 .profile-content {
@@ -75,12 +76,37 @@
 
 .third-profile {
   position: relative;
-  top: -350px;
+  top: 4px;
   left: 0px;
   margin-left: 40px;
   //height: 100px;
   width: 250px;
   //background-color: red;
+}
+
+.description-center {
+  text-align: center;
+  background: none;
+  color: white;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.instrument-center {
+  text-align: center;
+  background: none;
+  color: white;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+.instrument-text {
+  text-align: center;
+  color: white;
+  font-size: 12px;
 }
 
 .my-song {
@@ -103,6 +129,21 @@
   margin-bottom: 20px;
 }
 
+.instrument-profile {
+  width: 250px;
+  padding: 15px 35px;
+  border: 2px solid white;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.container-profile .form-control {
+  background-color: #ffffff00;
+  color: #f2f2f2;
+ }
+
 .container-profile .form-control.is-valid:focus {
   background-color: #ffffff00;
   color: #f2f2f2;
@@ -110,36 +151,13 @@
 
 .container-profile .form-control:valid.form-control.is-valid {
     border-color: grey;
+    background-color: #ffffff00;
     color: #f2f2f2;
     }
 
 .container-profile .form-control {
   color: white;
 }
-// .user-data {
-//   display: block;
-//   background-color: green;
-//   height: 100px;
-//   width: 100px;
-// }
-
-// .user-details {
-//   display: block;
-//   background-color: blue;
-//   height: 100px;
-//   width: 100px;
-// }
-
-// .user-media {
-//   display: block;
-//   background-color: red;
-//   height: 100px;
-//   width: 100px;
-// }
-
-// .container-profile form {
-//   width: 50%;
-// }
 
 .container-profile label {
   background: none;
@@ -157,10 +175,30 @@
   margin-bottom: 24px;
   padding-bottom: 8px;
 }
+
+.container-profile textarea:not(.btn-submit) {
+  background: none;
+  //border: none;
+  //border: white solid 2px;
+  margin-bottom: 24px;
+  padding-bottom: 8px;
+  color: white;
+  border-color: grey;
+}
+
+.container-profile textarea:not(.btn-submit):hover {
+  background: none;
+  //border: none;
+  //border: white solid 2px;
+  margin-bottom: 24px;
+  padding-bottom: 8px;
+  border-color: grey;
+}
+
 .container-profile input:not(.btn-submit):hover {
   background: none;
   border: none;
-  border-bottom: grey solid 2px;
+  border: grey solid 2px;
   margin-bottom: 24px;
   padding-bottom: 8px;
 }
@@ -170,6 +208,15 @@
   border-bottom: grey solid 2px; //#6c63ff solid 2px;
   outline: none;
   transition: all 0.6s ease;
+}
+
+.container-profile textarea:focus {
+  background: none;
+  //border: white solid px; //#6c63ff solid 2px;
+  outline: none;
+  transition: all 0.6s ease;
+  color: white;
+  border-color: grey;
 }
 
 .container-profile #name .form-group {
@@ -202,4 +249,8 @@
   position: relative;
   top: 0px;
   text-align: center;
+}
+
+.bottom-container {
+  padding: 25px 0px;
 }

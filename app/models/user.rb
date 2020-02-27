@@ -11,4 +11,5 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :contact_requests, dependent: :destroy
   has_one_attached :profile_picture
-end
+
+ end
