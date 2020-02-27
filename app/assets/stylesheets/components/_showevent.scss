@@ -1,3 +1,7 @@
+.event-page {
+  min-height: calc(100vh - 122px);
+}
+
 .event-banner {
   background-size: cover;
   background-position: center;
@@ -6,6 +10,7 @@
 }
 
 #my-event-name {
+  background-color: red;
   width: 400px;
   padding: 15px 35px;
   border: 2px solid white;
@@ -16,6 +21,55 @@
   position: absolute;
 }
 
-.contact-form {
-  position: absolute;
+.main-content {
+  position: relative;
+  top: -50px;
+  width: 65%;
+  height: auto;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+.content {
+  padding: 16px;
+  background-color: white;
+  border-radius: 5px;
+  height: 250px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+}
+
+.members-of-group {
+  margin-top: 10px;
+  padding: 16px;
+  background-color: white;
+  border-radius: 5px;
+  height: 250px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  flex-grow: 1;
+}
+
+.comment {
+  margin-top: 10px;
+  padding: 16px;
+  background-color: white;
+  border-radius: 5px;
+  height: 250px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  flex-grow: 1;
+
+}
+
+.content .contact-form {
+  background-color: blue;
+  flex-basis: 200px;
+}
+
+.instruments-required {
+  flex-basis: 200px;
+}
+
+.list {
+  background-color: purple;
+  flex-grow: 1;
 }
