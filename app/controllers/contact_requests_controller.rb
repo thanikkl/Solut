@@ -1,5 +1,5 @@
 class ContactRequestsController < ApplicationController
-  before_action :find_event, only: [ :show, :destroy]
+  # before_action :find_event, only: [ :show, :destroy]
 
   def index
     @contact_requests = policy_scope(Request)
@@ -7,7 +7,7 @@ class ContactRequestsController < ApplicationController
 
   def show
     authorize @contact_request
-    @event = @request.event
+    @event = @contact_request.event
   end
 
   def new
@@ -37,7 +37,7 @@ class ContactRequestsController < ApplicationController
     @contact_request = ContactRequest.find(params[:id])
   end
 
-  def find_event
-    @event = @contact_request.event
-  end
+  # def find_event
+  #   @event = @contact_request.event
+  # end
 end

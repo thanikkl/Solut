@@ -24,7 +24,7 @@ class EventsController < ApplicationController
     return @events
   end
 
-  @artciles.where(name: params[:filter][:name])
+  # @artciles.where(name: params[:filter][:name])
 
   def show
     authorize @event
