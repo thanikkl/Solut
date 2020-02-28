@@ -293,8 +293,13 @@ number_of_users.times do
     date: Faker::Date.forward(days: 30),
     location: address,
     capacity: rand(1..5),
-    title: song,
-    event_type: "Event type",
+    title: ["Looking for people to practice ", "Looking for people to play "].sample + song,
+    # if :title.value.include? "practice"
+    #   event_type: 'Learn together'
+    # else
+    #   event_type: 'Play together'
+    # end
+    event_type: ['Play together', 'Learn together'].sample,
     duration: rand(1..15),
     genre: genre_pref,
     user: User.all.sample(1).first,
