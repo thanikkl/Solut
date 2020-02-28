@@ -285,6 +285,7 @@ end
 # # Creating Events
 puts "Creating Events..."
 number_of_users.times do
+  event_type = Event::TYPE_EVENT_ARRAY.sample
   genre_pref = Event::GENRE_ARRAY.sample
   address = addresses.sample
   song = song_array.sample
@@ -294,7 +295,7 @@ number_of_users.times do
     location: address,
     capacity: rand(1..5),
     title: song,
-    event_type: "Event type",
+    event_type: event_type,
     duration: rand(1..15),
     genre: genre_pref,
     user: User.all.sample(1).first,
