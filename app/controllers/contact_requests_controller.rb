@@ -18,6 +18,7 @@ class ContactRequestsController < ApplicationController
 
   def create
     @contact_request = ContactRequest.new(contact_request_params)
+    @contact_request.instrument = Instrument.find_by(name: params[:contact_request][:instrument_id])
     @contact_request.event = @event
     @contact_request.user = current_user
     # @request.instrument =
