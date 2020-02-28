@@ -294,7 +294,7 @@ number_of_users.times do
     date: Faker::Date.forward(days: 30),
     location: address,
     capacity: rand(1..5),
-    title: song,
+    title: ["Looking for people to practice ", "Looking for people to play "].sample + song,
     event_type: event_type,
     duration: rand(1..15),
     genre: genre_pref,
