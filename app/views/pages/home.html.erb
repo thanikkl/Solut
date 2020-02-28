@@ -10,7 +10,7 @@
         <h2>Meet up with others musicians near you and share your passion for music.</h1>
         <p>Solut will help you build long-lasting relationships for musicians of all levels.</p>
         <br>
-        <div class="container-btn" style="position:absolute;bottom:30px;right:160px;">
+        <div class="container-btn-top-page" style="position:absolute;bottom:30px;right:160px;">
             <span class="border"><%= link_to "LOGIN", new_user_session_path, class:"btn-login" %></span>
             <span class="border"><%= link_to "DISCOVER", events_path, class:"btn-login" %></span>
         </div>
@@ -25,7 +25,7 @@
         <%= image_tag "sing.png", class:"music-icons" %>
         <h3>Meet new people</h3>
         <br>
-        <p>Bored by playing alone? Find here perfect mates express your musicality.</p>
+        <p>Bored by playing alone? Find new fellow musicians to connect with through this unique platform.</p>
       </div>
       <div class="p2">
         <%= image_tag "guitar.png", class:"music-icons" %>
@@ -46,7 +46,7 @@
     <div class="caption">
       <div class="bg2-text">
         <div>
-          <h3>Grow your circle of fellow <br> like-minded musicians and your knowledge</h3>
+          <h3>Grow your circle of fellow <br> like-minded musicians and enhance your knowledge</h3>
         </div>
       </div>
     </div>
@@ -54,37 +54,9 @@
 
   <div style="position:relative;">
     <div style="color:#ddd;background-color:#f4f4f4;text-align:center;padding:30px 50px;text-align: justify;">
-      <!-- <div class="container_cards">
-        <div class="card-trip" id="card1">
-          <div class="card-trip-infos">
-            <div>
-              <h2>Top annoucement 1</h2>
-              <p>Short description here!</p>
-            </div>
-            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered"/>
-          </div>
-        </div>
-        <div class="card-trip" id="card2">
-          <div class="card-trip-infos">
-            <div>
-              <h2>Top annoucement 2</h2>
-              <p>Short description here!</p>
-            </div>
-            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered"/>
-          </div>
-        </div>
-        <div class="card-trip" id="card3">
-          <div class="card-trip-infos">
-            <div>
-              <h2>Top annoucement 3</h2>
-              <p>Short description here!</p>
-            </div>
-            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered"/>
-          </div>
-        </div>
-      </div> -->
       <div class="p-middle-page">
-        <p>Your emotions deserve their music, Sol'ut will help you.</p>
+        <p>Your music dreams deserve to come true. Discover the Sol'ut platform.</p>
+        <button type="submit" value="Submit" id="discover-btn-bottom"><%= link_to "DISCOVER", events_path, class:"btn-login" %></button>
       </div>
     </div>
   </div>
@@ -92,6 +64,8 @@
   <div class="bgimg-3">
     <div class="caption">
     <!-- <span class="border" style="background-color:transparent;font-size:25px;color: #f7f7f7;">SCROLL UP</span> -->
+      <button type="submit" value="Submit" id="back-top-btn"><a href="#home-parallax">back to top</a></button>
+
     </div>
   </div>
 
