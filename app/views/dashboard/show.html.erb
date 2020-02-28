@@ -1,0 +1,35 @@
+<ul>
+<% @events.each do |event| %>
+<li>
+<%= event.to_json %>
+</li>
+<% end  %>
+</ul>
+
+<% @contact_requests.each do |request| %>
+<%= request.instrument.name %>
+<% end  %>
+
+<% @events.each do |event| %>
+  <% event.contact_requests.each do |contact_request| %>
+  (<%= contact_request.user.nick_name %>
+  <%= contact_request.user.id %>)
+  <% end %>
+<% end  %>
+
+<div class="container-index">
+  <div class="row">
+    <div class="col-7 container-index-content">
+      <h3>My events</h3>
+      <ul>
+      <% @events.each do |event| %>
+      <li>
+      <%= event.to_json %>
+      </li>
+      <% end  %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
