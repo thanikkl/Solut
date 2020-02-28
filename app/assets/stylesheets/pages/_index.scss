@@ -1,8 +1,16 @@
 // Import page-specific CSS files here.
 @import "home";
 
-.sticky-offset {
-  margin-top: 56px;
+.fixed-offset {
+  top: 56px;
+}
+
+.filter-margin {
+  margin-bottom: 55px;
+}
+
+#events-index {
+  background-color: #100c18;
 }
 
 .event-container {
@@ -12,7 +20,6 @@
 
 .event-background {
   background-color: #100c18;
-  min-height: 50vh;
 }
 
 .form-control {
