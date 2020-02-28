@@ -4,7 +4,6 @@
   background-size: cover;
   height: 400px;
   width: 900px;
-  position: relative;
   left: 200px;
   top: 150px;
   opacity: 0.3;
@@ -27,6 +26,7 @@ p {
 
 .home-header > h1 {
   color: white;
+  position: relative;
   position: absolute;
   top: 50px; left: 150px;
   font-size: 220px;
@@ -46,18 +46,27 @@ p {
 .home-header > p {
   // background-color: grey;
   position: absolute;
-  top: 568px; left: 150px;
+  top: 400px; left: 150px;
   color: white;
 }
 
-.login-btn {
+.container-btr {
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  margin: 0;
   position: absolute;
-  bottom: 30px; right: 200px;
+  bottom: 30px;
+  right: 160px;
 }
 
 .bg2-text {
-  height: 80px;
+  width: 70%;
+  height: 100px;
   background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -97,7 +106,7 @@ p {
 
   }
   .bgimg-1 {
-    background-image: url("https://images.unsplash.com/photo-1504704911898-68304a7d2807?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80");
+    background-image: url("https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80");
     min-height: 100vh;
   }
 
@@ -136,6 +145,7 @@ p {
 
   h3 {
     letter-spacing: 5px;
+    margin: 0;
     text-transform: uppercase;
     font: 20px "Lato", sans-serif;
   }
@@ -187,6 +197,15 @@ p {
   }
 }
 
+.p-middle-page {
+  font: 20px "Lato", sans-serif;
+  width: 70%;
+  color: #777;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 
 
