@@ -50,7 +50,7 @@ p {
   color: white;
 }
 
-.container-btr {
+.container-btr-top-page {
   height: 50px;
   display: flex;
   flex-direction: row;
@@ -196,7 +196,7 @@ p {
   }
 }
 
-.p-middle-page {
+.p-middle-page * {
   font: 20px "Lato", sans-serif;
   width: 70%;
   color: #777;
@@ -204,11 +204,8 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: rows;
 }
-
-
-
-
 
 
 
