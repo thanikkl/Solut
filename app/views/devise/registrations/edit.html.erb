@@ -13,7 +13,7 @@
         <% end %>
         <div class="upload-avatar">
           <%= f.input :profile_picture, as: :file, input_html: { class: 'd-none' }, label_html: { class: 'upload-photo'}, label: 'Change photo' %>
-          <%= link_to "Delete my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'upload-photo delete_btn' %>
+          <%= link_to "Delete my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'upload-photo' %>
         </div>
         <div class="first-row">
           <%= f.input :nick_name, required: false %>
@@ -43,13 +43,13 @@
           <%#= f.association :instruments, label_method: :name %>
           <div class="instrument-add">
             <%= label_tag :instruments %>
-            <%= select_tag :instruments, options_from_collection_for_select(Instrument.all, "id", "name"), class: 'input-select-tag-profile' %>
+            <%= select_tag :instruments, options_from_collection_for_select(Instrument.all, "id", "name"), include_blank: true, class: 'input-select-tag-profile' %>
           </div>
           <div class="instrument-user-add">
-          <%= label_tag :user_instruments %>
-          <%= select_tag :user_instruments, options_from_collection_for_select(UserInstrument.all, "id", "proficiency"), class: 'input-select-tag-profile' %>
-          <!-- <#%= f.association :user_instruments, label_method: :proficiency %> -->
+            <%= label_tag :user_instruments %>
+            <%= select_tag :user_instruments, options_from_collection_for_select(Instrument.all, "id", "name"), include_blank: true, class: 'input-select-tag-profile' %>
           </div>
+          <!-- <#%= f.association :proficiency, label_method: :proficiency %> -->
         </div>
         <div class="instrument-center">My instruments</div>
         <div class="instrument-profile">
@@ -66,7 +66,7 @@
       </div>
     </div>
     <div class="btn-position-profile">
-      <%= f.button :submit, "Update", id: "profile-btn" %>
+      <%= f.button :submit, "UPDATE", id: "profile-btn" %>
     </div>
     <% end %>
   </div>

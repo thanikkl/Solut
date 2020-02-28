@@ -59,10 +59,22 @@
   padding: 2px 18px;
   margin: 10px 0px;
   cursor: pointer;
-  font-weight: 400;
-  background: white;
+  font-size: 14px;
+  font-weight: 600;
+  background: none;
   border-radius: 8px;
-  color: black;
+  color: white;
+  text-transform: uppercase;
+}
+
+.upload-photo a:hover {
+  text-decoration: none;
+  color: red;
+}
+
+.upload-photo a {
+  text-decoration: none;
+  color: red;
 }
 
 .first-row {
@@ -184,14 +196,6 @@
   margin-bottom: 15px;
 }
 
-.container-profile input:not(.btn-submit) {
-  background: none;
-  border: none;
-  border-bottom: grey solid 2px;
-  margin-bottom: 24px;
-  padding-bottom: 8px;
-}
-
 .container-profile textarea:not(.btn-submit) {
   background: none;
   //border: none;
@@ -211,6 +215,31 @@
   border-color: grey;
 }
 
+.container-profile textarea:focus {
+  background: none;
+  //border: white solid px; //#6c63ff solid 2px;
+  outline: none;
+  transition: all 0.6s ease;
+  color: white;
+  border-color: grey;
+}
+
+.container-profile input:not(.btn-submit) {
+  background: none;
+  border: none;
+  border-bottom: grey solid 2px;
+  margin-bottom: 24px;
+  padding-bottom: 8px;
+}
+
+.container-profile input:not(.btn-submit) {
+  background: none;
+  border: none;
+  border-bottom: grey solid 2px;
+  margin-bottom: 24px;
+  padding-bottom: 8px;
+}
+
 .container-profile input:not(.btn-submit):hover {
   background: none;
   border: none;
@@ -224,15 +253,6 @@
   border-bottom: grey solid 2px; //#6c63ff solid 2px;
   outline: none;
   transition: all 0.6s ease;
-}
-
-.container-profile textarea:focus {
-  background: none;
-  //border: white solid px; //#6c63ff solid 2px;
-  outline: none;
-  transition: all 0.6s ease;
-  color: white;
-  border-color: grey;
 }
 
 .container-profile #name .form-group {
