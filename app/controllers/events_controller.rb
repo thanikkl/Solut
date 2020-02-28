@@ -23,7 +23,7 @@ class EventsController < ApplicationController
       end
     end
 
-    return @events.order(created_at: 'DESC')
+    return @events.sort { |a,b| a.created_at <=> b.created_at }
   end
 
   def show
