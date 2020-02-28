@@ -10,11 +10,9 @@
   <div class="main-content">
     <div class="content">
       <div class="list">
-        <ul>
-        <li> <%= @event.title %> </li>
-        <li> <%= @event.event_type %> </li>
-        <li> <%= @event.genre %> </li>
-        </ul>
+        <h5><strong> <%= @event.title %> </h5></strong>
+        <p> <strong>Event type:</strong> <%= @event.event_type %> </p>
+        <p> <strong>Genre:</strong> <%= @event.genre %> </p>
         <!-- <i id="people" class="fas fa-users"></i> -->
       </div>
       <div class="instruments-required">
@@ -26,7 +24,11 @@
         </ul>
       </div>
       <div class="contact-form"> <%= simple_form_for([@event, @contact_request]) do |f| %>
-        <%= f.association :instrument, label: Instrument, required: false %>
+        <%# arr = [] %>
+        <%# @event.instruments_array.each do |instrument| %>
+        <%# arr << Instrument.find_by(name: instrument) %>
+        <%# end %>
+        <%= f.association :instrument, collection: @event.instruments_array, label: "You play:", required: false %>
         <%= f.button :submit, "✉️ ASK TO JOIN", id: "profile-btn" %>
         <% end %>
       </div>
@@ -34,6 +36,12 @@
     </div>
     <div class="members-of-group">
       <h3>Members of the group</h3>
+        <% if @event.user.profile_picture.attached? %>
+            <%= image_tag(@event.user.profile_picture, class: "avatar dropdown-toggle") %>
+          <% else %>
+            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle" %>
+          <% end %>
+        <p> <%= @event.user.nick_name %> </p>
     </div>
     <div class="comment">
       <h3>Comments</h3>
