@@ -9,7 +9,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
-  <body>
+  <body id="<%= controller.controller_name %>-<%= controller.action_name %>">
     <%= render 'shared/navbar' unless controller_name == "pages" && action_name == "home" %>
     <%= render 'shared/flashes' %>
     <%= yield %>
