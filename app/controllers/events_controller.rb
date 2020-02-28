@@ -44,7 +44,7 @@ class EventsController < ApplicationController
     @event.user = current_user
     # @event.instruments_array = params[:event][:instruments_array].reject(&:empty?)
     if @event.save
-      redirect_to events_path(@event)
+      redirect_to event_path(@event)
     else
       render :new
     end
