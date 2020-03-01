@@ -30,6 +30,11 @@ class ContactRequestsController < ApplicationController
     end
   end
 
+  def update
+    @contact_request.event = @event
+    @contact_request.update(contact_request_params)
+  end
+
   private
 
   def contact_request_params

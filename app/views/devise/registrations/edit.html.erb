@@ -9,7 +9,7 @@
         <% if @user.profile_picture.attached? %>
           <%= image_tag(@user.profile_picture, class: "edit-picture-profile", id: "editProfile") %>
         <% else %>
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "edit-picture-profile", id: "editProfile" %>
+          <%= image_tag "https://res.cloudinary.com/dh8tpzykj/image/upload/v1582203695/avatar_empty_ghdihw.png", class: "edit-picture-profile", id: "editProfile" %>
         <% end %>
         <div class="upload-avatar">
           <%= f.input :profile_picture, as: :file, input_html: { class: 'd-none' }, label_html: { class: 'upload-photo'}, label: 'Change photo' %>
