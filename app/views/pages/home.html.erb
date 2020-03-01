@@ -11,7 +11,10 @@
         <p>Solut will help you build long-lasting relationships for musicians of all levels.</p>
         <br>
         <div class="container-btn-top-page" style="position:absolute;bottom:30px;right:160px;">
+            <% if user_signed_in? %>
+            <% else  %>
             <span class="border"><%= link_to "LOGIN", new_user_session_path, class:"btn-login" %></span>
+            <% end %>
             <span class="border"><%= link_to "DISCOVER", events_path, class:"btn-login" %></span>
         </div>
       </div>
