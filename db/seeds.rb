@@ -245,7 +245,7 @@ song_array = [
 
 # Creating Nick_name
 puts 'Creating a user faker...'
-10.times do
+100.times do
   pseudo_one = pseudo_array.sample
   number_rand = rand(0..99)
   pseudo = "#{pseudo_one}#{number_rand}"
