@@ -5,11 +5,11 @@
   height: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 5rem;
-  background-color: white;
+  //grid-gap: 5rem;
+  //background-color: white;
   padding: 45px;
   border-radius: 5px;
-  opacity: 0.6;
+  //opacity: 0.6;
 }
 
 .title-event1 {
@@ -38,16 +38,16 @@
     }
 
 .new-event-container1 .form-control {
-  color: black;
+  color: white;
 }
 
 .new-event-container1 label {
   background: none;
-  color: black;
+  color: white;
   font-size: 14px;
   text-transform: uppercase;
   font-weight: bold;
-  margin-bottom: 15px;
+  //margin-bottom: 15px;
 }
 
 .new-event-container1 input:not(.btn-submit) {
@@ -56,6 +56,7 @@
   border-bottom: grey solid 2px;
   margin-bottom: 24px;
   padding-bottom: 8px;
+  //margin-top: 0px;
 }
 .new-event-container1 input:not(.btn-submit):hover {
   background: none;
@@ -63,6 +64,7 @@
   border-bottom: grey solid 2px;
   margin-bottom: 24px;
   padding-bottom: 8px;
+  //margin-top: 0px;
 }
 
 .new-event-container1 input:focus {
@@ -107,14 +109,45 @@
 .new-form {
   grid-columns: 2 / 3;
 }
+.new-form1 {
+  //background-color:red;
+}
+.new-form2 {
+  //background-color: blue;
+  margin-left: 0px;
+  width: 220px;
+}
+.new-form3 {
+  //background-color:green;
+}
+.new-form4 {
+  //background-color:red;
+  display: flex;
+  justify-content: space-between;
+}
+.new-event-col1 {
+  display: block;
+
+}
+.new-event-col2 {
+  display: block;
+}
+
+.new-form3-title {
+  color: white;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-top: 20px;
+}
+.btn-form-add-event {
+  position: relative;
+  left: 130px;
+}
 
 .simple_form.new_event {
   width: 100%;
 }
-
-// label {
-//   color: black;
-// }
 
 .new-event-container .form-control {
   background-color: #ffffff00;
@@ -132,12 +165,12 @@
     }
 
 .new-event-container .form-control {
-  color: black;
+  color: white;
 }
 
 .new-event-container label {
   background: none;
-  color: black;
+  color: white;
   font-size: 14px;
   text-transform: uppercase;
   font-weight: bold;
@@ -193,7 +226,7 @@
 
 .col-form-label {
   background: none;
-  color: black;
+  color: white;
   font-size: 14px;
   text-transform: uppercase;
   font-weight: bold;
