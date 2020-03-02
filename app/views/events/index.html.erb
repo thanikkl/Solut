@@ -4,14 +4,7 @@
     <div class="search-bar h-50 d-flex align-items-end">
       <%= form_tag events_path, class: "d-flex flew-row", method: :get, remote: true do %>
         <div class="d-flex flex-column">
-<!--           <div class="d-flex flex-row align-items-center justify-content-between" style="width: 720px;">
-            <p style="color: grey; width: 180px;">Select genre</p>
-            <p style="color: grey; width: 180px;">Select instrument</p>
-            <p style="color: grey; width: 180px;">Select event type</p>
-            <p style="color: grey; width: 180px;">Select arrondissement</p>
-          </div> -->
-
-          <div class="d-flex flex-row align-items-center fixed-top fixed-offset justify-content-center">
+          <div class="d-flex flex-row align-items-center fixed-top fixed-offset justify-content-center filters">
             <div class="d-flex flex-row">
               <select class="form-control" name="genre">
                 <% option = params[:genre].nil? ? "" : params[:genre] %>
@@ -53,7 +46,7 @@
                 <% end %>
               </select>
             </div>
-            <button type="submit" value="Submit" id="submit-btn-small">Submit</button>
+            <button type="submit" value="Submit" id="search_icon" style="margin-left:40px;"><i class="fas fa-search"></i></button>
           </div>
         </div>
       <% end %>

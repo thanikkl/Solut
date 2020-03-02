@@ -20,6 +20,7 @@
 
 .event-background {
   background-color: #100c18;
+  margin-bottom: 40px;
 }
 
 .form-control {
@@ -96,3 +97,70 @@
 .event .event-action a:hover {
   color: #555555;
 }
+
+.filters {
+  height: 80px;
+  background-color: white;
+  border-bottom: 1px grey solid;
+}
+
+
+.filters * {
+  background-color: white;
+  display: inline-block;
+  vertical-align: baseline;
+  background-color: #f9f9f9;
+  font-size: 14px;
+  margin-bottom: 5px;
+  border: 0;
+  border-radius: 0;
+  max-width: 100%;
+  padding: 4px 0 4px 2px;
+
+}
+
+#search_icon {
+  margin: 0;
+  padding: 0;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  float: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: black;
+  text-decoration: none;
+  box-shadow: none;
+}
+
+button:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+#search_icon * {
+  margin: 0;
+  padding: 0;
+}
+
+
+.form-control:focus {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
