@@ -47,7 +47,7 @@
           <% if @event.user.profile_picture.attached? %>
             <%= image_tag(@event.user.profile_picture, class: "avatar dropdown-toggle") %>
           <% else %>
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle" %>
+            <%= image_tag(User::PROFILE_ARRAY.sample, class: "avatar-large") %>
           <% end %>
         </div>
         <div class="d-flex flex-column align-items-center">
@@ -60,11 +60,11 @@
           <% if @event.user.profile_picture.attached? %>
             <%= image_tag(@event.user.profile_picture, class: "avatar dropdown-toggle") %>
           <% else %>
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle" %>
+            <%= image_tag(User::PROFILE_ARRAY.sample, class: "avatar-large") %>
           <% end %>
         </div>
         <div class="d-flex flex-column align-items-center">
-          <p><%= @event.user.nick_name %></p>
+          <p><%= @user.nick_name %></p>
           <p style="color: grey"><small>User instrument</small></p>
         </div>
       </div>

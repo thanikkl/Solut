@@ -167,6 +167,7 @@ pseudo_array =
     Faker::Music.band.tr(" ", "_")
     ]
 
+
 song_array = [
   "7 Things",
   "50 Ways to Leave Your Lover",
@@ -246,6 +247,7 @@ puts 'Creating a user faker...'
   address = addresses.sample
   genre_pref = Event::GENRE_ARRAY.sample
   user_age =rand(18..60)
+  profile = profile_array.sample
 
   user = User.new(
       last_name: Faker::Name.unique.name,
@@ -256,7 +258,8 @@ puts 'Creating a user faker...'
       password: 'solutsolut',
       # profile_picture: '',
       email: Faker::Internet.email,
-      genre_preferences: genre_pref
+      genre_preferences: genre_pref,
+      # profile_picture: profile
       )
   user.save!
 end
