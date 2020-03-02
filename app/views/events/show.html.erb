@@ -72,7 +72,6 @@
   </div>
 
   <% if @event.user == current_user %>
-
     <div class="show-event">
       <h3>Candidates</h3>
       <% @event.users.each do |user| %>
@@ -89,13 +88,14 @@
           </div>
           <div>
             <p style="color: grey"><small><%= user.nick_name %></small></p>
-            <p><%= user.address %></p>
+            <p><%= user.contact_requests.find_by(event: @event).instrument.name %></p>
           </div>
         </div>
       <% end %>
     </div>
 
     <%= render 'events/chatroom' %>
+
   <% else %>
     <%= render 'events/chatroom' %>
   <% end %>
