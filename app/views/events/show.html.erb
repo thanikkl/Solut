@@ -25,7 +25,7 @@
 
       <div class="contact-form">
         <p><strong>Send request to join:</strong></p>
-        <%= simple_form_for([@event, @contact_request]) do |f| %>
+        <%= simple_form_for([@event, @new_contact_request]) do |f| %>
         <%# arr = [] %>
         <%# @event.instruments_array.each do |instrument| %>
         <%# arr << Instrument.find_by(name: instrument) %>
@@ -71,7 +71,33 @@
     </div>
   </div>
 
-  <div class="show-event">
-    <h3>Comments</h3>
-  </div>
+  <% if @event.user == current_user %>
+    <div class="show-event">
+      <h3>Candidates</h3>
+      <% @event.users.each do |user| %>
+        <div class="event-content d-flex flex-row">
+          <div>
+            <% if user.profile_picture.attached? %>
+              <%= cl_image_tag event.user.profile_picture.key, class: "avatar-small" %>
+              <%#= image_tag(event.user.profile_picture, class: "avatar-large") %>
+            <% else %>
+
+              <%#= image_tag(User::PROFILE_ARRAY.sample, class: "avatar-large") %>
+              <img src='https://res.cloudinary.com/dh8tpzykj/image/upload/v1582203695/avatar_empty_ghdihw.png' class="avatar-small" />
+            <% end %>
+          </div>
+          <div>
+            <p style="color: grey"><small><%= user.nick_name %></small></p>
+            <p><%= user.contact_requests.find_by(event: @event).instrument.name %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <%= render 'events/chatroom' %>
+
+  <% else %>
+    <%= render 'events/chatroom' %>
+  <% end %>
+
 </div>

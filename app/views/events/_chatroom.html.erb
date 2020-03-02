@@ -1,0 +1,33 @@
+  <div class="show-event chatroom">
+    <h3>Chatroom</h3>
+    <% @messages.each do |message| %>
+      <div class="event-content d-flex flex-row">
+        <div>
+          <% if @event.user.profile_picture.attached? %>
+            <%= cl_image_tag event.user.profile_picture.key, class: "avatar-small" %>
+            <%#= image_tag(event.user.profile_picture, class: "avatar-large") %>
+          <% else %>
+
+            <%#= image_tag(User::PROFILE_ARRAY.sample, class: "avatar-large") %>
+            <img src='https://res.cloudinary.com/dh8tpzykj/image/upload/v1582203695/avatar_empty_ghdihw.png' class="avatar-small" />
+          <% end %>
+        </div>
+        <div>
+          <p style="color: grey"><small><%= message.user.nick_name %></small></p>
+          <%= message.content %>
+        </div>
+      </div>
+    <% end %>
+
+    <%= simple_form_for [ @message ] do |f| %>
+      <div class="d-flex flex-row align-items-center">
+        <div class="chat-form">
+          <%= f.input :content, label: false, placeholder: "Please enter your message" %>
+          <%= f.input :event, as: :hidden, input_html: { value: @event.id } %>
+        </div>
+        <div class="chat-submit">
+          <%= f.submit "Send", class: 'btn btn-secondary chat-input' %>
+        </div>
+      </div>
+    <% end %>
+  </div>

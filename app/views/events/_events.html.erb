@@ -1,38 +1,40 @@
-<% if @events.size < 1 %>
-  <p style="color: grey">Unfortunately, there are no events corresponding to this search request.</p>
-  <p style="color: grey">Please try again with a new filter.</p>
+<div class="content-wrapper">
+  <% if @events.size < 1 %>
+    <p style="color: grey">Unfortunately, there are no events corresponding to this search request.</p>
+    <p style="color: grey">Please try again with a new filter.</p>
 
-<% else %>
-  <% @events.each do |event| %>
-    <div class="event d-flex flex-row justify-content-between">
-      <div class="event-left">
-        <div class="event-header">
-          <h3><%= event.title %> - <%= event.genre %></h3>
-          <p style="color: rgb(31, 70, 175)">Desired instruments: <strong><%= event.instruments_array.join(", ") %></strong></p>
-          <p style="color: grey"><em>Last updated: <%= event.updated_at %></em></p>
-        </div>
+  <% else %>
+    <% @events.each do |event| %>
+      <div class="event d-flex flex-row justify-content-between">
+        <div class="event-left">
+          <div class="event-header">
+            <h3><%= event.title %> - <%= event.genre %></h3>
+            <p style="color: rgb(31, 70, 175)">Desired instruments: <strong><%= event.instruments_array.join(", ") %></strong></p>
+            <p style="color: grey"><em>Last updated: <%= event.updated_at %></em></p>
+          </div>
 
-        <div class="event-content d-flex">
-          <% if event.user.profile_picture.attached? %>
-            <%= cl_image_tag event.user.profile_picture.key, class: "avatar-large" %>
-            <%#= image_tag(event.user.profile_picture, class: "avatar-large") %>
-          <% else %>
+          <div class="event-content d-flex">
+            <% if event.user.profile_picture.attached? %>
+              <%= cl_image_tag event.user.profile_picture.key, class: "avatar-large" %>
+              <%#= image_tag(event.user.profile_picture, class: "avatar-large") %>
+            <% else %>
 
-            <%#= image_tag(User::PROFILE_ARRAY.sample, class: "avatar-large") %>
-            <img src='https://res.cloudinary.com/dh8tpzykj/image/upload/v1582203695/avatar_empty_ghdihw.png' class="avatar-large" />
-          <% end %>
-          <div>
-            <p><small><%= event.user.nick_name %></small></p>
-            <p><%= event.location %></p>
+              <%#= image_tag(User::PROFILE_ARRAY.sample, class: "avatar-large") %>
+              <img src='https://res.cloudinary.com/dh8tpzykj/image/upload/v1582203695/avatar_empty_ghdihw.png' class="avatar-large" />
+            <% end %>
+            <div>
+              <p><small><%= event.user.nick_name %></small></p>
+              <p><%= event.location %></p>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="event-right">
-        <p><small>Open availabilities: <%= event.capacity %></small></p>
-        <p><small><%= event.event_type %></small></p>
-        <button class="event-action" id="contact-btn-small"> <%= link_to "👁‍🗨 Details", event_path(event) %></button>
+        <div class="event-right">
+          <p><small>Capacity: <%= event.capacity %></small></p>
+          <p><small><%= event.event_type %></small></p>
+          <button class="event-action" id="contact-btn-small"> <%= link_to "👁‍🗨 Details", event_path(event) %></button>
+        </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
-<% end %>
+</div>
