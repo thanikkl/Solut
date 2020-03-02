@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   get 'dashboard', to: 'dashboard#show'
+  get 'profiles', to: 'profiles#index'
+  get 'profiles/:id', to: 'profiles#show'
 
   resources :events do
     resources :contact_requests, only: [:new, :create]
