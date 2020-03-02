@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
+
+  # resource :dashboard, only: :show, controller: :dashboard
   get 'dashboard', to: 'dashboard#show'
+  patch 'contact_update', to: 'dashboard#update'
+
   get 'profiles', to: 'profiles#index'
   get 'profiles/:id', to: 'profiles#show'
 
