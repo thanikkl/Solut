@@ -14,10 +14,12 @@
 
         <div class="event-content d-flex">
           <% if event.user.profile_picture.attached? %>
-            <%= image_tag(event.user.profile_picture, class: "avatar-large") %>
+            <%= cl_image_tag event.user.profile_picture.key, class: "avatar-large" %>
+            <%#= image_tag(event.user.profile_picture, class: "avatar-large") %>
           <% else %>
-            <%= image_tag(User::PROFILE_ARRAY.sample, class: "avatar-large") %>
-            <!-- <img src='https://res.cloudinary.com/dh8tpzykj/image/upload/v1582203695/avatar_empty_ghdihw.png' class="avatar-large" /> -->
+
+            <%#= image_tag(User::PROFILE_ARRAY.sample, class: "avatar-large") %>
+            <img src='https://res.cloudinary.com/dh8tpzykj/image/upload/v1582203695/avatar_empty_ghdihw.png' class="avatar-large" />
           <% end %>
           <div>
             <p><small><%= event.user.nick_name %></small></p>

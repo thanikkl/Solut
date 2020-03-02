@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+require "open-uri"
+
 puts "Destroying all events"
 Event.destroy_all
 puts "Events : destroyed"
@@ -18,13 +20,16 @@ puts "Destroying all messages"
 Message.destroy_all
 puts "Messages : destroyed"
 
-puts "destroying all users"
-User.destroy_all
-puts "Users : destroyed"
-
 puts "Destroying all user_instruments"
 UserInstrument.destroy_all
 puts "User Instruments : destroyed"
+
+puts "Destroying all photos"
+User.all.each do |user|
+  user.profile_picture.purge
+end
+User.destroy_all
+puts "User : destroyed"
 
 puts "Destroying all user_medias"
 UserMedium.destroy_all
@@ -247,7 +252,7 @@ puts 'Creating a user faker...'
   address = addresses.sample
   genre_pref = Event::GENRE_ARRAY.sample
   user_age =rand(18..60)
-  profile = profile_array.sample
+  # profile = profile_array.sample
 
   user = User.new(
       last_name: Faker::Name.unique.name,
@@ -261,6 +266,9 @@ puts 'Creating a user faker...'
       genre_preferences: genre_pref,
       # profile_picture: profile
       )
+  photo_user = User::PROFILE_ARRAY.sample
+  file = URI.open(photo_user)
+  user.profile_picture.attach(io: file, filename: "#{photo_user.slice(-8, -5)}.#{photo_user.last(3)}", content_type: "image/#{photo_user.last(3)}")
   user.save!
 end
 
