@@ -29,7 +29,11 @@ class EventsController < ApplicationController
   def show
     authorize @event
     @user = @event.user
-    @contact_request = ContactRequest.new
+    @new_contact_request = ContactRequest.new
+
+    @contact_request = @event.contact_requests.find_by(user: current_user)
+    @messages = @contact_request ? @contact_request.messages : []
+    @message = Message.new
   end
 
   # add authorize before entry is actually committed in DB
