@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   get 'dashboard', to: 'dashboard#show'
+  patch 'contact_update', to: 'dashboard#update'
 
   resources :events do
     resources :contact_requests, only: [:new, :create]

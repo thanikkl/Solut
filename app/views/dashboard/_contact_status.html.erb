@@ -1,0 +1,21 @@
+<% if contact_request.status == 'open' %>
+  <div class="btn-group">
+    <button type="button" class="btn dropdown-toggle btn-warning" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Pending
+    </button>
+    <div class="dropdown-menu" id="dropdownButton">
+      <a class="dropdown-item js-updateContact" data-contact-id=<%= contact_request.id %> data-path= <%= contact_update_path(status: 'Denied', contact_request_id: contact_request.id) %> >Denied</a>
+      <a class="dropdown-item js-updateContact" data-contact-id=<%= contact_request.id %> data-path= <%= contact_update_path(status: 'Accepted', contact_request_id: contact_request.id) %>>Accepted</a>
+    </div>
+  </div>
+<% else %>
+  <% if contact_request.status == 'Denied' %>
+    <button type="button" class="btn dropdown-toggle btn-danger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <%= contact_request.status %>
+    </button>
+  <% else %>
+    <button type="button" class="btn dropdown-toggle btn-success" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <%= contact_request.status %>
+    </button>
+  <% end %>
+<% end %>
