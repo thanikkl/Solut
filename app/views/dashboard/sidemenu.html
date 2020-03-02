@@ -1,0 +1,72 @@
+<div class="navbar navbar-expand-sm navbar-light navbar-jdm-home" id="navbar-homepage">
+  <div>
+    <%= link_to root_path, class: "navbar-brand" do %>
+    <% end %>
+  </div>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <%= link_to "BANDS", events_path, class: "nav-link button btn-navbar", id: "btn-navbar" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "#", class: "nav-link button", id: "menuButton" do %>
+          <i class="fas fa-bars"></i>
+          <span>Menu</span>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>
+  <div id="sideMenu">
+    <div>
+      <i class="fas fa-times" id="menuClose"></i>
+      <ul class="list-group list-group-flush">
+        <% if user_signed_in? %>
+          <li class="list-group-item"><%= link_to "BROWSE BANDS", events_path %></li>
+          <li class="list-group-item"><%= link_to link_to "CREATE BAND", new_event_path %></li>
+          <li class="list-group-item"><%= link_to "MY PROFILE", edit_user_registration_path %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div>
+      <% if user_signed_in? %>
+        <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, id: "log-out-menu" %>
+      <% end %>
+    </div>
+  </div>
+
+<!-- <div id="sideMenu">
+    <div>
+      <i class="fas fa-times" id="menuClose"></i>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><%= link_to "BROWSE BANDS", workshops_path %></li>
+        <li class="list-group-item"><%= link_to "CREATE BAND", new_workshop_path %></li>
+        <li class="list-group-item"><%= link_to "MY PROFILE", edit_profile_path(current_user.profile) %></li>
+        <li class="list-group-item"><%= link_to "DASHBOARD", dashboard_path(current_user.profile) %></li>
+      </ul>
+    </div>
+    <div>
+      <% if user_signed_in? %>
+        <%= link_to "LOG OUT", destroy_user_session_path, method: :delete, id: "log-out-menu" %>
+      <% end %>
+    </div>
+</div>
+
+<div id="sideMenu">
+  <div>
+    <i class="fas fa-times" id="menuClose"></i>
+    <ul class="list-group list-group-flush">
+      <% if user_signed_in? %>
+        <li class="list-group-item"><%= link_to "BROWSE BANDS", events_path %></li>
+        <li class="list-group-item"><%= link_to link_to "CREATE BAND", new_event_path %></li>
+        <li class="list-group-item"><%= link_to "MY PROFILE", edit_user_registration_path %></li>
+      <% end %>
+    </ul>
+  </div>
+  <div>
+    <% if user_signed_in? %>
+      <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, id: "log-out-menu" %>
+    <% end %>
+  </div>
+</div> -->
+

@@ -8,11 +8,13 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
+import initNavbarMenu from '../components/menu';
 
 const Turbolinks = require("turbolinks")
 Turbolinks.start()
 
 document.addEventListener('turbolinks:load', () => {
+  initNavbarMenu();
     // Do your stuff!
 })
 
