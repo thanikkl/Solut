@@ -1,0 +1,37 @@
+#sideMenu {
+  position: absolute;
+  top: 0px;
+  right: -320px;
+  width: 320px;
+  height: 100vh;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 60px;
+  z-index: 1;
+}
+#sideMenu.open {
+  left: 0px;
+  width: 320px;
+  background-color: white;
+  transition: all 0.75s ease-out;
+}
+#sideMenu ul {
+  margin-top: 60px;
+  list-style-type: none;
+}
+#sideMenu li {
+  font-size: 18px;
+  padding: 10px 0 10px 16px;
+}
+#sideMenu #menuClose {
+  font-size: 20px;
+  position: absolute;
+  left: 30px;
+  top: 20px;
+}
+#log-out-menu {
+  padding-left: 16px;
+  font-size: 18px;
+}
