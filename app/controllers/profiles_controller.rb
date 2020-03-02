@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
   skip_after_action :verify_policy_scoped, only: :index
+  #skip_after_action :verify_policy_scoped, only: :show
 
   def index
     @users = User.all
@@ -7,6 +8,6 @@ class ProfilesController < ApplicationController
 
   def show
     #@user = User.find(params[:id])
-    @user = authorize User.find(params[:id])
+    @user = User.find(params[:id])
   end
 end
