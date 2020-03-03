@@ -6,8 +6,8 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @event = Event.find(params[:message][:event])
-    @contact_request = ContactRequest.find_by(user: current_user, event: @event)
+    @contact_request = ContactRequest.find(params[:message][:request])
+    @event = @contact_request.event
     @message = Message.new(message_params)
     @message.contact_request = @contact_request
     @message.user = current_user
