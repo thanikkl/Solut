@@ -2,16 +2,16 @@
   <% if user.id %>
     <div>
       <% if user.profile_picture.attached? %>
-        <%= image_tag(user.profile_picture, class: "avatar dropdown-toggle") %>
+        <%= image_tag(user.profile_picture, class: "avatar-large") %>
       <% else %>
         <%= image_tag(User::PROFILE_ARRAY.sample, class: "avatar-large") %>
       <% end %>
     </div>
     <div class=“d-flex flex-column align-items-center”>
       <p><%= user.nick_name %></p>
-      <% if event.user != user %>
+      <%# if event.user != user %>
         <p><%= user.participation(event).instrument.name %></p>
-      <% end %>
+      <%# end %>
     </div>
   <% end %>
 </div>

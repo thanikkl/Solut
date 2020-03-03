@@ -267,6 +267,7 @@ puts 'Creating a user faker...'
       # profile_picture: profile
       )
   photo_user = User::PROFILE_ARRAY.sample
+  puts photo_user
   file = URI.open(photo_user)
   user.profile_picture.attach(io: file, filename: "#{photo_user.slice(-8, -5)}.#{photo_user.last(3)}", content_type: "image/#{photo_user.last(3)}")
   user.save!
@@ -326,6 +327,16 @@ number_of_users.times do
     medium_type: ['video', 'song'].sample
     )
   user_media.save!
+end
+
+
+Event.all.each do |event|
+  ContactRequest.create(
+    user: event.user,
+    event: event,
+    instrument: Instrument.find_by(name: event.instruments_array.sample),
+    status: 'Accepted'
+  )
 end
 
 # Requests

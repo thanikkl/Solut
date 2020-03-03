@@ -8,6 +8,7 @@ class EventsController < ApplicationController
     @arrondissements = ["All"] + (75001..75020).map { |i| i.to_s }
 
     @events = policy_scope(Event)
+
     if params[:genre].present? && params[:genre] != "All"
       @events = @events.where("genre ILIKE ?", "%#{params[:genre]}%")
     end
@@ -21,9 +22,10 @@ class EventsController < ApplicationController
       @events = @events.select do |event|
         event.instruments_array.include?(params[:instrument])
       end
-    end
+      # @events.map(&:id) #=> [1, 12, 14, 25, .....]
+      @events = Event.all.where(id: @events.map(&:id))
 
-    return @events.sort { |a,b| a.created_at <=> b.created_at }
+    end
   end
 
   def show
