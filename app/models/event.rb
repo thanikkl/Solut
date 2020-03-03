@@ -4,7 +4,7 @@ class Event < ApplicationRecord
   has_many :users, through: :contact_requests
   GENRE_ARRAY = ["Disco", "Blues", "Funk", "Jazz", "Metal", "Pop", "Punk", "Rap", "Rock", "Country", "Reggae", "Gospel", "Soul", "Kompa", "Classic"]
   TYPE_EVENT_ARRAY = ['Play together', 'Learn together']
-  EVENT_INSTRUMENTS_ARRAY = ["Guitare", "Drum", "Piano", "Bass", "Triangle", "Maracass"]
+  EVENT_INSTRUMENTS_ARRAY = ["Guitare", "Drums", "Piano", "Bass", "Triangle", "Maracass", "French Horn", "Keyboard", "Bass guitar", "Clavichord", "Violin", "Viola", "Cello", "Flute", "Trumpet", "Saxophone", "Clarinet", "Singing", "Organ", "Euphonium"]
   # Version some choice
   #EVENT_INSTRUMENTS_ARRAY1 = ["Guitare", "Drum", "Piano", "Bass", "Triangle", "Maracass"]
   #EVENT_INSTRUMENTS_ARRAY2 = ["Guitare1", "Drum2", "Piano3", "Bass4", "Triangle5", "Maracass6"]
@@ -12,8 +12,8 @@ class Event < ApplicationRecord
   # EVENT_INSTRUMENTS_ARRAY1 = ["Guitare", "Drum", "Piano", "Bass", "Triangle", "Maracass", "Guitare", "Drum", "Piano", "Bass", "Triangle", "Maracass", "Guitare", "Drum", "Piano", "Bass", "Triangle", "Maracass"]
   # EVENT_INSTRUMENTS_ARRAY2 = ["Guitare1", "Drum2", "Piano3", "Bass4", "Triangle5", "Maracass6", "Guitare1", "Drum2", "Piano3", "Bass4", "Triangle5", "Maracass6", "Guitare1", "Drum2", "Piano3", "Bass4", "Triangle5", "Maracass6"]
   # Version mix
-  EVENT_INSTRUMENTS_ARRAY1 = ["Guitare", "Drum", "Piano", "Bass", "Triangle", "Maracass", "Bass", "Triangle", "Bass guitar", "Clavichord"]
-  EVENT_INSTRUMENTS_ARRAY2 = ["Guitare1", "Drum2", "Piano3", "Bass4", "Triangle5", "Maracass6", "Bass", "Triangle", "Maracass", "Maracass"]
+  EVENT_INSTRUMENTS_ARRAY1 = ["Guitare", "Drums", "Piano", "Bass", "Triangle", "Maracass", "French Horn", "Keyboard", "Bass guitar", "Clavichord"]
+  EVENT_INSTRUMENTS_ARRAY2 = ["Violin", "Viola", "Cello", "Flute", "Trumpet", "Saxophone", "Clarinet", "Singing", "Organ", "Euphonium"]
 
 # "Accordion",
 # "Bagpipes",

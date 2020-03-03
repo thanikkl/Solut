@@ -3,10 +3,24 @@ class UserInstrument < ApplicationRecord
   belongs_to :instrument
   INSTRUMENTS_ARRAY = [
     "Guitare",
-    "Drum",
+    "Drums",
     "Piano",
     "Bass",
     "Triangle",
-    "Maracass"
+    "Maracass",
+    "French Horn",
+    "Keyboard",
+    "Bass guitar",
+    "Clavichord",
+    "Violin",
+    "Viola",
+    "Cello",
+    "Flute",
+    "Trumpet",
+    "Saxophone",
+    "Clarinet",
+    "Singing",
+    "Organ",
+    "Euphonium"
   ]
 end
