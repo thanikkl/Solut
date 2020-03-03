@@ -77,7 +77,6 @@
           <% end %>
         </ul>
 
-
         <!-- Tab panes -->
         <div class="tab-content">
           <% @event.users.each do |user| %>
@@ -92,12 +91,12 @@
       </div>
     </div>
 
-    <%= render 'events/chatroom' %>
-
   <% else %>
     <% request = ContactRequest.find_by(user: current_user, event: @event) %>
-    <% messages = request.messages %>
-    <%= render 'events/chatroom', messages: messages, message: @message, request: request  %>
+    <% if request %>
+      <% messages = request.messages %>
+      <%= render 'events/chatroom', messages: messages, message: @message, request: request  %>
+    <% end %>
   <% end %>
 </div>
 
