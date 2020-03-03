@@ -10,7 +10,7 @@
           <div class="event-header">
             <h3><%= event.title %> - <%= event.genre %></h3>
             <p style="color: rgb(31, 70, 175)">Desired instruments: <strong><%= event.instruments_array.join(", ") %></strong></p>
-            <p style="color: grey"><em>Last updated: <%= event.updated_at %></em></p>
+            <p style="color: grey"><em>Last updated: <%= event.updated_at.strftime('%a %d %b %Y - %H:%M') %></em></p>
           </div>
 
           <div class="event-content d-flex">
