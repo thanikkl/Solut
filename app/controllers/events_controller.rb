@@ -31,8 +31,8 @@ class EventsController < ApplicationController
     @user = @event.user
     @new_contact_request = ContactRequest.new
 
-    @contact_request = @event.contact_requests.find_by(user: current_user)
-    @messages = @contact_request ? @contact_request.messages : []
+    # @contact_request = @event.contact_requests.find_by(user: current_user)
+    # @messages = @contact_request ? @contact_request.messages : []
     @message = Message.new
   end
 
