@@ -16,21 +16,21 @@ class User < ApplicationRecord
       [
       "https://res.cloudinary.com/dh8tpzykj/image/upload/v1582295056/gbt7jg0gvydget8frma683dkbs4p.png",
       "https://res.cloudinary.com/dh8tpzykj/image/upload/v1583096606/56273264_fmhm7r.jpg",
-      # "https://res.cloudinary.com/dh8tpzykj/image/upload/v1583096606/56685868_knl7qf.jpg",
-      # "https://res.cloudinary.com/dh8tpzykj/image/upload/v1583096606/37003066_dbwhja.jpg",
-      # "https://res.cloudinary.com/dh8tpzykj/image/upload/v1583096607/57906639_fyocpe.jpg",
-      # "https://res.cloudinary.com/dh8tpzykj/image/upload/v1583096607/virginia_yhdfzm.jpg",
-      # "https://res.cloudinary.com/dh8tpzykj/image/upload/v1583096607/57413508_hzq4oq.png",
-      # "https://res.cloudinary.com/dh8tpzykj/image/upload/v1583096606/12401398_q6dhun.png",
-      # "https://res.cloudinary.com/dh8tpzykj/image/upload/v1583096606/54674053_er71me.jpg",
-      # "https://res.cloudinary.com/dh8tpzykj/image/upload/v1583096607/58860498_mpjdxt.jpg",
-      # "https://res.cloudinary.com/dh8tpzykj/image/upload/v1583096607/54706761_kq2fth.png",
-      # "https://res.cloudinary.com/dh8tpzykj/image/upload/v1583096607/58111221_g7xyk6.jpg",
-      # "https://res.cloudinary.com/dh8tpzykj/image/upload/v1583096607/58396604_h7tkkg.png",
-      # "https://res.cloudinary.com/dh8tpzykj/image/upload/v1583098624/57566457_afsezx.png",
-      # 'https://res.cloudinary.com/dh8tpzykj/image/upload/v1583098622/57886741_nfdauk.jpg',
-      # "https://res.cloudinary.com/dh8tpzykj/image/upload/v1583098622/58146349_ndrzqa.jpg",
-      # "https://res.cloudinary.com/dh8tpzykj/image/upload/v1583098622/59102138_ioglxm.jpg",
+      "https://res.cloudinary.com/dh8tpzykj/image/upload/v1583096606/56685868_knl7qf.jpg",
+      "https://res.cloudinary.com/dh8tpzykj/image/upload/v1583096606/37003066_dbwhja.jpg",
+      "https://res.cloudinary.com/dh8tpzykj/image/upload/v1583096607/57906639_fyocpe.jpg",
+      "https://res.cloudinary.com/dh8tpzykj/image/upload/v1583096607/virginia_yhdfzm.jpg",
+      "https://res.cloudinary.com/dh8tpzykj/image/upload/v1583096607/57413508_hzq4oq.png",
+      "https://res.cloudinary.com/dh8tpzykj/image/upload/v1583096606/12401398_q6dhun.png",
+      "https://res.cloudinary.com/dh8tpzykj/image/upload/v1583096606/54674053_er71me.jpg",
+      "https://res.cloudinary.com/dh8tpzykj/image/upload/v1583096607/58860498_mpjdxt.jpg",
+      "https://res.cloudinary.com/dh8tpzykj/image/upload/v1583096607/54706761_kq2fth.png",
+      "https://res.cloudinary.com/dh8tpzykj/image/upload/v1583096607/58111221_g7xyk6.jpg",
+      "https://res.cloudinary.com/dh8tpzykj/image/upload/v1583096607/58396604_h7tkkg.png",
+      "https://res.cloudinary.com/dh8tpzykj/image/upload/v1583098624/57566457_afsezx.png",
+      'https://res.cloudinary.com/dh8tpzykj/image/upload/v1583098622/57886741_nfdauk.jpg',
+      "https://res.cloudinary.com/dh8tpzykj/image/upload/v1583098622/58146349_ndrzqa.jpg",
+      "https://res.cloudinary.com/dh8tpzykj/image/upload/v1583098622/59102138_ioglxm.jpg"
       # "https://res.cloudinary.com/dh8tpzykj/image/upload/v1583098622/58467989_jozdrk.jpg",
       # "https://res.cloudinary.com/dh8tpzykj/image/upload/v1583098621/57875309_ce40q9.jpg",
       # "https://res.cloudinary.com/dh8tpzykj/image/upload/v1583098621/57684898_ncwrcy.jpg",
@@ -59,5 +59,9 @@ class User < ApplicationRecord
       # "https://res.cloudinary.com/dh8tpzykj/image/upload/v1583098613/6177564_vmx5cl.jpg",
       # "https://res.cloudinary.com/dh8tpzykj/image/upload/v1583098613/12762571_wx2esj.jpg"
       ]
+
+    def participation(event)
+      self.contact_requests.find_by(event_id: event.id)
+    end
 
  end
