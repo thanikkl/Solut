@@ -1,0 +1,252 @@
+.container-profile-index {
+  //background-color: #509BF4;
+  padding: 20px 20px;
+  margin: 0px auto;
+}
+
+.container-profile-index .profile-index-content {
+  //background-color: #509BF4;
+  padding: 20px 20px;
+  width: 900px;
+  margin: 0px auto;
+  display: flex;
+  justify-content: space-between;
+  grid-gap: 10px 10px;
+}
+
+.card-profile {
+  width: 200px;
+  height: 300px;
+  background-color: white;
+  border-radius: 8px;
+  background-size: cover;
+}
+
+.card-profile-background {
+  border-radius: 8px;
+  width: 200px;
+  height: 150px;
+  background-image: url("https://images.unsplash.com/photo-1556379118-7034d926d258?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2476&q=80");
+}
+
+.avatar-profile_large {
+  width: 65px;
+  height: 65px;
+  background-color: white;
+  border-radius: 50%;
+  border: 2px solid white;
+  position: relative;
+  left: 125px;
+  top: 10px;
+}
+
+.card-profile-about h2 {
+  font-size: 17px;
+  text-transform: uppercase;
+}
+.card-profile-pseudo {
+  width: 190px;
+  text-align: center;
+  position: relative;
+  top: -45px;
+  left: 5px;
+  padding: 5px 20px;
+  background-color: black;
+  opacity: 0.68;
+  color: white;
+  border-radius: 6px;
+  overflow: visible;
+}
+.card-profile-under-pseudo {
+  background-color: white;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  top: -40px;
+}
+.card-profile-about {
+  background-color: white;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  top: -10px;
+}
+
+
+
+
+
+
+
+
+
+
+.container-profile-show {
+  //background-color: #509BF4;
+  padding: 20px 20px;
+  margin: 0px auto;
+  height: 780px;
+}
+
+.instrument-add-show {
+  margin-bottom: 10px;
+}
+
+.title-profile-show {
+  width: 400px;
+  text-align: center;
+  border: 2px solid white;
+  padding: 30px 10px;
+  color: white;
+  margin-bottom: 20px;
+  margin-bottom: 50px;
+}
+
+.profile-content-show {
+  display: flex;
+  width: 100%;
+  //background-color: blue;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.first-profile-show {
+  display: block;
+  justify-content: center;
+  text-align: center;
+  width: 200px;
+  //background-color: green;
+  margin: 0px 40px;
+}
+
+.edit-picture-profile-show {
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+  text-align: center;
+  //padding: 10px 10px;
+}
+
+.first-row-show {
+  margin-top: 40px;
+  //background-color:green;
+}
+
+.show-profile-nickname {
+  background-color: white;
+  color: black;
+  width: 160px;
+  overflow: hidden;
+  border-radius: 4px;
+  margin: 10px 20px;
+}
+
+.show-profile-age {
+  background-color: white;
+  color: black;
+  width: 160px;
+  overflow: hidden;
+  border-radius: 4px;
+  margin: 10px 20px;
+}
+
+.second-profile-show {
+  display: block;
+  justify-content: center;
+  text-align: center;
+  //background-color: yellow;
+}
+
+.description-text-show {
+  color: white;
+  padding: 20px 30px;
+}
+
+.description-text-show {
+  padding: 15px 15px;
+  border: 1px solid #8c8c8c;
+  color: white;
+  font-size: 16px;
+  text-align: justify;
+  margin-bottom: 20px;
+  width: 400px;
+}
+.third-profile-show {
+  position: relative;
+  left: 0px;
+  margin-left: 40px;
+  width: 250px;
+  //background-color: red;
+}
+
+.description-center-show {
+  text-align: center;
+  background: none;
+  color: white;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.instrument-center-show {
+  text-align: center;
+  background: none;
+  color: white;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+.instrument-text-show {
+  text-align: center;
+  color: white;
+  font-size: 16px;
+}
+
+.my-event-text-show {
+  text-align: left;
+  color: white;
+  font-size: 16px;
+}
+
+.my-song-show {
+  width: 250px;
+  padding: 15px 35px;
+  border: 2px solid white;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.my-media-show {
+  width: 250px;
+  padding: 15px 35px;
+  border: 2px solid white;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.instrument-profile-show {
+  width: 250px;
+  padding: 15px 35px;
+  border: 1px solid #8c8c8c; //white;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.bottom-container-show {
+  padding: 25px 0px;
+}
+
+.return_btn-show-profile {
+  text-decoration: none;
+  color: white;
+}
+
+
