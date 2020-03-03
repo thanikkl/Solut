@@ -1,4 +1,4 @@
-
+<div class="content-wrapper">
   <div class="event-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1453090927415-5f45085b65c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1931&q=80);">
     <div class="container text-center">
       <%#= @event.user.first_name %>
@@ -35,39 +35,27 @@
         <% end %>
       </div>
     </div>
-
-      <!-- <button id="contact-btn"><i class="far fa-paper-plane"></i> Contact</button> -->
   </div>
 
   <div class="show-event">
     <h3>Members of the group</h3>
+    <%= @event.capacity %>
     <div class="d-flex flex-row">
-      <div class="d-flex flex-column align-items-center mx-3">
-        <div>
-          <% if @event.user.profile_picture.attached? %>
-            <%= image_tag(@event.user.profile_picture, class: "avatar dropdown-toggle") %>
-          <% else %>
-            <%= image_tag(User::PROFILE_ARRAY.sample, class: "avatar-large") %>
-          <% end %>
+      <% @array_members.each do |member| %>
+        <div class="d-flex flex-column align-items-center mx-3">
+          <div>
+            <% if member.profile_picture.attached? %>
+              <%= image_tag(member.profile_picture, class: "avatar dropdown-toggle") %>
+            <% else %>
+              <%= image_tag(User::PROFILE_ARRAY.sample, class: "avatar-large") %>
+            <% end %>
+          </div>
+          <div class=“d-flex flex-column align-items-center”>
+            <p><%= member.nick_name %></p>
+            <p style=“color: grey”><small>User instrument</small></p>
+          </div>
         </div>
-        <div class="d-flex flex-column align-items-center">
-          <p><%= @event.user.nick_name %></p>
-          <p style="color: grey"><small>User instrument</small></p>
-        </div>
-      </div>
-      <div class="d-flex flex-column align-items-center mx-3">
-        <div>
-          <% if @event.user.profile_picture.attached? %>
-            <%= image_tag(@event.user.profile_picture, class: "avatar dropdown-toggle") %>
-          <% else %>
-            <%= image_tag(User::PROFILE_ARRAY.sample, class: "avatar-large") %>
-          <% end %>
-        </div>
-        <div class="d-flex flex-column align-items-center">
-          <p><%= @user.nick_name %></p>
-          <p style="color: grey"><small>User instrument</small></p>
-        </div>
-      </div>
+      <% end %>
     </div>
   </div>
 
@@ -93,11 +81,18 @@
         </div>
       <% end %>
     </div>
-
     <%= render 'events/chatroom' %>
-
   <% else %>
     <%= render 'events/chatroom' %>
   <% end %>
-
 </div>
+
+
+
+
+
+
+
+
+
+

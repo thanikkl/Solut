@@ -34,6 +34,12 @@ class EventsController < ApplicationController
     @contact_request = @event.contact_requests.find_by(user: current_user)
     @messages = @contact_request ? @contact_request.messages : []
     @message = Message.new
+
+    @contact_requests = @event.contact_requests
+    @contact_request_accepted = @contact_requests.select { |s| s.status == "Accepted" }
+    @free = @event.capacity - @contact_request_accepted.count - 1
+    @array_members = []
+    @array_members.push(@user)
   end
 
   # add authorize before entry is actually committed in DB

@@ -32,11 +32,8 @@
       </div>
     <% end %>
 
-<<<<<<< HEAD
-
     <h3>My contact requests</h3>
     <% @contact_requests.each do |request| %>
-=======
       <div class="event-right">
         <p><small>Open availabilities: <%= request.event.capacity %></small></p>
         <p><small><%= request.event.event_type %></small></p>
@@ -62,7 +59,6 @@
   <h3>Users' requests on my bands</h3>
   <% @events.each do |event| %>
     <% event.contact_requests.each do |contact_request| %>
->>>>>>> 5c887992c4105b0f37ed6f5075327f63cff14ef4
       <div class="event d-flex flex-row justify-content-between">
         <div class="event-left">
           <div class="event-header">
@@ -94,40 +90,6 @@
         </div>
       </div>
     <% end %>
-
-    <h3>Users' requests on my bands</h3>
-    <% @events.each do |event| %>
-      <% event.contact_requests.each do |contact_request| %>
-        <div class="event d-flex flex-row justify-content-between">
-          <div class="event-left">
-            <div class="event-header">
-              <h3><%= event.title %> - <%= event.genre %></h3>
-              <p style="color: rgb(31, 70, 175)">Desired instruments: <strong><%= event.instruments_array.join(", ") %></strong></p>
-              <p style="color: grey"><em>Last updated: <%= event.updated_at %></em></p>
-            </div>
-
-            <div class="event-content d-flex">
-              <% if contact_request.user.profile_picture.attached? %>
-                <%= image_tag(contact_request.user.profile_picture, class: "avatar-large") %>
-              <% else %>
-                <img src='https://res.cloudinary.com/dh8tpzykj/image/upload/v1582203695/avatar_empty_ghdihw.png' class="avatar-large" />
-              <% end %>
-              <div>
-                <p><small><%= contact_request.user.nick_name %></small></p>
-                <p><%= event.location %></p>
-              </div>
-            </div>
-          </div>
-
-          <div class="event-right">
-            <p><small>Open availabilities: <%= event.capacity %></small></p>
-            <p><small><%= event.event_type %></small></p>
-            <button class="event-action" id="contact-btn-small"> <%= link_to "Details", event_path(event) %></button>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
-
   </div>
   <!-- <ul>
   <%# @events.each do |event| %>
