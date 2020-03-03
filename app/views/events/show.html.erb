@@ -38,6 +38,7 @@
   <div class="show-event">
     <h3>Members of the group</h3>
     <div class="d-flex flex-row">
+
       <% @event.participants.each do |user| %>
         <%= render 'user_card', user: user, event: @event %>
       <% end %>

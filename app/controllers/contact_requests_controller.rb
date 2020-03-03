@@ -17,16 +17,18 @@ class ContactRequestsController < ApplicationController
   end
 
   def create
-    @contact_request = ContactRequest.new(contact_request_params)
-    @contact_request.instrument = Instrument.find_by(name: params[:contact_request][:instrument_id])
-    @contact_request.event = @event
-    @contact_request.user = current_user
-    # @request.instrument =
-    authorize @contact_request
-    if @contact_request.save
-      redirect_to events_path
+    @new_contact_request = ContactRequest.new(contact_request_params)
+    @new_contact_request.instrument = Instrument.find_by(name: params[:contact_request][:instrument_id])
+    @new_contact_request.event = @event
+    @new_contact_request.user = current_user
+    @messages = @contact_request ? @contact_request.messages : []
+    @message = Message.new
+    authorize @new_contact_request
+
+    if @new_contact_request.save
+      redirect_to dashboard_path
     else
-      render :new
+      render 'events/show'
     end
   end
 
