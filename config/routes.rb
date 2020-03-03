@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
+
+  # resource :dashboard, only: :show, controller: :dashboard
   get 'dashboard', to: 'dashboard#show'
+  patch 'contact_update', to: 'dashboard#update'
+
+  get 'profiles', to: 'profiles#index'
+  get 'profiles/:id', to: 'profiles#show'
 
   resources :events do
     resources :contact_requests, only: [:new, :create]
@@ -10,7 +16,6 @@ Rails.application.routes.draw do
   resources :contact_requests, except: [:new, :create] do
     resources :messages, only: [:new, :create]
   end
-  resources :messages, except: [:new, :create]
+  resources :messages, only: [:new, :create]
 
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

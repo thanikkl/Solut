@@ -30,7 +30,7 @@ class User < ApplicationRecord
       "https://res.cloudinary.com/dh8tpzykj/image/upload/v1583098624/57566457_afsezx.png",
       'https://res.cloudinary.com/dh8tpzykj/image/upload/v1583098622/57886741_nfdauk.jpg',
       "https://res.cloudinary.com/dh8tpzykj/image/upload/v1583098622/58146349_ndrzqa.jpg",
-      "https://res.cloudinary.com/dh8tpzykj/image/upload/v1583098622/59102138_ioglxm.jpg",
+      "https://res.cloudinary.com/dh8tpzykj/image/upload/v1583098622/59102138_ioglxm.jpg"
       # "https://res.cloudinary.com/dh8tpzykj/image/upload/v1583098622/58467989_jozdrk.jpg",
       # "https://res.cloudinary.com/dh8tpzykj/image/upload/v1583098621/57875309_ce40q9.jpg",
       # "https://res.cloudinary.com/dh8tpzykj/image/upload/v1583098621/57684898_ncwrcy.jpg",

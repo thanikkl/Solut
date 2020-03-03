@@ -32,9 +32,37 @@
       </div>
     <% end %>
 
+<<<<<<< HEAD
 
     <h3>My contact requests</h3>
     <% @contact_requests.each do |request| %>
+=======
+      <div class="event-right">
+        <p><small>Open availabilities: <%= request.event.capacity %></small></p>
+        <p><small><%= request.event.event_type %></small></p>
+        <% if request.status == 'Denied' %>
+          <button type="button" class="btn-danger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= request.status %>
+          </button>
+        <% elsif request.status == 'Accepted' %>
+          <button type="button" class="btn-success" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= request.status %>
+          </button>
+        <% else %>
+          <button type="button" class="btn-warning" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Pending
+          </button>
+        <% end %>
+        <button class="event-action" id="contact-btn-small"> <%= link_to "Details", event_path(request.event) %></button>
+      </div>
+    </div>
+  <% end %>
+
+  <input type="hidden" value= <%= session[:_csrf_token] %> id="csrf_token">
+  <h3>Users' requests on my bands</h3>
+  <% @events.each do |event| %>
+    <% event.contact_requests.each do |contact_request| %>
+>>>>>>> 5c887992c4105b0f37ed6f5075327f63cff14ef4
       <div class="event d-flex flex-row justify-content-between">
         <div class="event-left">
           <div class="event-header">
@@ -57,9 +85,12 @@
         </div>
 
         <div class="event-right">
-          <p><small>Open availabilities: <%= request.event.capacity %></small></p>
-          <p><small><%= request.event.event_type %></small></p>
-          <button class="event-action" id="contact-btn-small"> <%= link_to "Details", event_path(request.event) %></button>
+          <p><small>Open availabilities: <%= event.capacity %></small></p>
+          <p><small><%= event.event_type %></small></p>
+          <div id="anchor_<%= contact_request.id %>">
+            <%= render "dashboard/contact_status", contact_request: contact_request %>
+          </div>
+          <button class="event-action" id="contact-btn-small"> <%= link_to "Details", event_path(event) %></button>
         </div>
       </div>
     <% end %>
