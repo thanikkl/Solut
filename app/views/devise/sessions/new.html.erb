@@ -1,21 +1,26 @@
-<h2>Log in</h2>
 <div class="content-wrapper">
-  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="form-inputs">
-      <%= f.input :email,
-                  required: false,
-                  autofocus: true,
-                  input_html: { autocomplete: "email" } %>
-      <%= f.input :password,
-                  required: false,
-                  input_html: { autocomplete: "current-password" } %>
-      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+  <body style="background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 20%, rgba(0,0,0,0.4) 100%),url('https://images.unsplash.com/photo-1505190849153-43410d3c18f8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80'); background-size: cover; min-height: 100vh; opacity: 0.88;">
+    <div class="container-profile">
+      <h2 class="title-profile">SIGN IN</h2>
+      <div class="container-login">
+        <!-- <h2 class="title-signin">Sign in</h2> -->
+        <br />
+        <br />
+        <br />
+        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="form-inputs">
+            <%= f.input :email, required: false, autofocus: true, input_html: { autocomplete: "email" } %>
+            <%= f.input :password, required: false, input_html: { autocomplete: "current-password" } %>
+            <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+          </div>
+          <div class="form-actions">
+            <div class="btn-position-profile">
+              <%= f.button :submit, "LOG IN", id: "profile-btn" %>
+            </div>
+          </div>
+        <% end %>
+        <%= render "devise/shared/links" %>
+      </div>
     </div>
-
-    <div class="form-actions">
-      <%= f.button :submit, "Log in" %>
-    </div>
-  <% end %>
-
-  <%= render "devise/shared/links" %>
+  </body>
 </div>

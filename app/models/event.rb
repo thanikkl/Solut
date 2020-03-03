@@ -71,4 +71,12 @@ class Event < ApplicationRecord
     self.update(instruments_array: reject)
   end
 
+  def participants
+    self.contact_requests.where(status: 'Accepted').map(&:user)
+  end
+
+  def places_left
+    (self.capacity - participants.count)
+  end
+
 end

@@ -8,6 +8,7 @@ class EventsController < ApplicationController
     @arrondissements = ["All"] + (75001..75020).map { |i| i.to_s }
 
     @events = policy_scope(Event)
+
     if params[:genre].present? && params[:genre] != "All"
       @events = @events.where("genre ILIKE ?", "%#{params[:genre]}%")
     end
@@ -21,9 +22,10 @@ class EventsController < ApplicationController
       @events = @events.select do |event|
         event.instruments_array.include?(params[:instrument])
       end
-    end
+      # @events.map(&:id) #=> [1, 12, 14, 25, .....]
+      @events = Event.all.where(id: @events.map(&:id))
 
-    return @events.sort { |a,b| a.created_at <=> b.created_at }
+    end
   end
 
   def show
@@ -31,12 +33,12 @@ class EventsController < ApplicationController
     @user = @event.user
     @new_contact_request = ContactRequest.new
 
-    @contact_request = @event.contact_requests.find_by(user: current_user)
-    @messages = @contact_request ? @contact_request.messages : []
     @message = Message.new
+
+    @contact_requests = @event.contact_requests
+    @contact_request_accepted = @contact_requests.select { |s| s.status == "Accepted" }
   end
 
-  # add authorize before entry is actually committed in DB
   def new
     @event = Event.new
     authorize @event
@@ -46,8 +48,10 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     authorize @event
     @event.user = current_user
-    # @event.instruments_array = params[:event][:instruments_array].reject(&:empty?)
+
     if @event.save
+      @contact_request = ContactRequest.create(user: current_user, event: @event, instrument: Instrument.find_by(name: params[:my_instrument][:choice]), status: 'Accepted')
+
       redirect_to event_path(@event)
     else
       render :new

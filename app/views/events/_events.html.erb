@@ -4,7 +4,7 @@
     <p style="color: grey">Please try again with a new filter.</p>
 
   <% else %>
-    <% @events.each do |event| %>
+    <% @events.order(created_at: :desc).each do |event| %>
       <div class="event d-flex flex-row justify-content-between">
         <div class="event-left">
           <div class="event-header">

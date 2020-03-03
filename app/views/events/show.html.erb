@@ -1,4 +1,4 @@
-
+<div class="content-wrapper">
   <div class="event-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1453090927415-5f45085b65c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1931&q=80);">
     <div class="container text-center">
       <%#= @event.user.first_name %>
@@ -26,78 +26,92 @@
       <div class="contact-form">
         <p><strong>Send request to join:</strong></p>
         <%= simple_form_for([@event, @new_contact_request]) do |f| %>
-        <%# arr = [] %>
-        <%# @event.instruments_array.each do |instrument| %>
-        <%# arr << Instrument.find_by(name: instrument) %>
-        <%# end %>
+
         <%= f.association :instrument, collection: @event.instruments_array, label: "You play:", required: false %>
         <%= f.button :submit, "✉️ ASK TO JOIN", id: "profile-btn" %>
         <% end %>
       </div>
     </div>
 
-      <!-- <button id="contact-btn"><i class="far fa-paper-plane"></i> Contact</button> -->
   </div>
 
   <div class="show-event">
     <h3>Members of the group</h3>
     <div class="d-flex flex-row">
-      <div class="d-flex flex-column align-items-center mx-3">
-        <div>
-          <% if @event.user.profile_picture.attached? %>
-            <%= image_tag(@event.user.profile_picture, class: "avatar dropdown-toggle") %>
-          <% else %>
-            <%= image_tag(User::PROFILE_ARRAY.sample, class: "avatar-large") %>
-          <% end %>
+
+      <% @event.participants.each do |user| %>
+        <%= render 'user_card', user: user, event: @event %>
+      <% end %>
+      <% @event.places_left.times do %>
+        <div class="d-flex flex-column align-items-center mx-3">
+        <img src='https://res.cloudinary.com/dh8tpzykj/image/upload/v1582203695/avatar_empty_ghdihw.png' class="avatar-large" />
+        <p>Member</p>
+        <p>Instrument</p>
         </div>
-        <div class="d-flex flex-column align-items-center">
-          <p><%= @event.user.nick_name %></p>
-          <p style="color: grey"><small>User instrument</small></p>
-        </div>
-      </div>
-      <div class="d-flex flex-column align-items-center mx-3">
-        <div>
-          <% if @event.user.profile_picture.attached? %>
-            <%= image_tag(@event.user.profile_picture, class: "avatar dropdown-toggle") %>
-          <% else %>
-            <%= image_tag(User::PROFILE_ARRAY.sample, class: "avatar-large") %>
-          <% end %>
-        </div>
-        <div class="d-flex flex-column align-items-center">
-          <p><%= @event.user.nick_name %></p>
-          <p style="color: grey"><small>User instrument</small></p>
-        </div>
-      </div>
+      <% end %>
     </div>
   </div>
 
   <% if @event.user == current_user %>
     <div class="show-event">
       <h3>Candidates</h3>
-      <% @event.users.each do |user| %>
-        <div class="event-content d-flex flex-row">
-          <div>
-            <% if user.profile_picture.attached? %>
-              <%= cl_image_tag event.user.profile_picture.key, class: "avatar-small" %>
-              <%#= image_tag(event.user.profile_picture, class: "avatar-large") %>
-            <% else %>
 
-              <%#= image_tag(User::PROFILE_ARRAY.sample, class: "avatar-large") %>
-              <img src='https://res.cloudinary.com/dh8tpzykj/image/upload/v1582203695/avatar_empty_ghdihw.png' class="avatar-small" />
-            <% end %>
-          </div>
-          <div>
-            <p style="color: grey"><small><%= user.nick_name %></small></p>
-            <p><%= user.contact_requests.find_by(event: @event).instrument.name %></p>
-          </div>
+      <div>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+          <% @event.users.each do |user| %>
+            <li role="presentation" class="">
+              <a href="#id-<%= user.id %>" aria-controls="home" role="tab" data-toggle="tab">
+                <div class="d-flex flex-column align-items-center m-2">
+                  <div>
+                    <% if user.profile_picture.attached? %>
+                      <%#= cl_image_tag @event.user.profile_picture.key, class: "avatar-small" %>
+                    <% else %>
+                      <img src='https://res.cloudinary.com/dh8tpzykj/image/upload/v1582203695/avatar_empty_ghdihw.png' class="avatar-small" />
+                    <% end %>
+                  </div>
+                  <div>
+                    <p style="color: grey"><small><%= user.nick_name %></small></p>
+                  </div>
+                  <div>
+                    <p><small><%= user.contact_requests.find_by(event: @event).instrument.name %></small></p>
+                  </div>
+                </div>
+              </a>
+            </li>
+          <% end %>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <% @event.users.each do |user| %>
+            <div role="tabpanel" class="tab-pane" id="id-<%= user.id %>">
+              <% request = ContactRequest.find_by(user: user, event: @event) %>
+              <% if request %>
+                <% messages = request.messages %>
+                <%= render 'events/chatroom', messages: messages, message: @message, request: request %>
+              <% end %>
+            </div>
+          <% end %>
         </div>
-      <% end %>
+      </div>
     </div>
 
-    <%= render 'events/chatroom' %>
-
   <% else %>
-    <%= render 'events/chatroom' %>
+    <% request = ContactRequest.find_by(user: current_user, event: @event) %>
+    <% if request %>
+      <% messages = request.messages %>
+      <%= render 'events/chatroom', messages: messages, message: @message, request: request  %>
+    <% end %>
   <% end %>
-
 </div>
+
+
+
+
+
+
+
+
+
+
