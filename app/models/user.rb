@@ -60,4 +60,8 @@ class User < ApplicationRecord
       # "https://res.cloudinary.com/dh8tpzykj/image/upload/v1583098613/12762571_wx2esj.jpg"
       ]
 
+    def participation(event)
+      self.contact_requests.find_by(event_id: event.id)
+    end
+
  end

@@ -37,9 +37,18 @@ class EventsController < ApplicationController
 
     @contact_requests = @event.contact_requests
     @contact_request_accepted = @contact_requests.select { |s| s.status == "Accepted" }
-    @free = @event.capacity - @contact_request_accepted.count - 1
-    @array_members = []
-    @array_members.push(@user)
+
+    # @array_members = []
+    # @array_members.push(@user)
+    # @contact_request_accepted.each { |contact|  @array_members.push.push(contact.user) }
+
+    # free = @event.capacity - @array_members.count
+
+    # if free > 0
+    #   (free + 3).times { |slot| @array_members.push(User.new) }
+    # end
+
+    # @array_members = @array_members[0...@event.capacity]
   end
 
   # add authorize before entry is actually committed in DB
@@ -52,8 +61,11 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     authorize @event
     @event.user = current_user
+
     # @event.instruments_array = params[:event][:instruments_array].reject(&:empty?)
     if @event.save
+      @contact_request = ContactRequest.create(user: current_user, event: @event, instrument: Instrument.find_by(name: params[:my_instrument][:choice]), status: 'Accepted')
+
       redirect_to event_path(@event)
     else
       render :new

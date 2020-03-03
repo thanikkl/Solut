@@ -39,22 +39,14 @@
 
   <div class="show-event">
     <h3>Members of the group</h3>
-    <%= @event.capacity %>
     <div class="d-flex flex-row">
-      <% @array_members.each do |member| %>
-        <div class="d-flex flex-column align-items-center mx-3">
-          <div>
-            <% if member.profile_picture.attached? %>
-              <%= image_tag(member.profile_picture, class: "avatar dropdown-toggle") %>
-            <% else %>
-              <%= image_tag(User::PROFILE_ARRAY.sample, class: "avatar-large") %>
-            <% end %>
-          </div>
-          <div class=“d-flex flex-column align-items-center”>
-            <p><%= member.nick_name %></p>
-            <p style=“color: grey”><small>User instrument</small></p>
-          </div>
-        </div>
+      <% @event.participants.each do |user| %>
+        <%= render 'user_card', user: user, event: @event %>
+      <% end %>
+      <% @event.places_left.times do %>
+        <img src='https://res.cloudinary.com/dh8tpzykj/image/upload/v1582203695/avatar_empty_ghdihw.png' class="avatar-large" />
+        <p>Member</p>
+        <p>Instrument</p>
       <% end %>
     </div>
   </div>
@@ -62,11 +54,11 @@
   <% if @event.user == current_user %>
     <div class="show-event">
       <h3>Candidates</h3>
-      <% @event.users.each do |user| %>
+      <% @event.users.reject { |user| user == @event.user }.each do |user| %>
         <div class="event-content d-flex flex-row">
           <div>
             <% if user.profile_picture.attached? %>
-              <%= cl_image_tag event.user.profile_picture.key, class: "avatar-small" %>
+              <%= cl_image_tag user.profile_picture.key, class: "avatar-small" %>
               <%#= image_tag(event.user.profile_picture, class: "avatar-large") %>
             <% else %>
 
