@@ -42,9 +42,11 @@
         <%= render 'user_card', user: user, event: @event %>
       <% end %>
       <% @event.places_left.times do %>
+        <div class="d-flex flex-column align-items-center mx-3">
         <img src='https://res.cloudinary.com/dh8tpzykj/image/upload/v1582203695/avatar_empty_ghdihw.png' class="avatar-large" />
         <p>Member</p>
         <p>Instrument</p>
+        </div>
       <% end %>
     </div>
   </div>
@@ -62,7 +64,7 @@
                 <div>
                   <div>
                     <% if user.profile_picture.attached? %>
-                      <%= cl_image_tag @event.user.profile_picture.key, class: "avatar-small" %>
+                      <%#= cl_image_tag @event.user.profile_picture.key, class: "avatar-small" %>
                     <% else %>
                       <img src='https://res.cloudinary.com/dh8tpzykj/image/upload/v1582203695/avatar_empty_ghdihw.png' class="avatar-small" />
                     <% end %>
@@ -91,8 +93,6 @@
         </div>
       </div>
     </div>
-
-    <%= render 'events/chatroom' %>
 
   <% else %>
     <% request = ContactRequest.find_by(user: current_user, event: @event) %>
