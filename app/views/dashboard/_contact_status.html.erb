@@ -1,6 +1,6 @@
 <% if contact_request.status == 'open' %>
-  <div class="btn-group">
-    <button type="button" class="btn dropdown-toggle btn-warning" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <div>
+    <button type="button" class="btn dropdown-toggle button-pending status" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Pending
     </button>
     <div class="dropdown-menu" id="dropdownButton">
@@ -10,11 +10,11 @@
   </div>
 <% else %>
   <% if contact_request.status == 'Denied' %>
-    <button type="button" class="btn dropdown-toggle btn-danger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <button type="button" class="btn status button-denied" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <%= contact_request.status %>
     </button>
   <% else %>
-    <button type="button" class="btn dropdown-toggle btn-success" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <button type="button" class="btn status button-accepted" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <%= contact_request.status %>
     </button>
   <% end %>
