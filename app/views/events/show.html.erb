@@ -59,13 +59,14 @@
       <div>
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
+
           <% @event.users.where.not(id: @event.user).each do |user| %>
             <li role="presentation" class="">
               <a href="#id-<%= user.id %>" aria-controls="home" role="tab" data-toggle="tab">
                 <div class="d-flex flex-column align-items-center m-2">
                   <div>
                     <% if user.profile_picture.attached? %>
-                      <%#= cl_image_tag @event.user.profile_picture.key, class: "avatar-small" %>
+                      <%= cl_image_tag user.profile_picture.key, class: "avatar-small" %>
                     <% else %>
                       <img src='https://res.cloudinary.com/dh8tpzykj/image/upload/v1582203695/avatar_empty_ghdihw.png' class="avatar-small" />
                     <% end %>
@@ -74,7 +75,7 @@
                     <p style="color: grey"><small><%= user.nick_name %></small></p>
                   </div>
                   <div>
-                    <p><small><%= user.contact_requests.find_by(event: @event).instrument.name %></small></p>
+                    <!-- <p><small><%= user.contact_requests.find_by(event: @event).instrument.name %></small></p> -->
                   </div>
                 </div>
               </a>
@@ -89,7 +90,7 @@
               <% request = ContactRequest.find_by(user: user, event: @event) %>
               <% if request %>
                 <% messages = request.messages %>
-                <%= render 'events/chatroom', messages: messages, message: @message, request: request %>
+                <%= render 'events/chatroom', messages: messages, message: @message, request: request, creator: true %>
               <% end %>
             </div>
           <% end %>
@@ -101,7 +102,7 @@
     <% request = ContactRequest.find_by(user: current_user, event: @event) %>
     <% if request %>
       <% messages = request.messages %>
-      <%= render 'events/chatroom', messages: messages, message: @message, request: request  %>
+      <%= render 'events/chatroom', messages: messages, message: @message, request: request, event: @event, creator: false  %>
     <% end %>
   <% end %>
 </div>

@@ -1,10 +1,14 @@
   <div class="show-event chatroom">
-    <h3>Private Chatroom</h3>
+    <% if creator %>
+      <h3>Send a message to <%= request.user.nick_name %></h3>
+    <% else %>
+      <h3>Send a message to <%= event.user.nick_name %></h3>
+    <% end %>
     <% messages.each do |message| %>
-      <div class="event-content d-flex flex-row">
+      <div class="event-content d-flex flex-row" id="<%= message.id %>">
         <div>
-          <% if @event.user.profile_picture.attached? %>
-            <%= cl_image_tag @event.user.profile_picture.key, class: "avatar-small" %>
+          <% if message.user.profile_picture.attached? %>
+            <%= cl_image_tag message.user.profile_picture.key, class: "avatar-small" %>
           <% else %>
             <img src='https://res.cloudinary.com/dh8tpzykj/image/upload/v1582203695/avatar_empty_ghdihw.png' class="avatar-small" />
           <% end %>
@@ -16,7 +20,7 @@
       </div>
     <% end %>
 
-    <%= simple_form_for [ message ] do |f| %>
+    <%= simple_form_for message, remote: true do |f| %>
       <div class="d-flex flex-row align-items-center">
         <div class="chat-form">
           <%= f.input :content, label: false, placeholder: "Please enter your message" %>
