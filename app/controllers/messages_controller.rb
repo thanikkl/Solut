@@ -14,7 +14,7 @@ class MessagesController < ApplicationController
     authorize @message
     @message.save
 
-    redirect_to event_path(@event)
+    redirect_to event_path(@event, anchor: @message.id)
   end
 
   private
