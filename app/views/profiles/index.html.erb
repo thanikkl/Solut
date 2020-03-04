@@ -1,39 +1,41 @@
 <!-- <body style="background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 20%, rgba(0,0,0,0.4) 100%),url('https://images.unsplash.com/photo-1527333118761-68a5b86be367?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=935&q=80'); background-size: cover; min-height: 100vh; opacity: 0.88;"> -->
 <body>
-  <div class="container-profile-index">
-    <h2 class="title-profile-index">USERS LIST</h2>
-    <div class="profile-index-content">
-      <% @users.each do |user| %>
-      <div class="card-profile">
-        <div class="card-profile-background">
-          <% if user.profile_picture.attached? %>
-            <%= cl_image_tag user.profile_picture.key, class: "avatar-profile_large" %>
-          <% else %>
-            <img src='https://res.cloudinary.com/dh8tpzykj/image/upload/v1582203695/avatar_empty_ghdihw.png' class="avatar-profile_large" />
+  <div class="content-wrapper">
+    <div class="container-profile-index">
+      <h2 class="title-profile-index">USERS LIST</h2>
+      <div class="profile-index-content">
+        <% @users.each do |user| %>
+        <div class="card-profile">
+          <div class="card-profile-background">
+            <% if user.profile_picture.attached? %>
+              <%= cl_image_tag user.profile_picture.key, class: "avatar-profile_large" %>
+            <% else %>
+              <img src='https://res.cloudinary.com/dh8tpzykj/image/upload/v1582203695/avatar_empty_ghdihw.png' class="avatar-profile_large" />
+            <% end %>
+          </div>
+          <div class="card-profile-pseudo"><%= user.nick_name %></div>
+          <div class="card-profile-under-pseudo">ABOUT</div>
+          <div class="card-profile-about">
+              <h2>ABOUT</h2>
+              <%= user.description %>
+            </div>
+        </div>
+        <% end %>
+        <div class="card-profile">
+          <% @users.each do |utilisateur| %>
+            <%= utilisateur.first_name %>
           <% end %>
         </div>
-        <div class="card-profile-pseudo"><%= user.nick_name %></div>
-        <div class="card-profile-under-pseudo">ABOUT</div>
-        <div class="card-profile-about">
-            <h2>ABOUT</h2>
-            <%= user.description %>
-          </div>
-      </div>
-      <% end %>
-      <div class="card-profile">
-        <% @users.each do |utilisateur| %>
-          <%= utilisateur.first_name %>
-        <% end %>
-      </div>
-      <div class="card-profile">
-        <% @users.each do |utilisateur| %>
-          <%= utilisateur.first_name %>
-        <% end %>
-      </div>
-      <div class="card-profile">
-        <% @users.each do |utilisateur| %>
-          <%= utilisateur.first_name %>
-        <% end %>
+        <div class="card-profile">
+          <% @users.each do |utilisateur| %>
+            <%= utilisateur.first_name %>
+          <% end %>
+        </div>
+        <div class="card-profile">
+          <% @users.each do |utilisateur| %>
+            <%= utilisateur.first_name %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
