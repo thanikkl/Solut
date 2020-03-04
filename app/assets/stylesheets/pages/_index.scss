@@ -70,7 +70,7 @@
 }
 
 .event-right {
-  margin-top: 20px;
+  margin-right: 30px;
 }
 
 .event .event-header {
@@ -173,7 +173,7 @@ button:focus {
 }
 
 .instrument-card {
-  background: #6c63ff;
+  background: #534FC5;
   height: 68px;
   width: 150px;
   margin-top: 5px;
@@ -204,11 +204,26 @@ button:focus {
 }
 
 .event-musicians {
-    overflow-x: scroll;
-    overflow-y: hidden;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  margin-top: 25px;
 }
 
+p.margin-creator{
+  margin-top: 5px;
+}
 
+.event-tag {
+  background-color: #dcd6f7;
+  width: 100px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  p {
+    font-size: 11px;
+    text-align: center;
+  }
+}
 
-
-
+.event-top {
+  margin-top: 10px;
+}

@@ -11,7 +11,7 @@
       <div class="instrument-card <%= "creator-card" if user == event.user %>">
         <h3><strong><%= user.participation(event).instrument.name %></strong></h3>
         <p><%= user.nick_name %></p>
-        <p><%= "- creator -" if user == event.user %></p>
+        <p class="margin-creator"><em><%= "Creator" if user == event.user %></em></p>
       </div>
 
   <% end %>
