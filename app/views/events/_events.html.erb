@@ -5,36 +5,30 @@
 
   <% else %>
     <% @events.order(created_at: :desc).each do |event| %>
-      <div class="event d-flex flex-row justify-content-between">
-        <div class="event-left">
-          <div class="event-header">
-            <h3><%= event.title %> - <%= event.genre %></h3>
-            <p style="color: rgb(31, 70, 175)">Desired instruments: <strong><%= event.instruments_array.join(", ") %></strong></p>
-            <p style="color: grey"><em>Last updated: <%= event.updated_at.strftime('%a %d %b %Y - %H:%M') %></em></p>
+      <div class="event">
+        <p><small><%= event.event_type %></small></p>
+        <div class="d-flex flex-row justify-content-between">
+          <div class="event-left">
+            <div class="event-header">
+              <h3><%= event.genre %> - <%= event.title %></h3>
+              <p style="color: grey"><strong><%= event.location %></strong> - <em>Last updated: <%= event.updated_at.strftime('%a %d %b %Y - %H:%M') %></em></p>
+            </div>
           </div>
 
-          <div class="event-content d-flex">
-            <% if event.user.profile_picture.attached? %>
-              <%= cl_image_tag event.user.profile_picture.key, class: "avatar-large" %>
-              <%#= image_tag(event.user.profile_picture, class: "avatar-large") %>
-            <% else %>
-
-              <%#= image_tag(User::PROFILE_ARRAY.sample, class: "avatar-large") %>
-              <img src='https://res.cloudinary.com/dh8tpzykj/image/upload/v1582203695/avatar_empty_ghdihw.png' class="avatar-large" />
+          <div class="event-right">
+            <%= link_to event_path(event) do %>
+              <button class='event-action' id='contact-btn-small'>Details</button>
             <% end %>
-            <div>
-              <p><small><%= event.user.nick_name %></small></p>
-              <p><%= event.location %></p>
-            </div>
           </div>
         </div>
 
-        <div class="event-right">
-          <p><small>Capacity: <%= event.capacity %></small></p>
-          <p><small><%= event.event_type %></small></p>
-<!--           <button class="event-action" id="contact-btn-small"><%= link_to "Details", event_path(event) %></button>
- -->          <%= link_to event_path(event) do %>
-            <button class='event-action' id='contact-btn-small'>Details</button>
+        <div class="d-flex flex-row">
+          <% event.participants.each do |user| %>
+            <%= render 'user_card', user: user, event: event %>
+          <% end %>
+
+          <% event.instruments_array.each do |instrument| %>
+            <%= render 'user_card_vacant', instrument: instrument %>
           <% end %>
         </div>
       </div>
