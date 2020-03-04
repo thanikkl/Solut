@@ -7,21 +7,42 @@
   </div>
 
 <div class="show-container">
-  <div class="show-event d-flex flex-column">
-    <h3><%= @event.title %></h3>
+  <div class="show-event d-flex">
 
-    <div class="d-flex flex-row justify-content-between">
-      <div>
-        <p><strong>Event type:</strong> <%= @event.event_type %></p>
-        <p><strong>Genre:</strong> <%= @event.genre %></p>
+    <div class="event-details d-flex flex-column event-container">
+
+      <!-- <div class="d-flex flex-row justify-content-between"> -->
+      <div class="d-flex flex-column">
+
+        <div>
+          <h3><%= @event.title %></h3>
+        </div>
+        <div>
+          <p><strong>Event type:</strong> <%= @event.event_type %></p>
+          <p><strong>Genre:</strong> <%= @event.genre %></p>
+        </div>
+
+        <div>
+          <p><strong>Instruments needed:</strong></p>
+          <% @event.instruments_array.each do |instrument|  %>
+            <p><%= instrument %></p>
+          <% end %>
+        </div>
       </div>
 
-      <div>
-        <p><strong>Instruments needed:</strong></p>
-        <% @event.instruments_array.each do |instrument|  %>
-          <p><%= instrument %></p>
+      <div class="d-flex flex-row">
+        <% @event.participants.each do |user| %>
+          <%= render 'user_card', user: user, event: @event %>
         <% end %>
+        <% @event.places_left.times do %>
+        <div class="d-flex flex-column align-items-center mx-3">
+          <img src='https://res.cloudinary.com/dh8tpzykj/image/upload/v1582203695/avatar_empty_ghdihw.png' class="avatar-large" />
+          <p>Member</p>
+          <p>Instrument</p>
+        </div>
+      <% end %>
       </div>
+    </div>
 
       <div class="contact-form">
         <p><strong>Send request to join:</strong></p>
@@ -31,26 +52,17 @@
         <%= f.button :submit, "✉️ ASK TO JOIN", id: "profile-btn" %>
         <% end %>
       </div>
-    </div>
 
+    <!-- </div> -->
   </div>
 
-  <div class="show-event">
+<!--   <div class="show-event">
     <h3>Members of the group</h3>
     <div class="d-flex flex-row">
 
-      <% @event.participants.each do |user| %>
-        <%= render 'user_card', user: user, event: @event %>
-      <% end %>
-      <% @event.places_left.times do %>
-        <div class="d-flex flex-column align-items-center mx-3">
-        <img src='https://res.cloudinary.com/dh8tpzykj/image/upload/v1582203695/avatar_empty_ghdihw.png' class="avatar-large" />
-        <p>Member</p>
-        <p>Instrument</p>
-        </div>
-      <% end %>
+
     </div>
-  </div>
+  </div> -->
 
   <% if @event.user == current_user %>
     <div class="show-event">
