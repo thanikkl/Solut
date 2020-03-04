@@ -1,98 +1,98 @@
 <body style="background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 20%, rgba(0,0,0,0.4) 100%),url('https://images.unsplash.com/photo-1505190849153-43410d3c18f8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80'); background-size: cover; min-height: 100vh; opacity: 0.88;">
+  <div class="content-wrapper">
+    <div class="dashboard-container" >
 
-<div class="dashboard-container" >
+      <h3 class="my-bands">MY BANDS</h3>
+      <% @events.each do |event| %>
+        <div class="event d-flex flex-row justify-content-between" style="background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 20%, rgba(0,0,0,0.4) 100%),url('https://images.unsplash.com/photo-1526142684086-7ebd69df27a5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80'); background-size: cover; opacity: 0.88;">
 
-  <h3 class="my-bands">MY BANDS</h3>
-  <% @events.each do |event| %>
-    <div class="event d-flex flex-row justify-content-between" style="background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 20%, rgba(0,0,0,0.4) 100%),url('https://images.unsplash.com/photo-1526142684086-7ebd69df27a5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80'); background-size: cover; opacity: 0.88;">
+          <div class="bands-container">
 
-      <div class="bands-container">
+            <div class="event-header">
+              <h2 class="my-titles"><%= event.title %></h2>
+              <p class="desired-instruments">Desired instruments: <strong><%= event.instruments_array.join(", ") %></strong></p>
+            </div>
 
-        <div class="event-header">
-          <h2 class="my-titles"><%= event.title %></h2>
-          <p class="desired-instruments">Desired instruments: <strong><%= event.instruments_array.join(", ") %></strong></p>
-        </div>
+            <% event.contact_requests.each do |contact_request| %>
+              <div  class= "content-dashboard">
+                <div class= "content-request">
 
-        <% event.contact_requests.each do |contact_request| %>
-          <div  class= "content-dashboard">
-            <div class= "content-request">
+                  <div class="event-content d-flex">
+                    <% if contact_request.user.profile_picture.attached? %>
+                      <%= image_tag(contact_request.user.profile_picture, class: "avatar-large avatar-request") %>
+                    <% else %>
+                      <img src='https://res.cloudinary.com/dh8tpzykj/image/upload/v1582203695/avatar_empty_ghdihw.png' class="avatar-large avatar-request" />
+                    <% end %>
+                    <div>
+                      <p><small><%= contact_request.user.nick_name %></small></p>
+                      <p class="desired-instruments"><%= contact_request.instrument.name %></p>
+                    </div>
+                  </div>
 
-              <div class="event-content d-flex">
-                <% if contact_request.user.profile_picture.attached? %>
-                  <%= image_tag(contact_request.user.profile_picture, class: "avatar-large avatar-request") %>
-                <% else %>
-                  <img src='https://res.cloudinary.com/dh8tpzykj/image/upload/v1582203695/avatar_empty_ghdihw.png' class="avatar-large avatar-request" />
-                <% end %>
-                <div>
-                  <p><small><%= contact_request.user.nick_name %></small></p>
-                  <p class="desired-instruments"><%= contact_request.instrument.name %></p>
+                    <div id="anchor_<%= contact_request.id %>">
+                      <%= render "dashboard/contact_status", contact_request: contact_request %>
+                    </div>
+
                 </div>
               </div>
+            <% end %>
 
-                <div id="anchor_<%= contact_request.id %>">
-                  <%= render "dashboard/contact_status", contact_request: contact_request %>
-                </div>
 
+          </div>
+
+          <div class="bands-button">
+            <button class="event-action button-details"> <%= link_to "Details", event_path(event) %></button>
+          </div>
+
+        </div>
+      <% end %>
+
+
+      <h3 class="my-bands">MY CONTACT REQUESTS</h3>
+      <% @contact_requests.each do |request| %>
+        <div class="event d-flex flex-row justify-content-between" style="background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 20%, rgba(0,0,0,0.4) 100%),url('https://images.unsplash.com/photo-1526142684086-7ebd69df27a5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80'); background-size: cover; opacity: 0.88;">
+
+          <div class="event-left">
+            <div class="event-header">
+              <h3 class="my-titles"><%= request.event.title %> - <%= request.event.genre %></h3>
+              <p class="desired-instruments">Desired instruments: <strong><%= request.instrument.name %></strong></p>
+              <!-- <p style="color: grey"><em>Last updated: <%#= request.event.updated_at %></em></p> -->
+            </div>
+
+            <div class="event-content d-flex">
+              <% if request.event.user.profile_picture.attached? %>
+                <%= image_tag(request.event.user.profile_picture, class: "avatar-large") %>
+              <% else %>
+                <img src='https://res.cloudinary.com/dh8tpzykj/image/upload/v1582203695/avatar_empty_ghdihw.png' class="avatar-large" />
+              <% end %>
+              <div>
+                <p><small><%= request.event.user.nick_name %></small></p>
+                <p><%= request.event.location %></p>
+              </div>
             </div>
           </div>
-        <% end %>
 
-
-      </div>
-
-      <div class="bands-button">
-        <button class="event-action button-details"> <%= link_to "Details", event_path(event) %></button>
-      </div>
-
-    </div>
-  <% end %>
-
-
-  <h3 class="my-bands">MY CONTACT REQUESTS</h3>
-  <% @contact_requests.each do |request| %>
-    <div class="event d-flex flex-row justify-content-between" style="background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 20%, rgba(0,0,0,0.4) 100%),url('https://images.unsplash.com/photo-1526142684086-7ebd69df27a5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80'); background-size: cover; opacity: 0.88;">
-
-      <div class="event-left">
-        <div class="event-header">
-          <h3 class="my-titles"><%= request.event.title %> - <%= request.event.genre %></h3>
-          <p class="desired-instruments">Desired instruments: <strong><%= request.instrument.name %></strong></p>
-          <!-- <p style="color: grey"><em>Last updated: <%#= request.event.updated_at %></em></p> -->
-        </div>
-
-        <div class="event-content d-flex">
-          <% if request.event.user.profile_picture.attached? %>
-            <%= image_tag(request.event.user.profile_picture, class: "avatar-large") %>
-          <% else %>
-            <img src='https://res.cloudinary.com/dh8tpzykj/image/upload/v1582203695/avatar_empty_ghdihw.png' class="avatar-large" />
-          <% end %>
-          <div>
-            <p><small><%= request.event.user.nick_name %></small></p>
-            <p><%= request.event.location %></p>
+          <div class="event-right">
+            <% if request.status == 'Denied' %>
+              <button type="button" class="button-denied" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= request.status %>
+              </button>
+            <% elsif request.status == 'Accepted' %>
+              <button type="button" class="button-accepted" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= request.status %>
+              </button>
+            <% else %>
+              <button type="button" class="button-pending" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Pending
+              </button>
+            <% end %>
+            <button class="event-action" id="contact-btn-small"> <%= link_to "Details", event_path(request.event) %></button>
           </div>
         </div>
-      </div>
+      <% end %>
 
-      <div class="event-right">
-        <% if request.status == 'Denied' %>
-          <button type="button" class="button-denied" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= request.status %>
-          </button>
-        <% elsif request.status == 'Accepted' %>
-          <button type="button" class="button-accepted" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= request.status %>
-          </button>
-        <% else %>
-          <button type="button" class="button-pending" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Pending
-          </button>
-        <% end %>
-        <button class="event-action" id="contact-btn-small"> <%= link_to "Details", event_path(request.event) %></button>
-      </div>
-    </div>
-  <% end %>
-
-  <input type="hidden" value= <%= session[:_csrf_token] %> id="csrf_token">
-
+      <input type="hidden" value= <%= session[:_csrf_token] %> id="csrf_token">
+  </div>
 </body>
 <!--   <h3>Users' requests on my bands</h3>
   <%# @events.each do |event| %>
