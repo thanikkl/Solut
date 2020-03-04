@@ -22,7 +22,7 @@
           </div>
         </div>
 
-        <div class="d-flex flex-row">
+        <div class="event-musicians d-flex flex-row">
           <% event.participants.each do |user| %>
             <%= render 'user_card', user: user, event: event %>
           <% end %>
