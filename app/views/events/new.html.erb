@@ -7,7 +7,6 @@
             <%= f.input :genre, collection: Event::GENRE_ARRAY %>
             <%= f.input :title %>
             <%= f.input :location %>
-            <%= f.input :capacity, collection: 1..5 %>
             <%#= f.input :genre, collection: Event::GENRE_ARRAY %>
           </div>
           <div class="new-form2">
@@ -44,7 +43,6 @@
       <div class="new-form">
         <#%= simple_form_for(@event) do |f| %>
           <#%= f.input :title %>
-          <#%= f.input :capacity %>
           <#%= f.input :event_type, collection: Event::TYPE_EVENT_ARRAY %>
           <#%= f.input :genre, collection: Event::GENRE_ARRAY %>
           <#%= f.input :instruments_array, label: 'Instruments needed', collection: Event::EVENT_INSTRUMENTS_ARRAY, as: :check_boxes, input_html: { multiple: true } %> -->
