@@ -36,6 +36,9 @@ class EventsController < ApplicationController
     @message = Message.new
 
     @contact_requests = @event.contact_requests
+    unless @contact_requests.empty?
+      @last_message = @contact_requests.map { |request| request.messages }.flatten.sort_by(&:created_at).last
+    end
     @contact_request_accepted = @contact_requests.select { |s| s.status == "Accepted" }
   end
 
