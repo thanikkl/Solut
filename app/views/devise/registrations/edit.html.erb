@@ -36,33 +36,88 @@
           input_html: { autocomplete: "current-password" } %>
       </div>
       <div class="third-profile">
-        <!-- <div class="my-song">MY SONGS</div>
-        <div class="my-media">MY VIDEOS</div> -->
-        <div class="instrument-center">Add an instrument</div>
+        <div class="my-song">MY SONGS</div>
+        <div class="my-media">MY VIDEOS</div>
+<!--         <div class="instrument-center">ADD VIDEO OR SONG</div>
+          <div class="instrument-profile">
+            <div class="instrument-add">
+              <%#= label_tag :instruments %>
+              <%#= select_tag :instruments, options_from_collection_for_select(Instrument.all, "id", "name"), include_blank: true, class: 'input-select-tag-profile' %>
+            </div>
+          </div> -->
+        <!-- <div class="instrument-center">MY VIDEOS</div> -->
+       <!--  <div class="all-media">
+          <div class="instrument-text">
+            <#% if @user.user_media.count == 0 %>
+              <#%= "empty" %>
+              <#% else %>
+                <#% @user.user_media.each do |event| %>
+                <li>Event: <#%= user_media.title %> (<#%= user_media.music_genre %> / <#%= user_media.medium_type %>)</li>
+                <#% end %>
+            <#% end %>
+          </div>
+          <div class="instrument-text">Add a video</div>
+        </div>
+        <div class="instrument-center">MY SONGS</div>
+        <div class="all-media">
+          <div class="instrument-text">
+            <#% if @user.user_media.count == 0 %>
+              <#%= "empty" %>
+              <#% else %>
+                <#% @user.user_media.each do |event| %>
+                <li>Event: <%#= user_media.title %> (<#%= user_media.music_genre %> / <#%= user_media.medium_type %>)</li>
+                <#% end %>
+            <#% end %>
+          </div> -->
+<!--           <div class="instrument-text">Add a song</div>
+        </div> -->
+<!--         <div class="instrument-center">Add an instrument</div>
         <div class="instrument-profile">
           <%#= f.association :instruments, label_method: :name %>
           <div class="instrument-add">
-            <%= label_tag :instruments %>
-            <%= select_tag :instruments, options_from_collection_for_select(Instrument.all, "id", "name"), include_blank: true, class: 'input-select-tag-profile' %>
+            <%#= label_tag :instruments %>
+            <%#= select_tag :instruments, options_from_collection_for_select(Instrument.all, "id", "name"), include_blank: true, class: 'input-select-tag-profile' %>
           </div>
           <div class="instrument-user-add">
-            <%= label_tag :user_instruments %>
-            <%= select_tag :user_instruments, options_from_collection_for_select(Instrument.all, "id", "name"), include_blank: true, class: 'input-select-tag-profile' %>
+            <%#= label_tag :user_instruments %>
+            <%#= select_tag :user_instruments, options_from_collection_for_select(Instrument.all, "id", "name"), include_blank: true, class: 'input-select-tag-profile' %>
           </div>
-          <!-- <#%= f.association :proficiency, label_method: :proficiency %> -->
-        </div>
+        </div> -->
+        <div class="instrument-center">Add an instrument</div>
+          <div class="instrument-profile">
+            <!-- instrument -> instrument_id -->
+            <%= f.association :user_instruments do |ff| %>
+              <%= ff.input :instrument, collection: ["Guitare", "Drums", "Piano", "Bass", "Triangle", "Maracass", "French Horn", "Keyboard", "Bass guitar", "Clavichord", "Violin", "Viola", "Cello", "Flute", "Trumpet", "Saxophone", "Clarinet", "Singing", "Organ", "Euphonium"] %>
+              <!-- user_instruments -> proficiency -->
+              <%= ff.input :proficiency, collection: ['beginner', 'advanced', 'professional'] %>
+              <%#= f.association :instruments, label_method: :name  %>
+            <% end %>
+             <div class="instrument-add">
+              <%#= label_tag :instruments %>
+              <%#= select_tag :instruments, options_from_collection_for_select(Instrument.all, "id", "name"), include_blank: true, class: 'input-select-tag-profile' %>
+            </div>
+            <div class="instrument-user-add">
+              <%#= label_tag :proficiency %>
+              <%#= select_tag :proficiency, options_from_collection_for_select(['beginner', 'advanced', 'professional'], "id", "name"), include_blank: true, class: 'input-select-tag-profile' %>
+            </div>
+          </div>
         <div class="instrument-center">My instruments</div>
         <div class="instrument-profile">
           <div class="instrument-text">
-<!--             <#% @user_instruments.each do |instrument| %>
-              <#%= instrument %>
-            <#% end %> -->
-          Guitar (beginner) - delete
-          </div>
+              <%#= f.association :instruments %>
+              <% if @user.user_instruments.empty? %>
+                <%= "not renseigned" %>
+              <% else %>
+                <% @user.user_instruments.each do |instrument| %>
+                  <%= instrument.instrument.name %> - (<%= instrument.proficiency %>)
+                  <br />
+                <% end %>
+              <% end %>
+            </div>
         </div>
-        <div class="bottom-container">
-          <%= link_to "Delete my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'delete_btn' %> - <%= link_to "Back", :back, class: 'return_btn' %>
-        </div>
+<!--         <div class="bottom-container">
+          <%#= link_to "Delete my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'delete_btn' %> - <%= link_to "Back", :back, class: 'return_btn' %>
+        </div> -->
       </div>
     </div>
     <div class="btn-position-profile">
