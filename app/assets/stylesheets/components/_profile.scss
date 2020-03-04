@@ -125,7 +125,7 @@
 .my-song {
   width: 250px;
   padding: 15px 35px;
-  border: 2px solid white;
+  border: 1px solid #8c8c8c;
   color: white;
   font-size: 16px;
   text-align: center;
@@ -135,7 +135,16 @@
 .my-media {
   width: 250px;
   padding: 15px 35px;
-  border: 2px solid white;
+  border: 1px solid #8c8c8c;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.all-media {
+  width: 250px;
+  padding: 15px 35px;
+  border: 1px solid #8c8c8c;
   color: white;
   font-size: 16px;
   text-align: center;
