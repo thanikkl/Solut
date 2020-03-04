@@ -40,7 +40,7 @@
     <div class="d-flex flex-row">
 
       <% @event.participants.each do |user| %>
-        <%= render 'user_card', user: user, event: @event %>
+        <%= render 'events/user_card', user: user, event: @event %>
       <% end %>
       <% @event.places_left.times do %>
         <div class="d-flex flex-column align-items-center mx-3">
@@ -87,8 +87,8 @@
         <!-- Tab panes -->
         <div class="tab-content">
           <% @event.users.each do |user| %>
-            <div role="tabpanel" class="tab-pane" id="id-<%= user.id %>">
-              <% request = ContactRequest.find_by(user: user, event: @event) %>
+            <% request = ContactRequest.find_by(user: user, event: @event) %>
+            <div role="tabpanel" class="tab-pane <%= 'active' if @last_message.contact_request == request %>" id="id-<%= user.id %>">
               <% if request %>
                 <% messages = request.messages %>
                 <%= render 'events/chatroom', messages: messages, message: @message, request: request, creator: true %>
