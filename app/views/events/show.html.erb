@@ -1,119 +1,121 @@
 <div class="content-wrapper">
-  <div class="event-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1453090927415-5f45085b65c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1931&q=80);">
-    <div class="container text-center">
-      <%#= @event.user.first_name %>
-        <div id="my-event-name"><h1><%= @event.title %></h1></div>
+  <div style="margin-bottom: 32px">
+    <div class="event-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1453090927415-5f45085b65c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1931&q=80);">
+      <div class="container text-center">
+        <%#= @event.user.first_name %>
+          <div id="my-event-name"><h1><%= @event.title %></h1></div>
+      </div>
     </div>
-  </div>
 
-<div class="show-container">
-  <div class="show-event d-flex">
+  <div class="show-container">
+    <div class="show-event d-flex">
 
-    <div class="event-details d-flex flex-column event-container">
+      <div class="event-details d-flex flex-column event-container">
 
-      <!-- <div class="d-flex flex-row justify-content-between"> -->
-      <div class="d-flex flex-column">
+        <!-- <div class="d-flex flex-row justify-content-between"> -->
+        <div class="d-flex flex-column">
 
-        <div>
-          <h3><%= @event.title %></h3>
+          <div>
+            <h3><%= @event.title %></h3>
+          </div>
+          <div>
+            <p><strong>Event type:</strong> <%= @event.event_type %></p>
+            <p><strong>Genre:</strong> <%= @event.genre %></p>
+          </div>
+
+          <div>
+            <p><strong>Instruments needed:</strong></p>
+            <% @event.instruments_array.each do |instrument|  %>
+              <p><%= instrument %></p>
+            <% end %>
+          </div>
         </div>
-        <div>
-          <p><strong>Event type:</strong> <%= @event.event_type %></p>
-          <p><strong>Genre:</strong> <%= @event.genre %></p>
-        </div>
 
-        <div>
-          <p><strong>Instruments needed:</strong></p>
-          <% @event.instruments_array.each do |instrument|  %>
-            <p><%= instrument %></p>
+        <div class="d-flex flex-row">
+          <% @event.participants.each do |user| %>
+            <%= render 'user_card', user: user, event: @event %>
           <% end %>
+          <% @event.places_left.times do %>
+          <div class="d-flex flex-column align-items-center mx-3">
+            <img src='https://res.cloudinary.com/dh8tpzykj/image/upload/v1582203695/avatar_empty_ghdihw.png' class="avatar-large" />
+            <p>Member</p>
+            <p>Instrument</p>
+          </div>
+        <% end %>
         </div>
       </div>
 
+        <div class="contact-form">
+          <p><strong>Send request to join:</strong></p>
+          <%= simple_form_for([@event, @new_contact_request]) do |f| %>
+          <%= f.association :instrument, collection: @event.available_instruments , label: "You play:", required: false %>
+          <%= f.button :submit, "✉️ ASK TO JOIN", id: "profile-btn" %>
+          <% end %>
+        </div>
+
+      <!-- </div> -->
+    </div>
+
+  <!--   <div class="show-event">
+      <h3>Members of the group</h3>
       <div class="d-flex flex-row">
-        <% @event.participants.each do |user| %>
-          <%= render 'user_card', user: user, event: @event %>
-        <% end %>
-        <% @event.places_left.times do %>
-        <div class="d-flex flex-column align-items-center mx-3">
-          <img src='https://res.cloudinary.com/dh8tpzykj/image/upload/v1582203695/avatar_empty_ghdihw.png' class="avatar-large" />
-          <p>Member</p>
-          <p>Instrument</p>
+      </div>
+    </div> -->
+
+    <% if @event.user == current_user %>
+      <div class="show-event">
+        <h3>Candidates</h3>
+
+        <div>
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs" role="tablist">
+
+            <% @event.users.where.not(id: @event.user).each do |user| %>
+              <li role="presentation" class="">
+                <a href="#id-<%= user.id %>" aria-controls="home" role="tab" data-toggle="tab">
+                  <div class="d-flex flex-column align-items-center m-2">
+                    <div>
+                      <% if user.profile_picture.attached? %>
+                        <%= cl_image_tag user.profile_picture.key, class: "avatar-small" %>
+                      <% else %>
+                        <img src='https://res.cloudinary.com/dh8tpzykj/image/upload/v1582203695/avatar_empty_ghdihw.png' class="avatar-small" />
+                      <% end %>
+                    </div>
+                    <div>
+                      <p style="color: grey"><small><%= user.nick_name %></small></p>
+                    </div>
+                    <div>
+                      <!-- <p><small><%= user.contact_requests.find_by(event: @event).instrument.name %></small></p> -->
+                    </div>
+                  </div>
+                </a>
+              </li>
+            <% end %>
+          </ul>
+
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <% @event.users.each do |user| %>
+              <% request = ContactRequest.find_by(user: user, event: @event) %>
+              <div role="tabpanel" class="tab-pane <%= 'active' if @last_message&.contact_request == request %>" id="id-<%= user.id %>">
+                <% if request %>
+                  <% messages = request.messages %>
+                  <%= render 'events/chatroom', messages: messages, message: @message, request: request, creator: true %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
         </div>
+      </div>
+
+    <% else %>
+      <% request = ContactRequest.find_by(user: current_user, event: @event) %>
+      <% if request %>
+        <% messages = request.messages %>
+        <%= render 'events/chatroom', messages: messages, message: @message, request: request, event: @event, creator: false  %>
       <% end %>
-      </div>
-    </div>
-
-      <div class="contact-form">
-        <p><strong>Send request to join:</strong></p>
-        <%= simple_form_for([@event, @new_contact_request]) do |f| %>
-        <%= f.association :instrument, collection: @event.available_instruments , label: "You play:", required: false %>
-        <%= f.button :submit, "✉️ ASK TO JOIN", id: "profile-btn" %>
-        <% end %>
-      </div>
-
-    <!-- </div> -->
-  </div>
-
-<!--   <div class="show-event">
-    <h3>Members of the group</h3>
-    <div class="d-flex flex-row">
-    </div>
-  </div> -->
-
-  <% if @event.user == current_user %>
-    <div class="show-event">
-      <h3>Candidates</h3>
-
-      <div>
-        <!-- Nav tabs -->
-        <ul class="nav nav-tabs" role="tablist">
-
-          <% @event.users.where.not(id: @event.user).each do |user| %>
-            <li role="presentation" class="">
-              <a href="#id-<%= user.id %>" aria-controls="home" role="tab" data-toggle="tab">
-                <div class="d-flex flex-column align-items-center m-2">
-                  <div>
-                    <% if user.profile_picture.attached? %>
-                      <%= cl_image_tag user.profile_picture.key, class: "avatar-small" %>
-                    <% else %>
-                      <img src='https://res.cloudinary.com/dh8tpzykj/image/upload/v1582203695/avatar_empty_ghdihw.png' class="avatar-small" />
-                    <% end %>
-                  </div>
-                  <div>
-                    <p style="color: grey"><small><%= user.nick_name %></small></p>
-                  </div>
-                  <div>
-                    <!-- <p><small><%= user.contact_requests.find_by(event: @event).instrument.name %></small></p> -->
-                  </div>
-                </div>
-              </a>
-            </li>
-          <% end %>
-        </ul>
-
-        <!-- Tab panes -->
-        <div class="tab-content">
-          <% @event.users.each do |user| %>
-            <% request = ContactRequest.find_by(user: user, event: @event) %>
-            <div role="tabpanel" class="tab-pane <%= 'active' if @last_message&.contact_request == request %>" id="id-<%= user.id %>">
-              <% if request %>
-                <% messages = request.messages %>
-                <%= render 'events/chatroom', messages: messages, message: @message, request: request, creator: true %>
-              <% end %>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
-
-  <% else %>
-    <% request = ContactRequest.find_by(user: current_user, event: @event) %>
-    <% if request %>
-      <% messages = request.messages %>
-      <%= render 'events/chatroom', messages: messages, message: @message, request: request, event: @event, creator: false  %>
     <% end %>
-  <% end %>
+  </div>
 </div>
 
 
