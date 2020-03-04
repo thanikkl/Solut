@@ -49,6 +49,7 @@
           <p><strong>Send request to join:</strong></p>
           <%= simple_form_for([@event, @new_contact_request]) do |f| %>
           <%= f.association :instrument, collection: @event.available_instruments , label: "You play:", required: false %>
+          <textarea rows="3" cols="23" label="Message" name="message" id="contact_request_message" placeholder="Your message"></textarea>
           <%= f.button :submit, "✉️ ASK TO JOIN", id: "profile-btn" %>
           <% end %>
         </div>
@@ -56,12 +57,9 @@
       <!-- </div> -->
     </div>
 
-        <%= f.association :instrument, collection: @event.instruments_array, label: "You play:", required: false %>
-        <textarea rows="3" cols="23" label="Message" name="message" id="contact_request_message" placeholder="Your message"></textarea>
-
-        <%= f.button :submit, "✉️ ASK TO JOIN", id: "profile-btn" %>
-        <% end %>
-
+  <!--   <div class="show-event">
+      <h3>Members of the group</h3>
+      <div class="d-flex flex-row">
       </div>
     </div> -->
 
@@ -120,13 +118,3 @@
     <% end %>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
