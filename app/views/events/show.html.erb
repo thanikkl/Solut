@@ -59,9 +59,8 @@
       <div>
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
-          <% @event.users.each do |user| %>
-            <% next if user == current_user %>
 
+          <% @event.users.where.not(id: @event.user).each do |user| %>
             <li role="presentation" class="">
               <a href="#id-<%= user.id %>" aria-controls="home" role="tab" data-toggle="tab">
                 <div class="d-flex flex-column align-items-center m-2">
