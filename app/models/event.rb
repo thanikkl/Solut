@@ -76,7 +76,11 @@ class Event < ApplicationRecord
   end
 
   def places_left
-    (self.capacity - participants.count)
+    (self.instruments_array.count - participants.count) + 1
+  end
+
+  def available_instruments
+    self.instruments_array - self.contact_requests.where(status: 'Accepted').map { |request| request.instrument.name }
   end
 
 end

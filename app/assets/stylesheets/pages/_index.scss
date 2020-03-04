@@ -1,6 +1,18 @@
 // Import page-specific CSS files here.
 @import "home";
 
+
+.title-events {
+  width: 300px;
+  text-align: center;
+  //border: 2px solid white;
+  //padding: 30px 10px;
+  color: white;
+  margin-bottom: 20px;
+  margin-top: 100px;
+  margin-left: 30px;
+}
+
 .fixed-offset {
   top: 56px;
 }
@@ -20,22 +32,24 @@
 
 .event-background {
   background-color: #100c18;
-  margin-bottom: 40px;
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1501612780327-45045538702b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 .form-control {
-  background-color: black;
+  background-color: transparent;
   margin: 10px;
   width: 180px;
 }
 
 .event-container h3 {
   color: grey;
-  padding-top: 15px;
+  font-size: 20px;
+  margin-bottom: 0;
 }
 
 .event {
-  display: flex;
   align-items: left;
   margin-top: 16px;
   background: white;
@@ -43,6 +57,7 @@
   border: 1px solid rgb(235,235,235);
   padding-bottom: 15px;
   border-radius: 15px;
+  opacity: 0.9;
 }
 
 .events {
@@ -55,13 +70,13 @@
 }
 
 .event-right {
-  margin-top: 20px;
+  margin-right: 30px;
 }
 
 .event .event-header {
   flex-grow: 1;
   padding: 0 24px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   margin-top: 5px;
 }
 
@@ -72,6 +87,7 @@
 .event p {
   margin: 0;
   line-height: 1.4;
+  font-size: 15px;
 }
 
 .event small {
@@ -101,6 +117,7 @@
   height: 80px;
   background-color: white;
   border-bottom: 1px grey solid;
+  z-index: 100;
 }
 
 
@@ -115,7 +132,6 @@
   border-radius: 0;
   max-width: 100%;
   padding: 4px 0 4px 2px;
-
 }
 
 #search_icon {
@@ -144,22 +160,70 @@ button:focus {
   padding: 0;
 }
 
-
 .form-control:focus {
   background-color: transparent;
   box-shadow: none;
 }
 
+.event-avatar {
+  position: relative;
+  left: 20px;
+  top: 15px;
+  z-index: 5;
+}
 
+.instrument-card {
+  background: #534FC5;
+  height: 68px;
+  width: 150px;
+  margin-top: 5px;
+  padding-top: 5px;
+  padding-left: 30px;
+  border: 1px solid rgb(235,235,235);
+  border-radius: 15px;
+  opacity: 0.9;
+}
 
+.instrument-card h3 {
+  color: white;
+  font-size: 15px;
+  padding-top: 0;
+}
 
+.instrument-card p {
+  color: white;
+  font-size: 12px;
+}
 
+.vacant-card {
+  background: rgb(160, 160, 160);
+}
 
+.creator-card {
+  background: #1d2365;
+}
 
+.event-musicians {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  margin-top: 25px;
+}
 
+p.margin-creator{
+  margin-top: 5px;
+}
 
+.event-tag {
+  background-color: #dcd6f7;
+  width: 100px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  p {
+    font-size: 11px;
+    text-align: center;
+  }
+}
 
-
-
-
-
+.event-top {
+  margin-top: 10px;
+}

@@ -4,18 +4,16 @@
         <%= simple_form_for @event, html: { class: "new-event-content1" } do |f| %>
           <div class="new-form1">
             <%= f.input :event_type, collection: Event::TYPE_EVENT_ARRAY %>
+            <%= f.input :genre, collection: Event::GENRE_ARRAY %>
             <%= f.input :title %>
             <%= f.input :location %>
-            <%= f.input :capacity %>
-
-            <%= simple_fields_for :my_instrument do |x| %>
-              <%= x.input :choice, collection: Event::EVENT_INSTRUMENTS_ARRAY1 %>
-            <% end %>
             <%#= f.input :genre, collection: Event::GENRE_ARRAY %>
           </div>
           <div class="new-form2">
             <%#= f.input :event_type, collection: Event::TYPE_EVENT_ARRAY %>
-            <%= f.input :genre, collection: Event::GENRE_ARRAY %>
+            <%= simple_fields_for :my_instrument do |x| %>
+              <%= x.input :choice, label: "MY INSTRUMENT CHOICE", collection: Event::EVENT_INSTRUMENTS_ARRAY %>
+            <% end %>
             <div class="new-form3">
               <div class="new-form3-title">INSTRUMENT NEEDED</div>
               <div class="new-form4">
@@ -45,7 +43,6 @@
       <div class="new-form">
         <#%= simple_form_for(@event) do |f| %>
           <#%= f.input :title %>
-          <#%= f.input :capacity %>
           <#%= f.input :event_type, collection: Event::TYPE_EVENT_ARRAY %>
           <#%= f.input :genre, collection: Event::GENRE_ARRAY %>
           <#%= f.input :instruments_array, label: 'Instruments needed', collection: Event::EVENT_INSTRUMENTS_ARRAY, as: :check_boxes, input_html: { multiple: true } %> -->

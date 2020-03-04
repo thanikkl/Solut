@@ -1,17 +1,18 @@
-<div class="d-flex flex-column align-items-center mx-3">
+<div class="d-flex flex-row align-items-center mx-2">
   <% if user.id %>
-    <div>
+    <div class="event-avatar">
       <% if user.profile_picture.attached? %>
-        <%= image_tag(user.profile_picture, class: "avatar-large") %>
+        <%= image_tag(user.profile_picture, class: "avatar-medium") %>
       <% else %>
-        <%= image_tag(User::PROFILE_ARRAY.sample, class: "avatar-large") %>
+        <%= image_tag(User::PROFILE_ARRAY.sample, class: "avatar-medium") %>
       <% end %>
     </div>
-    <div class="d-flex flex-column align-items-center">
-      <p><%= user.nick_name %></p>
-      <%# if event.user != user %>
-        <p><%= user.participation(event).instrument.name %></p>
-      <%# end %>
-    </div>
+
+      <div class="instrument-card <%= "creator-card" if user == event.user %>">
+        <h3><strong><%= user.participation(event).instrument.name %></strong></h3>
+        <p><%= user.nick_name %></p>
+        <p class="margin-creator"><em><%= "Creator" if user == event.user %></em></p>
+      </div>
+
   <% end %>
 </div>
