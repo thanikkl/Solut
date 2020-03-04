@@ -47,8 +47,7 @@
       <div class="contact-form">
         <p><strong>Send request to join:</strong></p>
         <%= simple_form_for([@event, @new_contact_request]) do |f| %>
-
-        <%= f.association :instrument, collection: @event.instruments_array, label: "You play:", required: false %>
+        <%= f.association :instrument, collection: @event.available_instruments , label: "You play:", required: false %>
         <%= f.button :submit, "✉️ ASK TO JOIN", id: "profile-btn" %>
         <% end %>
       </div>
@@ -59,8 +58,6 @@
 <!--   <div class="show-event">
     <h3>Members of the group</h3>
     <div class="d-flex flex-row">
-
-
     </div>
   </div> -->
 
@@ -98,8 +95,8 @@
         <!-- Tab panes -->
         <div class="tab-content">
           <% @event.users.each do |user| %>
-            <div role="tabpanel" class="tab-pane" id="id-<%= user.id %>">
-              <% request = ContactRequest.find_by(user: user, event: @event) %>
+            <% request = ContactRequest.find_by(user: user, event: @event) %>
+            <div role="tabpanel" class="tab-pane <%= 'active' if @last_message&.contact_request == request %>" id="id-<%= user.id %>">
               <% if request %>
                 <% messages = request.messages %>
                 <%= render 'events/chatroom', messages: messages, message: @message, request: request, creator: true %>
