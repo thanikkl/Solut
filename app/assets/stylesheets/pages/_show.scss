@@ -17,7 +17,7 @@
 }
 
 .contact-container {
-  flex-basis: 100px;
+  margin-top: 10px;
 }
 
 .show-event {
@@ -25,9 +25,15 @@
   margin-top: 16px;
   background: white;
   padding: 8px 16px;
-  border: 1px solid rgb(235,235,235);
+  // border: 1px solid rgb(235,235,235);
   padding-bottom: 15px;
   border-radius: 15px;
+
+
+
+  border: 1px solid #ebebeb;
+
+  opacity: 0.9;
 }
 
 .chatroom {

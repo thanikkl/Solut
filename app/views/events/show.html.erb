@@ -1,11 +1,11 @@
 <div class="content-wrapper">
-  <div style="margin-bottom: 32px">
-    <div class="event-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1453090927415-5f45085b65c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1931&q=80);">
-      <div class="container text-center">
+  <div class="event-back" style="margin-bottom: 32px">
+  <!--   <div class="event-banner">
+      <div class="container text-center"> -->
         <%#= @event.user.first_name %>
-          <div id="my-event-name"><h1><%= @event.title %></h1></div>
-      </div>
-    </div>
+          <!-- <div id="my-event-name"><h1><%#= @event.title %></h1></div> -->
+<!--       </div>
+    </div> -->
 
   <div class="show-container">
     <div class="show-event d-flex">
@@ -38,14 +38,14 @@
           <% @event.places_left.times do %>
           <div class="d-flex flex-column align-items-center mx-3">
             <img src='https://res.cloudinary.com/dh8tpzykj/image/upload/v1582203695/avatar_empty_ghdihw.png' class="avatar-large" />
-            <p>Member</p>
+            <p>Vaccant</p>
             <p>Instrument</p>
           </div>
         <% end %>
         </div>
       </div>
 
-        <div class="contact-form">
+        <div class="contact-form contact-container">
           <p><strong>Send request to join:</strong></p>
           <%= simple_form_for([@event, @new_contact_request]) do |f| %>
           <%= f.association :instrument, collection: @event.available_instruments , label: "You play:", required: false %>
@@ -118,3 +118,4 @@
     <% end %>
   </div>
 </div>
+
