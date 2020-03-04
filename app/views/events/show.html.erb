@@ -7,50 +7,59 @@
   </div>
 
 <div class="show-container">
-  <div class="show-event d-flex flex-column">
-    <h3><%= @event.title %></h3>
+  <div class="show-event d-flex">
 
-    <div class="d-flex flex-row justify-content-between">
-      <div>
-        <p><strong>Event type:</strong> <%= @event.event_type %></p>
-        <p><strong>Genre:</strong> <%= @event.genre %></p>
+    <div class="event-details d-flex flex-column event-container">
+
+      <!-- <div class="d-flex flex-row justify-content-between"> -->
+      <div class="d-flex flex-column">
+
+        <div>
+          <h3><%= @event.title %></h3>
+        </div>
+        <div>
+          <p><strong>Event type:</strong> <%= @event.event_type %></p>
+          <p><strong>Genre:</strong> <%= @event.genre %></p>
+        </div>
+
+        <div>
+          <p><strong>Instruments needed:</strong></p>
+          <% @event.instruments_array.each do |instrument|  %>
+            <p><%= instrument %></p>
+          <% end %>
+        </div>
       </div>
 
-      <div>
-        <p><strong>Instruments needed:</strong></p>
-        <% @event.instruments_array.each do |instrument|  %>
-          <p><%= instrument %></p>
+      <div class="d-flex flex-row">
+        <% @event.participants.each do |user| %>
+          <%= render 'user_card', user: user, event: @event %>
         <% end %>
+        <% @event.places_left.times do %>
+        <div class="d-flex flex-column align-items-center mx-3">
+          <img src='https://res.cloudinary.com/dh8tpzykj/image/upload/v1582203695/avatar_empty_ghdihw.png' class="avatar-large" />
+          <p>Member</p>
+          <p>Instrument</p>
+        </div>
+      <% end %>
       </div>
+    </div>
 
       <div class="contact-form">
         <p><strong>Send request to join:</strong></p>
         <%= simple_form_for([@event, @new_contact_request]) do |f| %>
-
-        <%= f.association :instrument, collection: @event.instruments_array, label: "You play:", required: false %>
+        <%= f.association :instrument, collection: @event.available_instruments , label: "You play:", required: false %>
         <%= f.button :submit, "✉️ ASK TO JOIN", id: "profile-btn" %>
         <% end %>
       </div>
-    </div>
 
+    <!-- </div> -->
   </div>
 
-  <div class="show-event">
+<!--   <div class="show-event">
     <h3>Members of the group</h3>
     <div class="d-flex flex-row">
-
-      <% @event.participants.each do |user| %>
-        <%= render 'events/user_card', user: user, event: @event %>
-      <% end %>
-      <% @event.places_left.times do %>
-        <div class="d-flex flex-column align-items-center mx-3">
-        <img src='https://res.cloudinary.com/dh8tpzykj/image/upload/v1582203695/avatar_empty_ghdihw.png' class="avatar-large" />
-        <p>Member</p>
-        <p>Instrument</p>
-        </div>
-      <% end %>
     </div>
-  </div>
+  </div> -->
 
   <% if @event.user == current_user %>
     <div class="show-event">
@@ -59,9 +68,8 @@
       <div>
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
-          <% @event.users.each do |user| %>
-            <% next if user == current_user %>
 
+          <% @event.users.where.not(id: @event.user).each do |user| %>
             <li role="presentation" class="">
               <a href="#id-<%= user.id %>" aria-controls="home" role="tab" data-toggle="tab">
                 <div class="d-flex flex-column align-items-center m-2">
@@ -88,7 +96,7 @@
         <div class="tab-content">
           <% @event.users.each do |user| %>
             <% request = ContactRequest.find_by(user: user, event: @event) %>
-            <div role="tabpanel" class="tab-pane <%= 'active' if @last_message.contact_request == request %>" id="id-<%= user.id %>">
+            <div role="tabpanel" class="tab-pane <%= 'active' if @last_message&.contact_request == request %>" id="id-<%= user.id %>">
               <% if request %>
                 <% messages = request.messages %>
                 <%= render 'events/chatroom', messages: messages, message: @message, request: request, creator: true %>

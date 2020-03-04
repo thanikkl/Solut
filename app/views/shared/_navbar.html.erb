@@ -4,7 +4,8 @@
       <span class="nav-item">
         <%= link_to "#", class: "nav-link button", id: "menuButton" do %>
           <i class="fas fa-bars"></i>
-          <a href=""><img src="https://res.cloudinary.com/dh8tpzykj/image/upload/v1583252293/solut_logo_byzsri.png" alt="SOL'UT logo" width="155px"></a>
+          <%= link_to "#{image_tag("https://res.cloudinary.com/dh8tpzykj/image/upload/v1583315557/solut_logo_final_ddcoen.png")}".html_safe, events_path %>
+          <!--<a href="#"><img src="https://res.cloudinary.com/dh8tpzykj/image/upload/v1583252293/solut_logo_byzsri.png" alt="SOL'UT logo" width="155px"></a>-->
           <!-- <span id="span-solut"><strong>SOL'UT</strong></span> -->
         <% end %>
       </span>

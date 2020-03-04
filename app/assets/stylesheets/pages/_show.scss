@@ -12,6 +12,14 @@
   padding-top: 15px;
 }
 
+.event-container {
+  flex-grow: 1;
+}
+
+.contact-container {
+  flex-basis: 100px;
+}
+
 .show-event {
   align-items: left;
   margin-top: 16px;
