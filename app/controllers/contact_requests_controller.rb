@@ -24,8 +24,10 @@ class ContactRequestsController < ApplicationController
     @messages = @contact_request ? @contact_request.messages : []
     @message = Message.new
     authorize @new_contact_request
-
     if @new_contact_request.save
+      if params[:message].present?
+        Message.create(content: params[:message], user: current_user, contact_request_id: @new_contact_request.id)
+      end
       redirect_to dashboard_path
     else
       render 'events/show'

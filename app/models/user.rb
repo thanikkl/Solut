@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_many :contact_requests, dependent: :destroy
   has_one_attached :profile_picture
 
+  validates :nick_name, presence: true, uniqueness: true
+
   PROFILE_ARRAY =
       [
       "https://res.cloudinary.com/dh8tpzykj/image/upload/v1582295056/gbt7jg0gvydget8frma683dkbs4p.png",
