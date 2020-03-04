@@ -6,12 +6,14 @@
   <% else %>
     <% @events.order(created_at: :desc).each do |event| %>
       <div class="event">
-        <p><small><%= event.event_type %></small></p>
-        <div class="d-flex flex-row justify-content-between">
+        <div class="event-top d-flex flex-row justify-content-between">
           <div class="event-left">
             <div class="event-header">
               <h3><%= event.genre %> - <%= event.title %></h3>
-              <p style="color: grey"><strong><%= event.location %></strong> - <em>Last updated: <%= event.updated_at.strftime('%a %d %b %Y - %H:%M') %></em></p>
+              <div class="event-tag">
+                <p><strong><%= event.event_type %></strong></p>
+              </div>
+              <p style="color: grey"><i class="fas fa-map-marker-alt"></i> <%= event.location %></p>
             </div>
           </div>
 
