@@ -194,7 +194,7 @@ url_array = [
 puts 'Creating a user faker...'
 40.times do
   pseudo_one = pseudo_array.sample
-  number_rand = rand(0..99)
+  number_rand = rand(0..999)
   pseudo = "#{pseudo_one}#{number_rand}"
   address = addresses.sample
   genre_pref = Event::GENRE_ARRAY.sample
@@ -252,7 +252,7 @@ number_of_users.times do
   event = Event.new(
     date: Faker::Date.forward(days: 30),
     location: address,
-    title: ["Looking for people to practice ", "Looking for people to play "].sample + song,
+    title: ["Looking to practice ", "Looking to play ", "", ""].sample + song,
     event_type: event_type,
     duration: rand(1..15),
     genre: genre_pref,
