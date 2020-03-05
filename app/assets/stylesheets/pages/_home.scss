@@ -78,13 +78,6 @@ p {
 
 #home-parallax{
   .parallax {
-    /* The image used */
-    // background-image: url("img_parallax.jpg");
-
-    /* Set a specific height */
-    // height: 500px;
-
-    /* Create the parallax scrolling effect */
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -181,8 +174,6 @@ p {
   .wrapper-user-story > div {
     padding-top: 2rem;
     padding-bottom: 1rem;
-    // border-top: 1px solid;
-    // border-bottom: 1px solid;
     position: relative;
     top: 15px;
   }
@@ -208,11 +199,17 @@ p {
   flex-direction: rows;
 }
 
+.steps-width {
+  width: 300px;
+}
 
+.homepage-steps p {
+  color: #777;
+}
 
-
-
-
+.homepage-steps h3 {
+  color: #777;
+}
 
 
 
