@@ -114,3 +114,20 @@
   display: flex;
   flex-direction: column;
 }
+
+
+.contact-request {
+  .event-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  button.status {
+    margin: 0 !important;
+  }
+  button.event-action {
+    margin-top: 10px !important;
+    margin-bottom: 0 !important;
+  }
+}
