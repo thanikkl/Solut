@@ -18,6 +18,7 @@ const Turbolinks = require("turbolinks")
 Turbolinks.start()
 
 document.addEventListener('turbolinks:load', () => {
+
   const ids = document.querySelectorAll('#events-index, #events-new, #dashboard-show, #events-show, #registrations-edit');
   if(ids.length >= 1){
     initNavbarMenu();
