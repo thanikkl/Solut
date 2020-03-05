@@ -50,7 +50,7 @@
                   <% else %>
                     <% @user.user_media.each do |element| %>
                       <% if element.medium_type == "song" %>
-                        <li><%= element.title %></li>
+                        <%= link_to element.title.html_safe, element.url, target: "_blank", class: "link-media" %>
                       <% end %>
                     <% end %>
                 <% end %>
