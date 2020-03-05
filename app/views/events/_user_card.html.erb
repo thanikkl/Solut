@@ -4,7 +4,7 @@
       <% if user.profile_picture.attached? %>
         <%= image_tag(user.profile_picture, class: "avatar-medium") %>
       <% else %>
-        <%= image_tag(User::PROFILE_ARRAY.sample, class: "avatar-medium") %>
+        <img src='https://res.cloudinary.com/dh8tpzykj/image/upload/v1582203695/avatar_empty_ghdihw.png' class="avatar-medium" />
       <% end %>
     </div>
 

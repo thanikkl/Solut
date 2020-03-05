@@ -210,6 +210,19 @@ button:focus {
   margin-top: 25px;
 }
 
+#events-show .event-musicians {
+    overflow-x: auto;
+    overflow-y: auto;
+    width: 100%;
+    flex-wrap: wrap;
+    margin-top: 0;
+    margin-bottom: 20px;
+
+    > .d-flex {
+      margin-top: 20px;
+    }
+}
+
 p.margin-creator{
   margin-top: 5px;
 }
@@ -227,4 +240,5 @@ p.margin-creator{
 
 .event-top {
   margin-top: 10px;
+  margin-right: 10px;
 }

@@ -194,7 +194,7 @@ url_array = [
 puts 'Creating a user faker...'
 40.times do
   pseudo_one = pseudo_array.sample
-  number_rand = rand(0..99)
+  number_rand = rand(0..999)
   pseudo = "#{pseudo_one}#{number_rand}"
   address = addresses.sample
   genre_pref = Event::GENRE_ARRAY.sample
