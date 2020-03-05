@@ -26,9 +26,9 @@ document.addEventListener('turbolinks:load', () => {
   if(document.getElementById('dashboard-show')){
     requestStatus();
   }
-  // if(document.getElementById('')){
-  //   initSweetalert();
-  // }
+  if(document.getElementById('contact-btn')){
+    initSweetalert();
+  }
 
     // Do your stuff!
 })
