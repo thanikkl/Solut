@@ -70,6 +70,22 @@
   padding: 0 24px;
 }
 
+.message-container {
+  max-width: 80%;
+  &.message-right {
+    justify-content: flex-start;
+    margin-left: auto;
+    flex-direction: row-reverse !important;
+    img {
+      margin-right: 0;
+      margin-left: 10px;
+    }
+    div:last-child {
+      text-align: right;
+    }
+  }
+}
+
 .event-right {
   margin-right: 30px;
 }
@@ -223,6 +239,10 @@ p.margin-creator{
     font-size: 11px;
     text-align: center;
   }
+}
+
+.event-content {
+  margin-bottom: 10px;
 }
 
 .event-top {
