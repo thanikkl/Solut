@@ -52,7 +52,7 @@
 
         <h2 class="my-bands">MY CONTACT REQUESTS</h3>
         <p style="color: grey"><%= "No contact requests sent at this point." if @contact_requests.size < 1 %></p>
-        <% @contact_requests.each do |request| %>
+        <% @contact_requests.order(created_at: :desc).each do |request| %>
           <div class="event d-flex flex-row justify-content-between contact-request">
 
             <div class="event-left">
