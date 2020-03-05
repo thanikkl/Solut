@@ -5,17 +5,19 @@
       <h3>Send a message to <%= event.user.nick_name %></h3>
     <% end %>
     <% messages.each do |message| %>
-      <div class="event-content d-flex flex-row" id="<%= message.id %>">
-        <div>
-          <% if message.user.profile_picture.attached? %>
-            <%= cl_image_tag message.user.profile_picture.key, class: "avatar-small" %>
-          <% else %>
-            <img src='https://res.cloudinary.com/dh8tpzykj/image/upload/v1582203695/avatar_empty_ghdihw.png' class="avatar-small" />
-          <% end %>
-        </div>
-        <div>
-          <p style="color: grey"><small><%= message.user.nick_name %></small></p>
-          <%= message.content %>
+      <div class="event-content " id="<%= message.id %>">
+        <div class="message-container d-flex flex-row <%= "message-right" if message.user == current_user %>">
+          <div>
+            <% if message.user.profile_picture.attached? %>
+              <%= cl_image_tag message.user.profile_picture.key, class: "avatar-small" %>
+            <% else %>
+              <img src='https://res.cloudinary.com/dh8tpzykj/image/upload/v1582203695/avatar_empty_ghdihw.png' class="avatar-small" />
+            <% end %>
+          </div>
+          <div>
+            <p style="color: grey"><small><%= message.user.nick_name %></small></p>
+            <%= message.content %>
+          </div>
         </div>
       </div>
     <% end %>
