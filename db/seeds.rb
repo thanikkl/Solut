@@ -194,6 +194,7 @@ url_array = [
 puts 'Creating a user faker...'
 40.times do
   pseudo_one = pseudo_array.sample
+  pseudo_one = pseudo_one.truncate(10)
   number_rand = rand(0..999)
   pseudo = "#{pseudo_one}#{number_rand}"
   address = addresses.sample
@@ -207,7 +208,7 @@ puts 'Creating a user faker...'
       age: user_age,
       nick_name: pseudo,
       address: address,
-      password: 'solutsolut',
+      password: '123456',
       # profile_picture: '',
       email: Faker::Internet.email,
       genre_preferences: genre_pref,
