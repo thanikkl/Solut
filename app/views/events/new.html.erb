@@ -1,55 +1,39 @@
-<body style="background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 20%, rgba(0,0,0,0.4) 100%),url('https://images.unsplash.com/photo-1520242739010-44e95bde329e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80'); background-size: cover; min-height: 100vh;">
-  <div class="new-event-container1">
-    <h2 class="title-event1">ADD AN EVENT</h2>
-        <%= simple_form_for @event, html: { class: "new-event-content1" } do |f| %>
-          <div class="new-form1">
-            <%= f.input :event_type, collection: Event::TYPE_EVENT_ARRAY %>
-            <%= f.input :genre, collection: Event::GENRE_ARRAY %>
-            <%= f.input :title %>
-            <%= f.input :location %>
-            <%#= f.input :genre, collection: Event::GENRE_ARRAY %>
-          </div>
-          <div class="new-form2">
-            <%#= f.input :event_type, collection: Event::TYPE_EVENT_ARRAY %>
-            <%= simple_fields_for :my_instrument do |x| %>
-              <%= x.input :choice, label: "MY INSTRUMENT CHOICE", collection: Event::EVENT_INSTRUMENTS_ARRAY %>
-            <% end %>
-            <div class="new-form3">
-              <div class="new-form3-title">INSTRUMENT NEEDED</div>
-              <div class="new-form4">
-              <%#= f.input :instruments_array, label: 'Instruments needed', collection: Event::EVENT_INSTRUMENTS_ARRAY1, as: :check_boxes, input_html: { multiple: true }, html: { class: "new-event-col" } %>
-              <%= f.input :instruments_array, label: "", collection: Event::EVENT_INSTRUMENTS_ARRAY1, as: :check_boxes, input_html: { multiple: true }, html: { class: "new-event-col1" } %>
-              <%= f.input :instruments_array, label: "", collection: Event::EVENT_INSTRUMENTS_ARRAY2, as: :check_boxes, input_html: { multiple: true }, html: { class: "new-event-col2" } %>
-              </div>
-              <!-- EVENT_INSTRUMENTS_ARRAY = ["Guitare", "Drum", "Piano", "Bass", "Triangle", "Maracass"] -->
-<!--               <input type="checkbox" id="event_instruments_array_guitare" name="Guitare" checked>
-              <label for="event_instruments_array_guitare">GUITARE</label>
-              <input type="checkbox" id="event_instruments_array_drum" name="DRUM" checked>
-              <label for="event_instruments_array_drum">DRUM</label> -->
+<div class="content-wrapper">
+  <body style="background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 20%, rgba(0,0,0,0.4) 100%),url('https://images.unsplash.com/photo-1520242739010-44e95bde329e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80'); background-size: cover; min-height: 100vh;">
+    <div class="new-event-container1">
+      <h2 class="title-event1">ADD AN EVENT</h2>
+          <%= simple_form_for @event, html: { class: "new-event-content1" } do |f| %>
+            <div class="new-form1">
+              <%= f.input :event_type, collection: Event::TYPE_EVENT_ARRAY %>
+              <%= f.input :genre, collection: Event::GENRE_ARRAY %>
+              <%= f.input :title %>
+              <%= f.input :location %>
+              <%#= f.input :genre, collection: Event::GENRE_ARRAY %>
             </div>
-          </div>
-          <div class="btn-form-add-event">
-            <%= f.submit "CREATE", id: "events-new-btn" %>
-          </div>
-        <% end %>
-  </div>
-</body>
+            <div class="new-form2">
+              <%#= f.input :event_type, collection: Event::TYPE_EVENT_ARRAY %>
+              <%= simple_fields_for :my_instrument do |x| %>
+                <%= x.input :choice, label: "MY INSTRUMENT CHOICE", collection: Event::EVENT_INSTRUMENTS_ARRAY %>
+              <% end %>
+              <div class="new-form3">
+                <div class="new-form3-title">INSTRUMENT NEEDED</div>
+                <div class="new-form4">
+                  <%#= f.input :instruments_array, label: 'Instruments needed', collection: Event::EVENT_INSTRUMENTS_ARRAY1, as: :check_boxes, input_html: { multiple: true }, html: { class: "new-event-col" } %>
+                  <%= f.input :instruments_array, label: "", collection: Event::EVENT_INSTRUMENTS_ARRAY1, as: :check_boxes, input_html: { multiple: true }, html: { class: "new-event-col1" } %>
+                  <%= f.input :instruments_array, label: "", collection: Event::EVENT_INSTRUMENTS_ARRAY2, as: :check_boxes, input_html: { multiple: true }, html: { class: "new-event-col2" } %>
+                  </div>
+                  <!-- EVENT_INSTRUMENTS_ARRAY = ["Guitare", "Drum", "Piano", "Bass", "Triangle", "Maracass"] -->
+    <!--               <input type="checkbox" id="event_instruments_array_guitare" name="Guitare" checked>
+                  <label for="event_instruments_array_guitare">GUITARE</label>
+                  <input type="checkbox" id="event_instruments_array_drum" name="DRUM" checked>
+                  <label for="event_instruments_array_drum">DRUM</label> -->
+              </div>
+            </div>
+            <div class="btn-form-add-event">
+              <%= f.submit "CREATE", id: "events-new-btn" %>
+            </div>
+          <% end %>
+    </div>
+  </body>
+</div>
 
-
-
-<!-- <body style="background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 20%, rgba(0,0,0,0.4) 100%),url('https://images.unsplash.com/photo-1520242739010-44e95bde329e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80'); background-size: cover; min-height: 100vh; opacity: 0.88;">
-  <div class="new-event-container">
-      <h2 class="title-event">ADD AN EVENT</h2>
-      <div class="new-form">
-        <#%= simple_form_for(@event) do |f| %>
-          <#%= f.input :title %>
-          <#%= f.input :event_type, collection: Event::TYPE_EVENT_ARRAY %>
-          <#%= f.input :genre, collection: Event::GENRE_ARRAY %>
-          <#%= f.input :instruments_array, label: 'Instruments needed', collection: Event::EVENT_INSTRUMENTS_ARRAY, as: :check_boxes, input_html: { multiple: true } %> -->
-          <!-- <#%= f.submit "Create", class: "btn btn-secondary" %> -->
-<!--           <#%= f.submit "CREATE", id: "events-new-btn" %>
-        <#% end %>
-      </div>
-  </div>
-</body>
- -->
