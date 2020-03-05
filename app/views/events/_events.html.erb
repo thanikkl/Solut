@@ -1,7 +1,7 @@
 <div class="content-wrapper">
   <% if @events.size < 1 %>
     <p style="color: grey">Unfortunately, there are no events corresponding to this search request.</p>
-    <p style="color: grey">Please try again with a new filter.</p>
+    <p style="color: grey">Please try again with new filter settings.</p>
 
   <% else %>
     <% @events.order(created_at: :desc).each do |event| %>
