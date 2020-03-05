@@ -5,7 +5,7 @@
     <div style="margin-bottom: 32px">
       <div class="dashboard-container" >
 
-        <h2 class="my-bands">MY BANDS</h3>
+        <h2 class="my-bands">CONFIRMED BANDS</h3>
           <p style="color: grey"><%= "No bands created at this point." if @events.size < 1 %></p>
           <% @events.order(created_at: :desc).each do |event| %>
             <div class="event">
@@ -50,56 +50,80 @@
           <% end %>
 
 
-        <h2 class="my-bands">MY CONTACT REQUESTS</h3>
+        <h2 class="my-bands">PENDING BANDS</h3>
         <p style="color: grey"><%= "No contact requests sent at this point." if @contact_requests.size < 1 %></p>
-        <% @contact_requests.order(created_at: :desc).each do |request| %>
-          <div class="event d-flex flex-row justify-content-between contact-request">
+        <div class="row">
+          <% @contact_requests.order(created_at: :desc).where(status: 'open').each do |request| %>
+            <div class="col-12">
+              <div class="solut-card">
+                <h5><%= request.event.title %></h5>
+                <div class="avatars">
+                  <div class="leader">
+                    <%= cl_image_tag request.event.user.profile_picture.key, alt: "alttext", class: 'leader-avatar' %>
+                  </div>
+                  <div class="members">
+                    <% request.event.users.reject { |u| request.event.user == u }.each do |user| %>
+                      <%= cl_image_tag user.profile_picture.key, alt: "alttext", class: 'member-avatar' %>
+                    <% end %>
+                    <% request.event.places_left.times do |p| %>
+                      <img src='https://res.cloudinary.com/dh8tpzykj/image/upload/v1582203695/avatar_empty_ghdihw.png' class="member-avatar" />
+                    <% end %>
+                  </div>
+                </div>
+                <div class="card-infos">
 
-            <div class="event-left">
-              <div class="event-header">
-                <h3><%= request.event.title %> - <%= request.event.genre %></h3>
-                <p class="desired-instruments">Desired instruments: <strong><%= request.instrument.name %></strong></p>
-                <!-- <p style="color: grey"><em>Last updated: <%#= request.event.updated_at %></em></p> -->
-              </div>
+                </div>
+                <div class="status">
 
-              <div class="event-content d-flex">
-                <%= render 'events/user_card', user: request.event.user, event: request.event %>
-<!--                 <%# if request.event.user.profile_picture.attached? %>
-                  <%#= image_tag(request.event.user.profile_picture, class: "avatar-large") %>
-                <%# else %>
-                  <img src='https://res.cloudinary.com/dh8tpzykj/image/upload/v1582203695/avatar_empty_ghdihw.png' class="avatar-large" />
-                <%# end %>
-                <div>
-                  <p><small><%#= request.event.user.nick_name %></small></p>
-                  <p><%#= request.event.location %></p>
-                </div> -->
+                </div>
               </div>
             </div>
-
-            <div class="event-right ">
-              <button class="event-action" id="contact-btn-small"> <%= link_to "Details", event_path(request.event) %></button>
-              <% if request.status == 'Denied' %>
-                <button type="button" class="btn status button-denied" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <%= request.status %>
-                </button>
-              <% elsif request.status == 'Accepted' %>
-                <button type="button" class="btn status button-accepted" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <%= request.status %>
-                </button>
-              <% else %>
-                <button type="button" class="btn status button-pending" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Pending
-                </button>
-              <% end %>
-            </div>
-          </div>
-        <% end %>
-
+          <% end %>
+        </div>
         <input type="hidden" value= <%= session[:_csrf_token] %> id="csrf_token">
       </div>
     </div>
   </div>
 </body>
+
+<style>
+  .solut-card {
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    background-color: white;
+    position: relative;
+    height: 200px;
+    border-radius: 10px;
+  }
+
+  .solut-card h5 {
+    position: absolute;
+    top: 10px;
+    left: 25px;
+  }
+
+  .avatars {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  .leader-avatar {
+    border-radius: 50%;
+    width: 100px;
+    margin: 0px 10px;
+  }
+
+  .member-avatar {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    margin: 0px 10px;
+  }
+</style>
 <!--   <h3>Users' requests on my bands</h3>
   <%# @events.each do |event| %>
     <%# event.contact_requests.each do |contact_request| %>
@@ -156,5 +180,47 @@
   <%# end %>
 <%# end  %>
 
+
+
+<!--           <div class="event d-flex flex-row justify-content-between contact-request">
+
+            <div class="event-left">
+              <div class="event-header">
+                <h3><%#= request.event.title %> - <%#= request.event.genre %></h3>
+                <p class="desired-instruments">Desired instruments: <strong><%#= request.instrument.name %></strong></p> -->
+                <!-- <p style="color: grey"><em>Last updated: <%#= request.event.updated_at %></em></p> -->
+<!--               </div>
+
+              <div class="event-content d-flex"> -->
+                <%#= render 'events/user_card', user: request.event.user, event: request.event %>
+<!--                 <%# if request.event.user.profile_picture.attached? %>
+                  <%#= image_tag(request.event.user.profile_picture, class: "avatar-large") %>
+                <%# else %>
+                  <img src='https://res.cloudinary.com/dh8tpzykj/image/upload/v1582203695/avatar_empty_ghdihw.png' class="avatar-large" />
+                <%# end %>
+                <div>
+                  <p><small><%#= request.event.user.nick_name %></small></p>
+                  <p><%#= request.event.location %></p>
+                </div> -->
+<!--               </div>
+            </div>
+
+            <div class="event-right ">
+              <button class="event-action" id="contact-btn-small"> <%#= link_to "Details", event_path(request.event) %></button>
+              <%# if request.status == 'Denied' %>
+                <button type="button" class="btn status button-denied" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <%#= request.status %>
+                </button>
+              <%# elsif request.status == 'Accepted' %>
+                <button type="button" class="btn status button-accepted" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <%#= request.status %>
+                </button>
+              <%# else %>
+                <button type="button" class="btn status button-pending" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Pending
+                </button>
+              <%# end %>
+            </div>
+          </div> -->
 
 

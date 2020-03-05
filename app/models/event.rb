@@ -76,7 +76,7 @@ class Event < ApplicationRecord
   end
 
   def places_left
-    (self.instruments_array.count - participants.count) + 1
+    self.instruments_array.count - self.users.count
   end
 
   def available_instruments
