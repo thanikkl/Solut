@@ -33,7 +33,7 @@
 
         <div class="d-flex flex-row">
           <% @event.participants.each do |user| %>
-            <%= render 'user_card', user: user, event: @event %>
+            <%= render 'events/user_card', user: user, event: @event %>
           <% end %>
           <% @event.places_left.times do %>
           <div class="d-flex flex-column align-items-center mx-3">

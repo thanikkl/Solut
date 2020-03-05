@@ -18,9 +18,18 @@ const Turbolinks = require("turbolinks")
 Turbolinks.start()
 
 document.addEventListener('turbolinks:load', () => {
-  initNavbarMenu();
-  requestStatus();
-  // initSweetalert();
+
+  const ids = document.querySelectorAll('#events-index, #events-new, #dashboard-show, #events-show, #registrations-edit');
+  if(ids.length >= 1){
+    initNavbarMenu();
+  }
+  if(document.getElementById('dashboard-show')){
+    requestStatus();
+  }
+  // if(document.getElementById('')){
+  //   initSweetalert();
+  // }
+
     // Do your stuff!
 })
 
