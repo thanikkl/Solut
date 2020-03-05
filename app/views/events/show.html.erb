@@ -71,6 +71,7 @@
       <div class="show-event">
         <h3>Candidates</h3>
 
+        <p><em><%= "No candidate applications for this band yet." if @event.users.size < 2 %></em></p>
         <div>
           <!-- Nav tabs -->
           <ul class="nav nav-tabs" role="tablist">
