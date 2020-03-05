@@ -50,7 +50,7 @@
                   <% else %>
                     <% @user.user_media.each do |element| %>
                       <% if element.medium_type == "song" %>
-                        <%= link_to element.title.html_safe, element.url, target: "_blank", class: "link-media" %>
+                        <%= link_to element.title.html_safe, element.url, target: "_blank", class: "link-media" %><br />
                       <% end %>
                     <% end %>
                 <% end %>
@@ -62,7 +62,7 @@
                 <% else %>
                   <% @user.user_media.each do |element| %>
                     <% if element.medium_type == "video" %>
-                      <%= link_to element.title.html_safe, element.url, target: "_blank", class: "link-media" %>
+                      <%= link_to element.title.html_safe, element.url, target: "_blank", class: "link-media" %><br />
                     <% end %>
                   <% end %>
               <% end %>
@@ -73,7 +73,7 @@
           <div class="my-media">MY VIDEOS</div> -->
           <div class="instrument-center-show">Instruments</div>
           <div class="instrument-profile-show">
-            <div class="instrument-text-show">
+            <div class="my-event-text-show">
               <% if @user.user_instruments.empty? %>
                 <%= "empty" %>
               <% else %>
@@ -125,9 +125,9 @@
             </div>
           </div>
           </div> -->
-  <!--         <div class="bottom-container-show">
-            <#%= link_to "Back", :back, class: 'return_btn-show-profile' %>
-          </div> -->
+          <div class="bottom-container-show">
+            <%= link_to "<< Go Back", :back, class: 'return_btn-show-profile' %>
+          </div>
         </div>
       </div>
     </div>
