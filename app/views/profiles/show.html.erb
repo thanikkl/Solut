@@ -1,7 +1,7 @@
 <div class="content-wrapper">
   <body style="background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 20%, rgba(0,0,0,0.4) 100%),url('https://images.unsplash.com/photo-1505190849153-43410d3c18f8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80'); background-size: cover; min-height: 100vh; opacity: 0.88;">
     <div class="container-profile-show">
-      <h2 class="title-profile-show"><%= @user.nick_name.upcase %> PROFILS</h2>
+      <h2 class="title-profile-show">PROFILES</h2>
       <div class="profile-content-show">
         <div class="first-profile-show">
           <% if @user.profile_picture.attached? %>
@@ -62,7 +62,7 @@
                 <% else %>
                   <% @user.user_media.each do |element| %>
                     <% if element.medium_type == "video" %>
-                      <li><%= element.title %></li>
+                      <%= link_to element.title.html_safe, element.url, target: "_blank", class: "link-media" %>
                     <% end %>
                   <% end %>
               <% end %>

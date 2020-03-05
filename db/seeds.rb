@@ -203,7 +203,8 @@ number_of_users.times do
     user: User.all.sample(1).first,
     title: "Baby Sharky Song",
     music_genre: genre_pref,
-    medium_type: ['video', 'song'].sample
+    medium_type: ['video', 'song'].sample,
+    url: "https://www.youtube.com/watch?reload=9&v=XqZsoesa55w&vl=fr"
     )
   user_media.save!
 end
