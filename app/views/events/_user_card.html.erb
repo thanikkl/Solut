@@ -2,9 +2,13 @@
   <% if user.id %>
     <div class="event-avatar">
       <% if user.profile_picture.attached? %>
-        <%= image_tag(user.profile_picture, class: "avatar-medium") %>
+        <%= link_to profile_path(user) do %>
+          <%= image_tag(user.profile_picture, class: "avatar-medium") %>
+        <% end %>
       <% else %>
-        <%= image_tag(User::PROFILE_ARRAY.sample, class: "avatar-medium") %>
+        <%= link_to profile_path(user) do %>
+          <%= image_tag(User::PROFILE_ARRAY.sample, class: "avatar-medium") %>
+        <% end %>
       <% end %>
     </div>
 

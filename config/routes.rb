@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   patch 'contact_update', to: 'dashboard#update'
 
   get 'profiles', to: 'profiles#index'
-  get 'profiles/:id', to: 'profiles#show'
+  resources :profiles, only: [ :show ]
+  # get 'profiles/:id', to: 'profiles#show'
 
   resources :events do
     resources :contact_requests, only: [:new, :create]
