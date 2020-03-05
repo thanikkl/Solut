@@ -5,7 +5,7 @@
     <div style="margin-bottom: 32px">
       <div class="dashboard-container" >
 
-        <h3 class="my-bands">MY BANDS</h3>
+        <h2 class="my-bands">MY BANDS</h3>
           <% @events.order(created_at: :desc).each do |event| %>
             <div class="event">
               <div class="event-top d-flex flex-row justify-content-between">
@@ -49,7 +49,7 @@
           <% end %>
 
 
-        <h3 class="my-bands">MY CONTACT REQUESTS</h3>
+        <h2 class="my-bands">MY CONTACT REQUESTS</h3>
         <% @contact_requests.each do |request| %>
           <div class="event d-flex flex-row justify-content-between contact-request">
 
@@ -94,6 +94,7 @@
         <% end %>
 
         <input type="hidden" value= <%= session[:_csrf_token] %> id="csrf_token">
+      </div>
     </div>
   </div>
 </body>
