@@ -4,8 +4,8 @@
       Pending
     </button>
     <div class="dropdown-menu" id="dropdownButton">
-      <a class="dropdown-item js-updateContact" data-contact-id=<%= contact_request.id %> data-path= <%= contact_update_path(status: 'Denied', contact_request_id: contact_request.id) %> >Denied</a>
-      <a class="dropdown-item js-updateContact" data-contact-id=<%= contact_request.id %> data-path= <%= contact_update_path(status: 'Accepted', contact_request_id: contact_request.id) %>>Accepted</a>
+      <a class="dropdown-item js-updateContact" id="denied" data-status="denied" data-contact-id=<%= contact_request.id %> data-path=<%= contact_update_path(status: 'Denied', contact_request_id: contact_request.id) %> >Denied</a>
+      <a class="dropdown-item js-updateContact" id="accepted" data-status="accepted" data-contact-id=<%= contact_request.id %> data-path=<%= contact_update_path(status: 'Accepted', contact_request_id: contact_request.id) %>>Accepted</a>
     </div>
   </div>
 <% else %>

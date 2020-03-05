@@ -52,6 +52,9 @@
             </div>
           </div>
 
+        <% if @event.contact_requests.where(user: current_user).empty? %>
+        <%# if current_user.contact_request? %>
+        <%# else %>
           <div class="contact-form contact-container flex-row w-25">
             <p><strong>Send request to join:</strong></p>
             <%= simple_form_for([@event, @new_contact_request]) do |f| %>
@@ -61,6 +64,7 @@
             <% end %>
 
           </div>
+        <% end %>
         <% end %>
 
       </div>

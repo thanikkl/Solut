@@ -9,9 +9,13 @@
         <div class="message-container d-flex flex-row <%= "message-right" if message.user == current_user %>">
           <div>
             <% if message.user.profile_picture.attached? %>
-              <%= cl_image_tag message.user.profile_picture.key, class: "avatar-small" %>
+              <%= link_to profile_path(message.user) do %>
+                <%= cl_image_tag message.user.profile_picture.key, class: "avatar-small" %>
+              <% end %>
             <% else %>
-              <img src='https://res.cloudinary.com/dh8tpzykj/image/upload/v1582203695/avatar_empty_ghdihw.png' class="avatar-small" />
+              <%= link_to profile_path(message.user) do %>
+                <img src='https://res.cloudinary.com/dh8tpzykj/image/upload/v1582203695/avatar_empty_ghdihw.png' class="avatar-small" />
+              <% end %>
             <% end %>
           </div>
           <div>
