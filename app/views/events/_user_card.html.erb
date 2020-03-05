@@ -6,8 +6,8 @@
           <%= image_tag(user.profile_picture, class: "avatar-medium") %>
         <% end %>
       <% else %>
-        <%= link_to profile_path(user) do %>
-          <%= image_tag(User::PROFILE_ARRAY.sample, class: "avatar-medium") %>
+      <%= link_to profile_path(user) do %>
+        <img src='https://res.cloudinary.com/dh8tpzykj/image/upload/v1582203695/avatar_empty_ghdihw.png' class="avatar-medium" />
         <% end %>
       <% end %>
     </div>

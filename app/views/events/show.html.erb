@@ -10,9 +10,8 @@
   <div class="show-container">
     <div class="show-event d-flex">
 
-      <div class="event-details d-flex flex-column show-event-container">
+      <div class="event-details d-flex w-100">
 
-        <!-- <div class="d-flex flex-row justify-content-between"> -->
         <div class="d-flex flex-column">
           <div class="event-top d-flex flex-row justify-content-between">
             <div class="event-left">
@@ -26,6 +25,9 @@
             </div>
           </div>
 
+        <!-- <div class="d-flex flex-row justify-content-between"> -->
+        <% if @event.user == current_user %>
+
           <div class="event-musicians d-flex flex-row">
             <% @event.participants.each do |user| %>
               <%= render 'user_card', user: user, event: @event %>
@@ -37,9 +39,20 @@
           </div>
         </div>
 
-        <% if @event.user == current_user %>
         <% else %>
-          <div class="contact-form contact-container flex-row">
+
+            <div class="event-musicians d-flex flex-row">
+              <% @event.participants.each do |user| %>
+                <%= render 'user_card', user: user, event: @event %>
+              <% end %>
+
+              <% @event.instruments_array.each do |instrument| %>
+                <%= render 'user_card_vacant', instrument: instrument %>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="contact-form contact-container flex-row w-25">
             <p><strong>Send request to join:</strong></p>
             <%= simple_form_for([@event, @new_contact_request]) do |f| %>
             <%= f.association :instrument, collection: @event.available_instruments , label: "You play:", required: false %>

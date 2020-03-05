@@ -1,7 +1,11 @@
 import swal from 'sweetalert';
 
 const initSweetalert = () => {
-  const options = {};
+  const options = {
+    title: "Request",
+    text: "Request Sent",
+    icon: "success"
+    };
   const callback = () => {};
   const swalButton = document.querySelector(selector);
   if (swalButton) { // protect other pages
