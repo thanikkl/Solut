@@ -11,6 +11,7 @@ require("channels")
 import initNavbarMenu from '../components/menu';
 import requestStatus from '../components/request_status';
 import { initSweetalert } from '../plugins/init_sweetalert';
+import { initSweetalertAccepted } from '../plugins/alert_accepted';
 
 
 
@@ -29,7 +30,9 @@ document.addEventListener('turbolinks:load', () => {
   if(document.getElementById('contact-btn')){
     initSweetalert();
   }
-
+  if(document.querySelectorAll('.button-pending')){
+    initSweetalertAccepted();
+  }
     // Do your stuff!
 })
 
