@@ -36,13 +36,37 @@
             <% end %>
           </div>
           <div class="description-center-show">Repertory</div>
-          <div class="description-text-show">
-            <% if @user.genre_preferences.nil? || @user.genre_preferences == "" %>
-              <%= "Not renseigned yet" %>
-            <% else %>
-              <%= @user.genre_preferences  %>
-            <% end %>
-          </div>
+            <div class="description-text-show">
+              <% if @user.genre_preferences.nil? || @user.genre_preferences == "" %>
+                <%= "Not renseigned yet" %>
+              <% else %>
+                <%= @user.genre_preferences  %>
+              <% end %>
+            </div>
+              <div class="description-center-show">Songs</div>
+              <div class="description-text-show">
+                <% if @user.user_media.count == 0 %>
+                  <%= "empty" %>
+                  <% else %>
+                    <% @user.user_media.each do |element| %>
+                      <% if element.medium_type == "song" %>
+                        <li><%= element.title %></li>
+                      <% end %>
+                    <% end %>
+                <% end %>
+              </div>
+            <div class="description-center-show">Videos</div>
+            <div class="description-text-show">
+              <% if @user.user_media.count == 0 %>
+                <%= "empty" %>
+                <% else %>
+                  <% @user.user_media.each do |element| %>
+                    <% if element.medium_type == "video" %>
+                      <li><%= element.title %></li>
+                    <% end %>
+                  <% end %>
+              <% end %>
+            </div>
         </div>
         <div class="third-profile-show">
           <!-- <div class="my-song">MY SONGS</div>
@@ -72,21 +96,35 @@
               <% end %>
             </div>
           </div>
-          <div class="instrument-center-show">Videos</div>
+          <!-- <div class="instrument-center-show">Videos</div>
           <div class="instrument-profile-show">
-<!--           <div class="instrument-text">
-            <#% if @user.user_media.count == 0 %>
-              <%#= "empty" %>
-              <#% else %>
-                <#% @user.user_media.each do |event| %>
-                <li><%#= @user.user_media.title %> (<%#= @user.user_media.music_genre %> / <%#= @user.user_media.medium_type %>)</li>
-                <#% end %>
-            <#% end %>
-          </div> -->
+            <div class="instrument-text">
+              <#% if @user.user_media.count == 0 %>
+                <%#= "empty" %>
+                <#% else %>
+                  <#% @user.user_media.each do |element| %>
+                    <#% if element.medium_type == "song" %>
+                      <li><#%= element.title %></li>
+                    <#% end %>
+                  <#% end %>
+              <#% end %>
+            </div>
           </div>
           <div class="instrument-center-show">Songs</div>
           <div class="instrument-profile-show">
+            <div class="instrument-text">
+              <#% if @user.user_media.count == 0 %>
+                <#%= "empty" %>
+                <#% else %>
+                  <#% @user.user_media.each do |element| %>
+                    <#% if element.medium_type == "video" %>
+                      <li><%#= element.title %></li>
+                    <#% end %>
+                  <#% end %>
+              <#% end %>
+            </div>
           </div>
+          </div> -->
   <!--         <div class="bottom-container-show">
             <#%= link_to "Back", :back, class: 'return_btn-show-profile' %>
           </div> -->

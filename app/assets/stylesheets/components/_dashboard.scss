@@ -71,9 +71,8 @@
 }
 
 .status {
-  position: absolute;
-  top: 0;
-  right: 0;
+  margin: 20px auto 20px 61px;
+  width: 140px;
 }
 
 .button-accepted {
@@ -109,4 +108,9 @@
   transition: background-position 0.6s ease;
   cursor: pointer;
   width: 160px;
+}
+
+.card-accepted {
+  display: flex;
+  flex-direction: column;
 }
