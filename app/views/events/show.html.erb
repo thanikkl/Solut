@@ -10,58 +10,48 @@
   <div class="show-container">
     <div class="show-event d-flex">
 
-      <div class="event-details d-flex flex-column event-container">
+      <div class="event-details d-flex flex-column show-event-container">
 
         <!-- <div class="d-flex flex-row justify-content-between"> -->
         <div class="d-flex flex-column">
-
-          <div>
-            <h3><%= @event.title %></h3>
+          <div class="event-top d-flex flex-row justify-content-between">
+            <div class="event-left">
+              <div class="event-header">
+                <h3><%= @event.genre %> - <%= @event.title %></h3>
+                <div class="event-tag">
+                  <p><strong><%= @event.event_type %></strong></p>
+                </div>
+                <p style="color: grey"><i class="fas fa-map-marker-alt"></i> <%= @event.location %></p>
+              </div>
+            </div>
           </div>
-          <div>
-            <p><strong>Event type:</strong> <%= @event.event_type %></p>
-            <p><strong>Genre:</strong> <%= @event.genre %></p>
-          </div>
 
-          <div>
-            <p><strong>Instruments needed:</strong></p>
-            <% @event.instruments_array.each do |instrument|  %>
-              <p><%= instrument %></p>
+          <div class="event-musicians d-flex flex-row">
+            <% @event.participants.each do |user| %>
+              <%= render 'user_card', user: user, event: @event %>
+            <% end %>
+
+            <% @event.instruments_array.each do |instrument| %>
+              <%= render 'user_card_vacant', instrument: instrument %>
             <% end %>
           </div>
         </div>
 
-        <div class="d-flex flex-row">
-          <% @event.participants.each do |user| %>
-            <%= render 'user_card', user: user, event: @event %>
-          <% end %>
-          <% @event.places_left.times do %>
-          <div class="d-flex flex-column align-items-center mx-3">
-            <img src='https://res.cloudinary.com/dh8tpzykj/image/upload/v1582203695/avatar_empty_ghdihw.png' class="avatar-large" />
-            <p>Vaccant</p>
-            <p>Instrument</p>
+        <% if @event.user == current_user %>
+        <% else %>
+          <div class="contact-form contact-container flex-row">
+            <p><strong>Send request to join:</strong></p>
+            <%= simple_form_for([@event, @new_contact_request]) do |f| %>
+            <%= f.association :instrument, collection: @event.available_instruments , label: "You play:", required: false %>
+            <textarea rows="3" cols="23" label="Message" name="message" id="contact_request_message" placeholder="Your message"></textarea>
+            <%= f.button :submit, "✉️ ASK TO JOIN", id: "profile-btn" %>
+            <% end %>
           </div>
         <% end %>
-        </div>
+
       </div>
 
-        <div class="contact-form contact-container">
-          <p><strong>Send request to join:</strong></p>
-          <%= simple_form_for([@event, @new_contact_request]) do |f| %>
-          <%= f.association :instrument, collection: @event.available_instruments , label: "You play:", required: false %>
-          <textarea rows="3" cols="23" label="Message" name="message" id="contact_request_message" placeholder="Your message"></textarea>
-          <%= f.button :submit, "✉️ ASK TO JOIN", id: "profile-btn" %>
-          <% end %>
-        </div>
-
-      <!-- </div> -->
     </div>
-
-  <!--   <div class="show-event">
-      <h3>Members of the group</h3>
-      <div class="d-flex flex-row">
-      </div>
-    </div> -->
 
     <% if @event.user == current_user %>
       <div class="show-event">
@@ -118,4 +108,24 @@
     <% end %>
   </div>
 </div>
+</div>
 
+<!--           <div>
+            <p><strong>Instruments needed:</strong></p>
+            <%# @event.instruments_array.each do |instrument|  %>
+              <p><%#= instrument %></p>
+            <%# end %>
+          </div> -->
+
+<!--         <div class="d-flex flex-row">
+          <%# @event.participants.each do |user| %>
+            <%#= render 'user_card', user: user, event: @event %>
+          <%# end %>
+          <%# @event.places_left.times do %>
+          <div class="d-flex flex-column align-items-center mx-3">
+            <img src='https://res.cloudinary.com/dh8tpzykj/image/upload/v1582203695/avatar_empty_ghdihw.png' class="avatar-large" />
+            <p>Vacant</p>
+            <p>Instrument</p>
+          </div>
+        <%# end %>
+        </div> -->

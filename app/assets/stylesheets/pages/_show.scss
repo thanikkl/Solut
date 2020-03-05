@@ -12,8 +12,15 @@
   padding-top: 15px;
 }
 
-.event-container {
+.show-event-container {
   flex-grow: 1;
+  width: 900px;
+}
+
+.show-event-container h3 {
+  color: grey;
+  font-size: 20px;
+  margin-bottom: 0;
 }
 
 .contact-container {
