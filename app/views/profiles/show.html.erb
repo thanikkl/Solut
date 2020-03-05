@@ -63,7 +63,7 @@
           <div class="instrument-center-show">Events created</div>
           <div class="instrument-profile-show">
             <div class="my-event-text-show">
-              <% if @user.events.count === 0 %>
+              <% if @user.events.count == 0 %>
                 <%= "empty" %>
                 <% else %>
                   <% @user.events.each do |event| %>
@@ -71,6 +71,21 @@
                   <% end %>
               <% end %>
             </div>
+          </div>
+          <div class="instrument-center-show">Videos</div>
+          <div class="instrument-profile-show">
+<!--           <div class="instrument-text">
+            <#% if @user.user_media.count == 0 %>
+              <%#= "empty" %>
+              <#% else %>
+                <#% @user.user_media.each do |event| %>
+                <li><%#= @user.user_media.title %> (<%#= @user.user_media.music_genre %> / <%#= @user.user_media.medium_type %>)</li>
+                <#% end %>
+            <#% end %>
+          </div> -->
+          </div>
+          <div class="instrument-center-show">Songs</div>
+          <div class="instrument-profile-show">
           </div>
   <!--         <div class="bottom-container-show">
             <#%= link_to "Back", :back, class: 'return_btn-show-profile' %>
