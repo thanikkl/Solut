@@ -45,6 +45,10 @@ addresses = addresses.map! { |i| i.to_s }
 pseudo_array =
     [
     Faker::Name.first_name.tr(" ", "_"),
+    Faker::Name.first_name.tr(" ", "_"),
+    Faker::Name.first_name.tr(" ", "_"),
+    Faker::Name.first_name.tr(" ", "_"),
+    Faker::Name.first_name.tr(" ", "_"),
     Faker::TvShows::Stargate.planet.tr(" ", "_"),
     Faker::TvShows::StarTrek.character.tr(" ", "_"),
     Faker::TvShows::StarTrek.specie.tr(" ", "_"),
@@ -290,7 +294,158 @@ Event.all.each do |event|
   )
 end
 
-# Requests
+# seed figer
+  address = addresses.sample
+  genre_pref = Event::GENRE_ARRAY.sample
+  # profile = profile_array.sample
 
+
+
+ user = User.new(
+      last_name: "Nicolas",
+      first_name: "Pitch",
+      age: 23,
+      nick_name: "Nicolas2311",
+      address: address,
+      password: '123456',
+      email: "nicolas@pitch.com",
+      genre_preferences: genre_pref,
+      description: "I've been playing the piano for many years and participated in competitions"
+      )
+  user.save!
+  puts "user : Nicolas2311 created"
+
+   user = User.new(
+      last_name: "Thomas",
+      first_name: "Rose",
+      age: 23,
+      nick_name: "Thomas",
+      address: address,
+      password: '123456',
+      email: "thomasrose@funky.com",
+      genre_preferences: genre_pref,
+      description: "I've been playing the piano for many years and participated in competitions"
+      )
+  user.save!
+  puts "user : Nicolas2311 created"
+
+  user = User.new(
+      last_name: "John",
+      first_name: "Lemon",
+      age: 23,
+      nick_name: "lemontree65",
+      address: address,
+      password: '123456',
+      email: "lemontree65@gmail.com",
+      genre_preferences: genre_pref,
+      )
+  user.save!
+  puts "user : lemontree65 created"
+
+  user = User.new(
+      last_name: "Nicolas",
+      first_name: "Tith",
+      age: 26,
+      nick_name: "blackpinklover",
+      address: address,
+      password: '123456',
+      email: "blackpinklover@gmail.com",
+      genre_preferences: genre_pref,
+      )
+  user.save!
+  puts "user : blackpinklover created"
+
+  user = User.new(
+      last_name: "Benjamin",
+      first_name: "Poutou",
+      age: 20,
+      nick_name: "bg_inrock",
+      address: address,
+      password: '123456',
+      email: "bg_inrock@gmail.com",
+      genre_preferences: genre_pref,
+      )
+  user.save!
+  puts "user : bg_inrock created"
+
+  user = User.new(
+      last_name: "Jennie",
+      first_name: "Caron",
+      age: 22,
+      nick_name: "sweetmood",
+      address: address,
+      password: '123456',
+      email: "sweetmood@gmail.com",
+      genre_preferences: genre_pref,
+      )
+  user.save!
+  puts "user : sweetmood created"
+
+  user = User.new(
+      last_name: "Jules",
+      first_name: "Duwagoon",
+      age: 25,
+      nick_name: "your_jul948",
+      address: address,
+      password: '123456',
+      email: "your_jul948@gmail.com",
+      genre_preferences: genre_pref,
+      )
+  user.save!
+  puts "user : your_jul948 created"
+
+  user = User.new(
+      last_name: "John",
+      first_name: "Connor",
+      age: 29,
+      nick_name: "beat_rythme24",
+      address: address,
+      password: '123456',
+      email: "beat_rythme24@gmail.com",
+      genre_preferences: genre_pref,
+      )
+  user.save!
+  puts "user : beat_rythme24 created"
+
+  user = User.new(
+      last_name: "Jean",
+      first_name: "Martin",
+      age: 31,
+      nick_name: "jeansnjan4",
+      address: address,
+      password: '123456',
+      email: "jeansnjan4@gmail.com",
+      genre_preferences: genre_pref,
+      )
+  user.save!
+  puts "user : jeansnjan4 created"
+
+
+# Requests
+# creer grpoupe goldplay
+# piano
+
+# ms ami grpoupe
+# Rock
+# c pas ce que je genre_preferences
+
+
+# puts "Creating Events demo..."
+#   event_type = "Play together"
+#   genre_pref = "Rock"
+#   address = addresses.sample + ", Paris"
+#   song = "Goldplay - Yellow song"
+#   instruments = Event::EVENT_INSTRUMENTS_ARRAY.sample(rand(1..3))
+#   event = Event.new(
+#     date: Faker::Date.forward(days: 30),
+#     location: address,
+#     title: ["Looking to practice ", "Looking to play ", "", ""].sample + song,
+#     event_type: event_type,
+#     duration: rand(1..15),
+#     genre: genre_pref,
+#     user: User.all.sample(1).first,
+#     instruments_array: instruments
+#     )
+#   event.save!
 # Messages
 

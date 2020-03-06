@@ -2,12 +2,9 @@ import swal from 'sweetalert';
 
 const initSweetalertAccepted = () => {
   const statusSelection = document.querySelectorAll(".js-updateContact");
-console.log("test--0")
   statusSelection.forEach(element => {
-    console.log("test--1")
 
     element.addEventListener("click", (event) => {
-      console.log("test--2")
 
       const status = event.currentTarget.dataset.status
       let options;

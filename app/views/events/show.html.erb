@@ -1,3 +1,5 @@
+<input type="hidden" value= <%= session[:_csrf_token] %> id="csrf_token">
+
 <div id="eventtt-show">
 <div class="content-wrapper">
   <div class="event-back" style="margin-bottom: 32px">
@@ -23,12 +25,21 @@
         <% if @event.user == current_user %>
 
           <div class="event-musicians d-flex flex-row">
-            <% @event.participants.each do |user| %>
-              <%= render 'user_card', user: user, event: @event %>
+            <% @event.contact_requests.each do |contact_request| %>
+              <div class="card-accepted">
+                <%= render 'events/user_card', user: contact_request.user, event: @event %>
+                <div id="anchor_<%= contact_request.id %>">
+                  <%= render "dashboard/contact_status", contact_request: contact_request %>
+                </div>
+              </div>
             <% end %>
-
-            <% @event.instruments_array.each do |instrument| %>
-              <%= render 'user_card_vacant', instrument: instrument %>
+            <% @event.available_instruments.each do |instrument| %>
+              <div class="card-accepted">
+                <%= render 'events/user_card_vacant', instrument: instrument %>
+                <button type="button" class="btn button-awaiting status">
+                  Awaiting
+                </button>
+              </div>
             <% end %>
           </div>
         </div>

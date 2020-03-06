@@ -39,9 +39,9 @@
                   </div>
                   <% end %>
 
-                  <% event.instruments_array.each do |instrument| %>
+                  <% event.available_instruments.each do |instrument| %>
                     <div class="card-accepted">
-                    <%= render 'events/user_card_vacant', instrument: instrument %>
+                      <%= render 'events/user_card_vacant', instrument: instrument %>
                       <button type="button" class="btn button-awaiting status">
                         Awaiting
                       </button>
@@ -96,15 +96,6 @@
                      <% end %>
                    <% end %>
                  </div>
-                 <% end %>
-
-                 <% request.event.instruments_array.each do |instrument| %>
-                   <div class="card-accepted">
-                   <%= render 'events/user_card_vacant', instrument: instrument %>
-                     <button type="button" class="btn button-awaiting status">
-                       Awaiting
-                     </button>
-                   </div>
                  <% end %>
                </div>
              </div>
