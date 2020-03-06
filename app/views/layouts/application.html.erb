@@ -38,6 +38,6 @@
     <%= render 'shared/navbar' unless controller_name == "pages" && action_name == "home" %>
     <%= render 'shared/flashes' %>
     <%= yield %>
-    <%= render 'shared/footer' unless controller_name == "pages" && action_name == "home" %>
+    <%= render 'shared/footer' unless (controller_name == "pages" && action_name == "home") || (controller_name == "dashboard" && action_name == "show") %>
   </body>
 </html>
