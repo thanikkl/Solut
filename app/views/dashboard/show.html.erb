@@ -3,139 +3,120 @@
   <div class="content-wrapper">
     <div style="margin-bottom: 32px">
       <div class="dashboard-container" >
-
-        <h2 class="my-bands">CONFIRMED BANDS</h3>
-          <p style="color: grey"><%= "No bands created at this point." if @events.size < 1 %></p>
-          <% @events.order(created_at: :desc).each do |event| %>
-            <div class="event">
-              <div class="event-top d-flex flex-row justify-content-between">
-                <div class="event-left">
-                  <div class="event-header">
-                    <h3><%= event.genre %> - <%= event.title %></h3>
-                    <div class="event-tag">
-                      <p><strong><%= event.event_type %></strong></p>
+        <div class="tabs-bar">
+          <h2 class="my-bands" id="confirmed-bands-btn">CONFIRMED BANDS</h2>
+          <h2 class="my-bands" id="pending-bands-btn">PENDING BANDS</h2>
+        </div>
+        <div class="confirmed-bands tab-active">
+            <p style="color: grey"><%= "No bands created at this point." if @events.size < 1 %></p>
+            <% @events.order(created_at: :desc).each do |event| %>
+              <div class="event">
+                <div class="event-top d-flex flex-row justify-content-between">
+                  <div class="event-left">
+                    <div class="event-header">
+                      <h3><%= event.genre %> - <%= event.title %></h3>
+                      <div class="event-tag">
+                        <p><strong><%= event.event_type %></strong></p>
+                      </div>
+                      <p style="color: grey"><i class="fas fa-map-marker-alt"></i> <%= event.location %></p>
                     </div>
-                    <p style="color: grey"><i class="fas fa-map-marker-alt"></i> <%= event.location %></p>
+                  </div>
+
+                  <div class="event-right">
+                    <%= link_to event_path(event) do %>
+                      <button class='event-action' id='contact-btn-small'>Details</button>
+                    <% end %>
                   </div>
                 </div>
 
-                <div class="event-right">
-                  <%= link_to event_path(event) do %>
-                    <button class='event-action' id='contact-btn-small'>Details</button>
+                <div class="event-musicians d-flex flex-row">
+                  <% event.contact_requests.each do |contact_request| %>
+                  <div class="card-accepted">
+                    <%= render 'events/user_card', user: contact_request.user, event: event %>
+                    <div id="anchor_<%= contact_request.id %>">
+                      <%= render "dashboard/contact_status", contact_request: contact_request %>
+                    </div>
+                  </div>
+                  <% end %>
+
+                  <% event.instruments_array.each do |instrument| %>
+                    <div class="card-accepted">
+                    <%= render 'events/user_card_vacant', instrument: instrument %>
+                      <button type="button" class="btn button-awaiting status">
+                        Awaiting
+                      </button>
+                    </div>
                   <% end %>
                 </div>
               </div>
+            <% end %>
+        </div>
 
-              <div class="event-musicians d-flex flex-row">
-                <% event.contact_requests.each do |contact_request| %>
-                <div class="card-accepted">
-                  <%= render 'events/user_card', user: contact_request.user, event: event %>
-                  <div id="anchor_<%= contact_request.id %>">
-                    <%= render "dashboard/contact_status", contact_request: contact_request %>
-                  </div>
-                </div>
-                <% end %>
-
-                <% event.instruments_array.each do |instrument| %>
-                  <div class="card-accepted">
-                  <%= render 'events/user_card_vacant', instrument: instrument %>
-                    <button type="button" class="btn dropdown-toggle button-pending status" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Pending
-                    </button>
-                  </div>
-                <% end %>
-              </div>
-            </div>
-          <% end %>
-
-
-        <h2 class="my-bands">PENDING BANDS</h3>
-        <p style="color: grey"><%= "No contact requests sent at this point." if @contact_requests.size < 1 %></p>
-          <% @contact_requests.order(created_at: :desc).where(status: 'open').each do |request| %>
-           <div class="event">
-             <div class="event-top d-flex flex-row justify-content-between">
-               <div class="event-left">
-                 <div class="event-header">
-                   <h3><%= request.event.genre %> - <%= request.event.title %></h3>
-                   <div class="event-tag">
-                     <p><strong><%= request.event.event_type %></strong></p>
+        <div class="pending-bands">
+          <p style="color: grey"><%= "No contact requests sent at this point." if @contact_requests.size < 1 %></p>
+            <% @contact_requests.order(created_at: :desc).where(status: 'open').each do |request| %>
+             <div class="event">
+               <div class="event-top d-flex flex-row justify-content-between">
+                 <div class="event-left">
+                   <div class="event-header">
+                     <h3><%= request.event.genre %> - <%= request.event.title %></h3>
+                     <div class="event-tag">
+                       <p><strong><%= request.event.event_type %></strong></p>
+                     </div>
+                     <p style="color: grey"><i class="fas fa-map-marker-alt"></i> <%= request.event.location %></p>
                    </div>
-                   <p style="color: grey"><i class="fas fa-map-marker-alt"></i> <%= request.event.location %></p>
+                 </div>
+
+                 <div class="event-right">
+                   <%= link_to event_path(request.event) do %>
+                     <button class='event-action' id='contact-btn-small'>Details</button>
+                   <% end %>
                  </div>
                </div>
 
-               <div class="event-right">
-                 <%= link_to event_path(request.event) do %>
-                   <button class='event-action' id='contact-btn-small'>Details</button>
+               <div class="event-musicians d-flex flex-row">
+                 <% request.event.contact_requests.each do |contact_request| %>
+                 <div class="card-accepted">
+                   <%= render 'events/user_card', user: contact_request.user, event: request.event %>
+                   <% if contact_request.status == 'open' %>
+                     <div>
+                       <button type="button" class="btn button-pending status">
+                         Pending
+                       </button>
+                     </div>
+                   <% else %>
+                     <% if contact_request.status == 'Denied' %>
+                       <button type="button" class="btn status button-denied" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                         <%= contact_request.status %>
+                       </button>
+                     <% else %>
+                       <button type="button" class="btn status button-accepted" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                         <%= contact_request.status %>
+                       </button>
+                     <% end %>
+                   <% end %>
+                 </div>
+                 <% end %>
+
+                 <% request.event.instruments_array.each do |instrument| %>
+                   <div class="card-accepted">
+                   <%= render 'events/user_card_vacant', instrument: instrument %>
+                     <button type="button" class="btn button-awaiting status">
+                       Awaiting
+                     </button>
+                   </div>
                  <% end %>
                </div>
              </div>
-
-             <div class="event-musicians d-flex flex-row">
-               <% request.event.contact_requests.each do |contact_request| %>
-               <div class="card-accepted">
-                 <%= render 'events/user_card', user: contact_request.user, event: request.event %>
-                 <div id="anchor_<%= contact_request.id %>">
-                   <%= render "dashboard/contact_status", contact_request: contact_request %>
-                 </div>
-               </div>
-               <% end %>
-
-               <% request.event.instruments_array.each do |instrument| %>
-                 <div class="card-accepted">
-                 <%= render 'events/user_card_vacant', instrument: instrument %>
-                   <button type="button" class="btn dropdown-toggle button-pending status" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                     Pending
-                   </button>
-                 </div>
-               <% end %>
-             </div>
-           </div>
-          <% end %>
+            <% end %>
+          </div>
         </div>
+
         <input type="hidden" value= <%= session[:_csrf_token] %> id="csrf_token">
       </div>
     </div>
   </div>
 
-<style>
-  .solut-card {
-    padding: 10px;
-    width: 100%;
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    background-color: white;
-    position: relative;
-    height: 200px;
-    border-radius: 10px;
-  }
-
-  .solut-card h5 {
-    position: absolute;
-    top: 10px;
-    left: 25px;
-  }
-
-  .avatars {
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-  }
-
-  .leader-avatar {
-    border-radius: 50%;
-    width: 100px;
-    margin: 0px 10px;
-  }
-
-  .member-avatar {
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    margin: 0px 10px;
-  }
-</style>
 <!--   <h3>Users' requests on my bands</h3>
   <%# @events.each do |event| %>
     <%# event.contact_requests.each do |contact_request| %>

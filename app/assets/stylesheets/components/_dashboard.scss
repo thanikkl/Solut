@@ -1,6 +1,7 @@
 .dashboard-container {
   width: 900px;
   margin: auto;
+  position: relative;
 }
 
 .dashboard-container h3 {
@@ -11,18 +12,60 @@
   color: white;
 }
 
-.my-bands {
-  // width: 250px;
-  // padding: 15px 35px;
-  padding: 15px 0;
-  // border: 2px solid white;
-  color: white;
-  // font-size: 20px;
-  // text-align: center;
-  margin-bottom: 20px;
-  margin-top: 20px;
-  text-transform: uppercase;
+.tabs-bar {
+  width: 100%;
+  display: flex;
+  height: 60px;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  h2 {
+    width: 50%;
+    color: #a0a0a0;
+    text-align: center;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+  }
+
+  h2:hover {
+    color: white;
+  }
 }
+
+.confirmed-bands {
+  width: 100%;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  display: none;
+}
+
+.pending-bands {
+  width: 100%;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  display: none;
+}
+
+.tab-active {
+  display: block;
+}
+
+// .my-bands {
+//   // width: 250px;
+//   // padding: 15px 35px;
+//   padding: 15px 0;
+//   // border: 2px solid white;
+//   color: white;
+//   // font-size: 20px;
+//   // text-align: center;
+//   margin-bottom: 20px;
+//   margin-top: 20px;
+//   text-transform: uppercase;
+// }
 
 .my-titles {
   width: 300px;
@@ -84,6 +127,11 @@
 .button-denied {
   color: black;
   background-color: #d63447;
+}
+
+.button-awaiting {
+  background-color: #a0a0a0;
+  color: white;
 }
 
 .button-pending {

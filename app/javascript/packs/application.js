@@ -12,6 +12,7 @@ import initNavbarMenu from '../components/menu';
 import requestStatus from '../components/request_status';
 import { initSweetalert } from '../plugins/init_sweetalert';
 import { initSweetalertAccepted } from '../plugins/alert_accepted';
+import { initTabs } from '../components/init_tabs';
 
 
 
@@ -26,13 +27,15 @@ document.addEventListener('turbolinks:load', () => {
   }
   if(document.getElementById('dashboard-show')){
     requestStatus();
+    initTabs();
   }
   if(document.getElementById('contact-btn')){
     initSweetalert();
   }
-  if(document.querySelectorAll('.button-pending')){
+  if(document.querySelector('.button-pending')){
     initSweetalertAccepted();
   }
+
     // Do your stuff!
 })
 
