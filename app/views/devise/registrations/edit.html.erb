@@ -1,5 +1,4 @@
-<!-- <body style="background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 20%, rgba(0,0,0,0.4) 100%),url('https://images.unsplash.com/photo-1512733596533-7b00ccf8ebaf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1489&q=80'); background-size: cover; min-height: 100vh; opacity: 0.88;"> -->
-<body style="background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 20%, rgba(0,0,0,0.4) 100%),url('https://images.unsplash.com/photo-1505190849153-43410d3c18f8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80'); background-size: cover; min-height: 100vh; opacity: 0.88;">
+<div id="profile-show">
   <div class="container-profile">
     <h2 class="title-profile">EDIT MY PROFILE</h2>
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -125,4 +124,4 @@
     </div>
     <% end %>
   </div>
-</body>
+</div>
