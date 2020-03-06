@@ -10,7 +10,8 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
-    <link rel="shortcut icon" type="image/x-icon" href="https://res.cloudinary.com/dh8tpzykj/image/upload/v1583314233/favicon_wqtkyo.png">
+    <!-- <link rel="shortcut icon" type="image/x-icon" href="https://res.cloudinary.com/dh8tpzykj/image/upload/v1583314233/favicon_wqtkyo.png"> -->
+    <%= favicon_link_tag "https://res.cloudinary.com/dh8tpzykj/image/upload/v1583314233/favicon_wqtkyo.png" %>
   </head>
 
   <body id="<%= controller.controller_name %>-<%= controller.action_name %>">
