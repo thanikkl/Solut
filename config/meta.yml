@@ -1,0 +1,5 @@
+meta_product_name: "SOLUT"
+meta_title: "SOLUT - Bring musicians together"
+meta_description: "Platform to meet up with other musicians"
+meta_image: "solut_logo_final.png" # should exist in `app/assets/images/`
+twitter_account: "@product_twitter_account"   # required for Twitter Cards
