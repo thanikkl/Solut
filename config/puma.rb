@@ -26,8 +26,8 @@ pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
 # processes).
 #
 # workers ENV.fetch("WEB_CONCURRENCY") { 2 }
-meta_product_name: "SOL'UT"
-meta_title: "SOL'UT - Bring musicians together"
+meta_product_name: "SOLUT"
+meta_title: "SOLUT - Bring musicians together"
 meta_description: "Platform to meet up with other musicians"
 meta_image: "app/assets/images/solut_logo_final.png" # should exist in `app/assets/images/`
 twitter_account: "@product_twitter_account"   # required for Twitter Cards
