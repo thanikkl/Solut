@@ -29,7 +29,7 @@
             <%= render 'user_card', user: user, event: event %>
           <% end %>
 
-          <% event.instruments_array.each do |instrument| %>
+          <% event.available_instruments.each do |instrument| %>
             <%= render 'user_card_vacant', instrument: instrument %>
           <% end %>
         </div>
