@@ -4,8 +4,10 @@
 
 .show-container {
   width: 900px;
-  margin: auto;
-  height: 100%;
+  margin: 0px auto;
+  //margin-top: 20px;
+  //height: 50%;
+  padding-top: 10px;
 }
 
 .show-container h3 {
@@ -34,7 +36,7 @@
   background: white;
   padding: 8px 16px;
   // border: 1px solid rgb(235,235,235);
-  padding-bottom: 15px;
+  //padding-bottom: 15px;
   border-radius: 15px;
   border: 1px solid #ebebeb;
   opacity: 0.9;
