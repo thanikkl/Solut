@@ -9,7 +9,7 @@
         <div class="d-flex flex-column">
           <div class="event-top d-flex flex-row justify-content-between">
             <div class="event-left">
-              <div class="event-header">
+              <div class="event-header mx-4">
                 <h3><%= @event.genre %> - <%= @event.title %></h3>
                 <div class="event-tag">
                   <p><strong><%= @event.event_type %></strong></p>
@@ -52,8 +52,8 @@
           <div class="contact-form contact-container flex-row w-25">
             <p><strong>Send request to join:</strong></p>
             <%= simple_form_for([@event, @new_contact_request]) do |f| %>
-            <%= f.association :instrument, collection: @event.available_instruments , label: "You play:", placeholder: "Select instrument", required: false %>
-            <textarea rows="3" cols="23" label="Message" name="message" id="contact_request_message" placeholder="Your message"></textarea>
+            <%= f.association :instrument, collection: @event.available_instruments, label: false, prompt: "Select instrument", required: false, class: "select" %>
+            <textarea rows="3" cols="23" label="Message" name="message" id="contact_request_message" placeholder=" Your message"></textarea>
             <%= f.button :submit, "✉️ ASK TO JOIN", id: "contact-btn"%>
             <% end %>
 
