@@ -63,7 +63,12 @@
                   </div>
                   <div class="members">
                     <% request.event.users.reject { |u| request.event.user == u }.each do |user| %>
+                    <% if user.profile_picture.key %>
                       <%= cl_image_tag user.profile_picture.key, alt: "alttext", class: 'member-avatar' %>
+                    <% else %>
+                      <img src="https://res.cloudinary.com/dh8tpzykj/image/upload/v1582203695/avatar_empty_ghdihw.png" alt="" class="member-avatar">
+                    <% end %>
+
                     <% end %>
                     <% request.event.places_left.times do |p| %>
                       <img src='https://res.cloudinary.com/dh8tpzykj/image/upload/v1582203695/avatar_empty_ghdihw.png' class="member-avatar" />
