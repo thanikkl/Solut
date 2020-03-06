@@ -195,7 +195,7 @@ puts 'Creating a user faker...'
 40.times do
   pseudo_one = pseudo_array.sample
   pseudo_one = pseudo_one.truncate(10)
-  number_rand = rand(0..999)
+  number_rand = rand(0..10000)
   pseudo = "#{pseudo_one}#{number_rand}"
   address = addresses.sample
   genre_pref = Event::GENRE_ARRAY.sample
